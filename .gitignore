@@ -1,4 +1,4 @@
-# Archivos y carpetas de Unity que no se deben versionar
+# --- Unity ---
 [Ll]ibrary/
 [Tt]emp/
 [Bb]uild/
@@ -7,19 +7,31 @@
 [Mm]emoryCaptures/
 Obj/
 
-# Cache de la compilación de Unity
-[Bb]uilds/*
-[Bb]uild/
+# --- Archivos de Unity innecesarios ---
+sysinfo.txt
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# --- Builds ---
 *.apk
 *.aab
+*.unitypackage
+*.exe
+*.app
 *.xcodeproj
 *.xcworkspace
 *.xcuserdata
-*.userprefs
+*.ipa
 
-# Configuración de VS/MonoDevelop
+# --- IDEs / Editores ---
 .vs/
 .vscode/
+.idea/
 *.csproj
 *.unityproj
 *.sln
@@ -27,29 +39,16 @@ Obj/
 *.tmp
 *.user
 *.userprefs
-*.pidb
-*.booproj
-*.svd
-*.pdb
-*.mdb
+*.iml
 
-# Archivos del sistema operativo
+# --- Archivos del sistema operativo ---
 .DS_Store
 Thumbs.db
 
-# Crash logs
-sysinfo.txt
-
-# Paquetes descargados de Unity 
-Packages/com.unity.package-manager/
-
-# Cache de paquetes
+# --- Unity Package Manager cache ---
 Library/PackageCache/
 
-# Configuración de Rider/JetBrains
+# --- Rider logs ---
 .idea/
 *.iml
-
-# Archivos de colaboración de Unity 
-UnityPackageManager/Editor.log
 
