@@ -1,0 +1,15 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+.vsconfig
+# Carpetas de VS
+.vs/
+# Carpetas de usuario de Unity
+UserSettings/
+# Archivos temporales
+*.vsidx
