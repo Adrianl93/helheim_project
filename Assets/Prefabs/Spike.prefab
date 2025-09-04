@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7620872113804155802}
   - component: {fileID: 2087318607014198883}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2735849, g: 0.11743503, b: 0.11743503, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -168,9 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc7d6cdbae1d074c979b59d0df0bfe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  damage: 0
+  maxDistance: 7
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 8
-  speed: 10
-  lifetime: 3
+    m_Bits: 64

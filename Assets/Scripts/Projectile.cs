@@ -2,28 +2,23 @@
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private int damage;
-    [SerializeField] private float lifeTime = 3f;
+    private int damage;
+    private Vector2 startPos;
+    private Rigidbody2D rb;
+
+    [SerializeField] private float maxDistance = 8f; 
+    [SerializeField] private LayerMask enemyLayer;
 
     private void Start()
     {
-
-        Destroy(gameObject, lifeTime);
+        startPos = transform.position;
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        EnemyController enemy = collision.GetComponent<EnemyController>();
-        if (enemy != null)
+        if (Vector2.Distance(startPos, transform.position) >= maxDistance)
         {
-
-            int finalDamage = Mathf.Max(damage - enemy.Armor, 0);
-
-            enemy.TakeDamage(finalDamage);
-
-
-            Debug.Log($"Proyectil impacto en {enemy.name}, daño: {finalDamage}, HP restante: {enemy.CurrentHealth}");
-
             Destroy(gameObject);
         }
     }
@@ -33,4 +28,18 @@ public class Projectile : MonoBehaviour
         damage = dmg;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & enemyLayer) != 0)
+        {
+            EnemyController enemy = collision.GetComponent<EnemyController>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                Debug.Log("Proyectil impactó al enemigo. Daño: " + damage + " | Vida restante: " + enemy.GetHealth());
+            }
+
+            Destroy(gameObject);
+        }
+    }
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 40a0acfb38e0aac44b7490d9efc90b7a
+guid: b726b1a97adf62c49abc18c2448dc12b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4141237505901376896
-    second: Troll_0
+      213: 8640053359530078599
+    second: DarkWizard_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Troll_0
+      name: DarkWizard_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 15
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08a493afd6e5786c0800000000000000
-      internalID: -4141237505901376896
+      spriteID: 781f537e0c2a7e770800000000000000
+      internalID: 8640053359530078599
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Troll_0: -4141237505901376896
+      DarkWizard_0: 8640053359530078599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

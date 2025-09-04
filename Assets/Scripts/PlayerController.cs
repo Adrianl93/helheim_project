@@ -1,30 +1,32 @@
 using UnityEngine;
 
-public class PlayerMovements : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
 
-    [SerializeField] private float attackRadius = 1.5f;
+    [Header("Ataque Melee")]
+    [SerializeField] private float meleeAttackRadius = 1.5f;
     [SerializeField] private int meleeAttackDamage = 15;
-    [SerializeField] private int distanceAttackDamage = 10;
     [SerializeField] private float meleeAttackCooldown = 1f;
-    [SerializeField] private float distanceAttackCooldown = 1.5f;
+
+    [Header("Ataque Ranged")]
+    [SerializeField] private int rangedAttackDamage = 10;
+    [SerializeField] private float rangedAttackCooldown = 1.5f;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
 
     private Vector3 movement;
-    private Vector2 lastMoveDir = Vector2.right; 
+    private Vector2 lastMoveDir = Vector2.right;
     private float lastMeleeAttackTime = 0f;
-    private float lastDistanceAttackTime = 0f;
+    private float lastRangedAttackTime = 0f;
 
     private void Update()
     {
-        
+        // Movimiento
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
 
-       
         if (movement != Vector3.zero)
         {
             lastMoveDir = movement;
@@ -38,12 +40,12 @@ public class PlayerMovements : MonoBehaviour
             MeleeAttack();
         }
 
-        // Ataque a distancia con Alt
+        // Ataque ranged con Alt
         if ((Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
-            && Time.time >= lastDistanceAttackTime + distanceAttackCooldown)
+            && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
         {
-            lastDistanceAttackTime = Time.time;
-            DistanceAttack();
+            lastRangedAttackTime = Time.time;
+            RangedAttack();
         }
     }
 
@@ -54,7 +56,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void MeleeAttack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRadius, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, meleeAttackRadius, enemyLayer);
 
         foreach (Collider2D enemyCollider in hitEnemies)
         {
@@ -62,12 +64,12 @@ public class PlayerMovements : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(meleeAttackDamage);
-                Debug.Log("Player ataco al enemigo con " + meleeAttackDamage + " de daño");
+                Debug.Log("Player atacó al enemigo con " + meleeAttackDamage + " de daño (melee)");
             }
         }
     }
 
-    private void DistanceAttack()
+    private void RangedAttack()
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
@@ -77,19 +79,18 @@ public class PlayerMovements : MonoBehaviour
             prb.linearVelocity = lastMoveDir.normalized * 10f;
         }
 
-        // Pasar el daño del Player al proyectil
         Projectile projScript = projectile.GetComponent<Projectile>();
         if (projScript != null)
         {
-            projScript.SetDamage(distanceAttackDamage);
+            projScript.SetDamage(rangedAttackDamage);
         }
 
-        Debug.Log("Player lanzó un proyectil en dirección " + lastMoveDir);
+        Debug.Log("Player lanzó un proyectil en dirección " + lastMoveDir + " (ranged)");
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        Gizmos.DrawWireSphere(transform.position, meleeAttackRadius);
     }
 }

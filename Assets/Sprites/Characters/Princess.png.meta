@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 40a0acfb38e0aac44b7490d9efc90b7a
+guid: 322b6923e486c294a9bdd96e00364115
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4141237505901376896
-    second: Troll_0
+      213: 1902788136624674735
+    second: Princess_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,10 +100,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Troll_0
+      name: Princess_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
         width: 15
         height: 16
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08a493afd6e5786c0800000000000000
-      internalID: -4141237505901376896
+      spriteID: fa757569abf086a10800000000000000
+      internalID: 1902788136624674735
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Troll_0: -4141237505901376896
+      Princess_0: 1902788136624674735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
