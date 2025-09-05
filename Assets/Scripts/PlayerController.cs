@@ -5,14 +5,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
 
-    [Header("Ataque Melee")]
     [SerializeField] private float meleeAttackRadius = 1.5f;
     [SerializeField] private int meleeAttackDamage = 15;
     [SerializeField] private float meleeAttackCooldown = 1f;
 
-    [Header("Ataque Ranged")]
     [SerializeField] private int rangedAttackDamage = 10;
     [SerializeField] private float rangedAttackCooldown = 1.5f;
+    [SerializeField] private float maxRangedAttackRange = 8f;
+
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
@@ -22,9 +22,15 @@ public class PlayerController : MonoBehaviour
     private float lastMeleeAttackTime = 0f;
     private float lastRangedAttackTime = 0f;
 
+   
+    public int MeleeDamage => meleeAttackDamage;
+    public int RangedDamage => rangedAttackDamage;
+    public float MeleeAttackRadius => meleeAttackRadius;
+    public float RangedAttackRange => maxRangedAttackRange;
+
     private void Update()
     {
-        // Movimiento
+       
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
 
         if (movement != Vector3.zero)
@@ -32,7 +38,7 @@ public class PlayerController : MonoBehaviour
             lastMoveDir = movement;
         }
 
-        // Ataque melee con Ctrl
+       
         if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
             && Time.time >= lastMeleeAttackTime + meleeAttackCooldown)
         {
@@ -40,7 +46,7 @@ public class PlayerController : MonoBehaviour
             MeleeAttack();
         }
 
-        // Ataque ranged con Alt
+        
         if ((Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
             && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
         {
@@ -87,6 +93,23 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log("Player lanzó un proyectil en dirección " + lastMoveDir + " (ranged)");
     }
+
+    public int AddAttack(int amount)
+    {
+        meleeAttackDamage += amount;
+        rangedAttackDamage += amount;
+        return Mathf.Max(meleeAttackDamage, rangedAttackDamage);
+    }
+
+    public void AddAttackBoost(int amount)
+    {
+        meleeAttackDamage += amount;
+        rangedAttackDamage += amount;
+        Debug.Log($"Player recogió un Attack Boost! Nuevo daño melee: {meleeAttackDamage}, daño ranged: {rangedAttackDamage}");
+    }
+
+
+
 
     private void OnDrawGizmosSelected()
     {

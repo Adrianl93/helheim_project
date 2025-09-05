@@ -4,8 +4,12 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 150;
     [SerializeField] private int armor = 3;
+    public int Armor => armor;
+    
+    [SerializeField] private int currentHealth;
+    public int CurrentHealth => currentHealth;
 
-    private int currentHealth;
+
 
     void Start()
     {
@@ -17,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
         int finalDamage = Mathf.Max(damage - armor, 0);
         currentHealth -= finalDamage;
 
-        Debug.Log($"Player recibio {finalDamage} de daño (HP restante: {currentHealth})");
+        Debug.Log($"Player recibió {finalDamage} de daño (HP restante: {currentHealth})");
 
         if (currentHealth <= 0)
         {
@@ -27,22 +31,31 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("El jugador murio.");
+        Debug.Log("El jugador murió.");
 
-        
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RestartGame();
         }
         else
         {
-            Debug.LogWarning("No se encontro GameManager en la escena.");
+            Debug.LogWarning("No se encontró GameManager en la escena.");
         }
     }
 
     public void Heal(int amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-        Debug.Log($"Player se curo {amount}. HP actual: {currentHealth}");
+        Debug.Log($"Player se curó {amount}. HP actual: {currentHealth}");
     }
+
+  
+    public int AddArmor(int amount)
+    {
+        armor += amount;
+        return armor;
+    }
+
+   
+ 
 }

@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
-                Debug.Log("Proyectil impactó al enemigo. Daño: " + damage + " | Vida restante: " + enemy.GetHealth());
+                Debug.Log("Proyectil impactó al enemigo. Daño: " + damage + " | Vida restante: " + enemy.CurrentHealth);
             }
 
             Destroy(gameObject);
