@@ -78,18 +78,17 @@ public class PlayerController : MonoBehaviour
     private void RangedAttack()
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
         if (prb != null)
-        {
             prb.linearVelocity = lastMoveDir.normalized * 10f;
-        }
 
         Projectile projScript = projectile.GetComponent<Projectile>();
         if (projScript != null)
         {
             projScript.SetDamage(rangedAttackDamage);
+            projScript.SetOwner(gameObject);
         }
+
 
         Debug.Log("Player lanzó un proyectil en dirección " + lastMoveDir + " (ranged)");
     }

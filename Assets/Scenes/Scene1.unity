@@ -178,6 +178,7 @@ MonoBehaviour:
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
+  minRangedDistance: 4
   projectilePrefab: {fileID: 0}
   firePoint: {fileID: 0}
   projectileSpeed: 10
@@ -1789,17 +1790,18 @@ MonoBehaviour:
   player: {fileID: 549680770}
   health: 100
   armor: 2
-  meleeDamage: 10
-  rangedDamage: 8
+  meleeDamage: 13
+  rangedDamage: 10
   speed: 3
-  detectionRadius: 8
+  detectionRadius: 11
   meleeRadius: 4
   meleeCooldown: 1.5
   rangedCooldown: 2
-  rangedAttackRange: 7
+  rangedAttackRange: 9
+  minRangedDistance: 6
   projectilePrefab: {fileID: 4042022002272296592, guid: 61ed20ce984a1f64da979235084e5abc, type: 3}
   firePoint: {fileID: 1528805433}
-  projectileSpeed: 10
+  projectileSpeed: 5
   enragedDuration: 5
 --- !u!61 &1012516631
 BoxCollider2D:
@@ -2174,13 +2176,14 @@ MonoBehaviour:
   health: 50
   armor: 2
   meleeDamage: 0
-  rangedDamage: 4
+  rangedDamage: 6
   speed: 3
-  detectionRadius: 5
+  detectionRadius: 7
   meleeRadius: 0
   meleeCooldown: 1.5
   rangedCooldown: 2
-  rangedAttackRange: 4
+  rangedAttackRange: 6
+  minRangedDistance: 4
   projectilePrefab: {fileID: 4042022002272296592, guid: e47dcb59366664741a4471f34fd63be7, type: 3}
   firePoint: {fileID: 515952563}
   projectileSpeed: 5

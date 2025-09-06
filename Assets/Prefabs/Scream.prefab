@@ -168,7 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc7d6cdbae1d074c979b59d0df0bfe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  maxDistance: 4
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  lifetime: 2

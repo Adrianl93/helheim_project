@@ -2,15 +2,9 @@
 
 public class EnemyController : MonoBehaviour
 {
-    public enum EnemyType
-    {
-        Melee,
-        Ranged,
-        Boss
-    }
+    public enum EnemyType { Melee, Ranged, Boss }
 
     [SerializeField] private EnemyType enemyType = EnemyType.Melee;
-
     [SerializeField] private Transform player;
     [SerializeField] private int health = 50;
     private int maxHealth;
@@ -24,6 +18,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float meleeCooldown = 1.5f;
     [SerializeField] private float rangedCooldown = 2f;
     [SerializeField] private float rangedAttackRange = 8f;
+    [SerializeField] private float minRangedDistance = 4f;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpeed = 10f;
@@ -48,10 +43,7 @@ public class EnemyController : MonoBehaviour
         originalDetectionRadius = detectionRadius;
         maxHealth = health;
 
-        if (enemyType == EnemyType.Boss)
-            currentAttackMode = EnemyType.Melee;
-        else
-            currentAttackMode = enemyType;
+        currentAttackMode = (enemyType == EnemyType.Boss) ? EnemyType.Melee : enemyType;
     }
 
     void Update()
@@ -61,35 +53,30 @@ public class EnemyController : MonoBehaviour
         HandleEnragedState();
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
+        movement = Vector2.zero;
+
         if (enemyType == EnemyType.Melee || (enemyType == EnemyType.Boss && currentAttackMode == EnemyType.Melee))
         {
             if (distanceToPlayer <= meleeRadius)
-            {
-                movement = Vector2.zero;
                 TryMeleeAttack();
-            }
             else if (distanceToPlayer <= detectionRadius)
-            {
                 movement = (player.position - transform.position).normalized;
-            }
-            else
-            {
-                movement = Vector2.zero;
-            }
         }
         else if (enemyType == EnemyType.Ranged || (enemyType == EnemyType.Boss && currentAttackMode == EnemyType.Ranged))
         {
-            if (distanceToPlayer < rangedAttackRange * 0.9f)
-                movement = (transform.position - player.position).normalized;
-            else if (distanceToPlayer > rangedAttackRange)
-                movement = (player.position - transform.position).normalized;
-            else
-                movement = Vector2.zero;
+            if (distanceToPlayer <= detectionRadius)
+            {
+                if (distanceToPlayer < minRangedDistance)
+                    movement = (transform.position - player.position).normalized;
+                else if (distanceToPlayer > rangedAttackRange)
+                    movement = (player.position - transform.position).normalized;
 
-            if (distanceToPlayer <= rangedAttackRange)
-                TryRangedAttack();
+                if (distanceToPlayer <= rangedAttackRange)
+                    TryRangedAttack();
+            }
         }
     }
+
 
     void FixedUpdate()
     {
@@ -115,10 +102,8 @@ public class EnemyController : MonoBehaviour
         {
             lastMeleeAttackTime = Time.time;
             playerHealth.TakeDamage(meleeDamage);
-            Debug.Log($"{name} atacó al Player con {meleeDamage} de daño (melee). Vida restante: {playerHealth.CurrentHealth}");
         }
     }
-
 
     private void TryRangedAttack()
     {
@@ -138,11 +123,10 @@ public class EnemyController : MonoBehaviour
 
             Projectile projScript = projectile.GetComponent<Projectile>();
             if (projScript != null)
+            {
                 projScript.SetDamage(rangedDamage);
-
-            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-                Debug.Log($"{name} disparó un proyectil al Player con {rangedDamage} de daño. Vida restante del Player: {playerHealth.CurrentHealth}");
+                projScript.SetOwner(gameObject);
+            }
         }
     }
 
@@ -184,5 +168,8 @@ public class EnemyController : MonoBehaviour
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, rangedAttackRange);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, minRangedDistance);
     }
 }

@@ -2,44 +2,56 @@
 
 public class Projectile : MonoBehaviour
 {
-    private int damage;
-    private Vector2 startPos;
-    private Rigidbody2D rb;
+    int damage;
+    GameObject owner;
+    [SerializeField] float lifetime = 5f;
 
-    [SerializeField] private float maxDistance = 8f; 
-    [SerializeField] private LayerMask enemyLayer;
-
-    private void Start()
+    void Start()
     {
-        startPos = transform.position;
-        rb = GetComponent<Rigidbody2D>();
-    }
+        Destroy(gameObject, lifetime);
 
-    private void Update()
-    {
-        if (Vector2.Distance(startPos, transform.position) >= maxDistance)
+        Collider2D projCol = GetComponent<Collider2D>();
+        if (projCol != null && owner != null)
         {
-            Destroy(gameObject);
+            foreach (var c in owner.GetComponentsInChildren<Collider2D>())
+                if (c != null)
+                    Physics2D.IgnoreCollision(projCol, c);
         }
     }
 
-    public void SetDamage(int dmg)
+    public void SetDamage(int dmg) => damage = dmg;
+    public void SetOwner(GameObject o) => owner = o;
+
+    private bool OwnerIsPlayer()
     {
-        damage = dmg;
+        return owner != null && owner.GetComponent<PlayerController>() != null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (((1 << collision.gameObject.layer) & enemyLayer) != 0)
+        if (collision.gameObject == owner) return;
+
+        if (OwnerIsPlayer())
         {
             EnemyController enemy = collision.GetComponent<EnemyController>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
-                Debug.Log("Proyectil impactó al enemigo. Daño: " + damage + " | Vida restante: " + enemy.CurrentHealth);
+                Destroy(gameObject);
+                return;
             }
-
-            Destroy(gameObject);
         }
+        else
+        {
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+                Destroy(gameObject);
+                return;
+            }
+        }
+
+        if (!collision.isTrigger) Destroy(gameObject);
     }
 }
