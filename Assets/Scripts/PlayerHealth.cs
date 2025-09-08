@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 150;
+    public int MaxHealth => maxHealth;
+
     [SerializeField] private int armor = 3;
     public int Armor => armor;
     
     [SerializeField] private int currentHealth;
     public int CurrentHealth => currentHealth;
+
 
 
 
@@ -42,6 +46,8 @@ public class PlayerHealth : MonoBehaviour
             Debug.LogWarning("No se encontró GameManager en la escena.");
         }
     }
+
+ 
 
     public void Heal(int amount)
     {
