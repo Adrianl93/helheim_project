@@ -192,8 +192,8 @@ MonoBehaviour:
     y: 0
     width: 214
     height: 531
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -246,8 +246,8 @@ MonoBehaviour:
     y: 531
     width: 984
     height: 230
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 126}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 12}
@@ -273,8 +273,8 @@ MonoBehaviour:
     y: 0
     width: 616
     height: 761
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -346,7 +346,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 56}
     m_SelectedIDs: 76c80000
     m_LastClickedID: 51318
-    m_ExpandedIDs: 00000000eec50000f0c50000f2c50000f4c50000f6c500007ac8000000ca9a3b
+    m_ExpandedIDs: 00000000a8c70000aac70000acc70000aec70000b0c70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -375,7 +375,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000eec50000f0c50000f2c50000f4c50000f6c50000
+    m_ExpandedIDs: 00000000a8c70000aac70000acc70000aec70000b0c70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 213
     height: 505
   m_SerializedDataModeController:
@@ -455,23 +455,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f8c40000
-      m_LastClickedID: 50424
+      m_SelectedIDs: 
+      m_LastClickedID: 0
       m_ExpandedIDs: 0888fffff09bffff2c9cffff629cffff70abffff32aeffffe4aeffff7cd9ffff1ee5fffffcf6ffff04fbffffdac40000f8c4000092d30000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Pickups
-        m_OriginalName: Pickups
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 50394
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
         m_ClientGUIView: {fileID: 8}
@@ -503,8 +503,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 214
-    y: 79
+    x: 215
+    y: 24
     width: 768
     height: 505
   m_SerializedDataModeController:
@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 610
+    y: 555
     width: 983
     height: 204
   m_SerializedDataModeController:
@@ -1329,8 +1329,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 984
-    y: 79
+    x: 985
+    y: 24
     width: 615
     height: 735
   m_SerializedDataModeController:
