@@ -36,7 +36,13 @@ public class Projectile : MonoBehaviour
             EnemyController enemy = collision.GetComponent<EnemyController>();
             if (enemy != null)
             {
+                int prevHP = enemy.CurrentHealth;
                 enemy.TakeDamage(damage);
+                int newHP = enemy.CurrentHealth;
+                int dmgApplied = prevHP - newHP;
+
+                Debug.Log($"[Proyectil Player] Impactó a {enemy.name}. Daño aplicado: {dmgApplied}. HP enemigo restante: {newHP}");
+
                 Destroy(gameObject);
                 return;
             }
@@ -46,7 +52,13 @@ public class Projectile : MonoBehaviour
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
+                int prevHP = playerHealth.CurrentHealth;
                 playerHealth.TakeDamage(damage);
+                int newHP = playerHealth.CurrentHealth;
+                int dmgApplied = prevHP - newHP;
+
+                Debug.Log($"[Proyectil Enemigo] Impactó al Player. Daño aplicado: {dmgApplied}. HP Player restante: {newHP}");
+
                 Destroy(gameObject);
                 return;
             }
