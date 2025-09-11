@@ -597,7 +597,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -2198,7 +2198,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -2546,7 +2546,7 @@ MonoBehaviour:
   meleeAttackDamage: 15
   meleeAttackCooldown: 0.7
   rangedAttackDamage: 10
-  rangedAttackCooldown: 1.5
+  rangedAttackCooldown: 1
   maxRangedAttackRange: 8
   enemyLayer:
     serializedVersion: 2
@@ -5510,7 +5510,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -5784,7 +5784,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -6043,7 +6043,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -6687,7 +6687,7 @@ Transform:
   m_GameObject: {fileID: 1593684843}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.2, y: 8.7, z: 0}
+  m_LocalPosition: {x: 53.6, y: 22.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6909,7 +6909,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -7265,7 +7265,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -7460,7 +7460,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
@@ -7655,7 +7655,7 @@ MonoBehaviour:
   rangedDamage: 0
   speed: 3
   detectionRadius: 9
-  meleeRadius: 5
+  meleeRadius: 3.5
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 0
