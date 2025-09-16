@@ -4,8 +4,8 @@ public class DropItemManager : MonoBehaviour
 {
     public static DropItemManager Instance { get; private set; }
 
-    [SerializeField] private PlayerHealth playerHealth;
-    [SerializeField] private PlayerController playerController;
+    private PlayerHealth playerHealth;
+    private PlayerController playerController;
 
     [SerializeField] private GameObject[] easyItems = new GameObject[10];
     [SerializeField] private GameObject[] mediumItems = new GameObject[10];
@@ -17,6 +17,43 @@ public class DropItemManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        AssignPlayerReferences();
+    }
+
+    private void Update()
+    {
+        // Si en algún momento el Player se pierde (ej: al reiniciar escena),
+        // volvemos a asignarlo automáticamente.
+        if (playerHealth == null || playerController == null)
+        {
+            AssignPlayerReferences();
+        }
+    }
+
+    private void AssignPlayerReferences()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.Player != null)
+        {
+            playerHealth = GameManager.Instance.Player.GetComponent<PlayerHealth>();
+            playerController = GameManager.Instance.Player.GetComponent<PlayerController>();
+
+            if (playerHealth == null || playerController == null)
+            {
+                Debug.LogWarning("[DropItemManager] El Player no tiene PlayerHealth o PlayerController.");
+            }
+            else
+            {
+                Debug.Log("[DropItemManager] Player asignado correctamente.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[DropItemManager] No se encontró GameManager o Player.");
+        }
     }
 
     public void DropItem(Vector3 position)
@@ -40,6 +77,12 @@ public class DropItemManager : MonoBehaviour
 
     private (GameObject, string) GetItemBasedOnStats()
     {
+        if (playerHealth == null || playerController == null)
+        {
+            Debug.LogWarning("[DropItemManager] Player no asignado, devolviendo null.");
+            return (null, "None");
+        }
+
         int armor = playerHealth.Armor;
         int meleeAttack = playerController.MeleeDamage;
 

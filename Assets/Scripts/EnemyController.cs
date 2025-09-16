@@ -5,7 +5,8 @@ public class EnemyController : MonoBehaviour
     public enum EnemyType { Melee, Ranged, Boss }
 
     [SerializeField] private EnemyType enemyType = EnemyType.Melee;
-    [SerializeField] private Transform player;
+    private Transform player; // ahora se asigna dinámicamente
+
     [SerializeField] private int health = 50;
     private int maxHealth;
     [SerializeField] private int armor = 2;
@@ -44,11 +45,17 @@ public class EnemyController : MonoBehaviour
         maxHealth = health;
 
         currentAttackMode = (enemyType == EnemyType.Boss) ? EnemyType.Melee : enemyType;
+
+        AssignPlayerReference();
     }
 
     void Update()
     {
-        if (player == null) return;
+        if (player == null)
+        {
+            AssignPlayerReference();
+            return;
+        }
 
         HandleEnragedState();
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
@@ -77,10 +84,22 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    private void AssignPlayerReference()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.Player != null)
+        {
+            player = GameManager.Instance.Player.transform;
+            Debug.Log("[EnemyController] Player asignado correctamente.");
+        }
+        else
+        {
+            Debug.LogWarning("[EnemyController] No se pudo asignar Player.");
+        }
     }
 
     private void HandleEnragedState()
@@ -107,7 +126,7 @@ public class EnemyController : MonoBehaviour
 
     private void TryRangedAttack()
     {
-        if (projectilePrefab == null) return;
+        if (projectilePrefab == null || player == null) return;
 
         if (Time.time >= lastRangedAttackTime + rangedCooldown)
         {
@@ -157,7 +176,6 @@ public class EnemyController : MonoBehaviour
     {
         Destroy(gameObject);
         DropItemManager.Instance.DropItem(transform.position);
-
     }
 
     private void OnDrawGizmos()

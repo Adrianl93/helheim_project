@@ -39,7 +39,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.RestartGame();
+            GameManager.Instance.RestartScene();
         }
         else
         {
