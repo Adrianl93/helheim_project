@@ -8,12 +8,14 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private int armor = 3;
     public int Armor => armor;
-    
+
     [SerializeField] private int currentHealth;
     public int CurrentHealth => currentHealth;
 
-
-
+    // --- NUEVO: Sonido de muerte ---
+    [Header("Audio FX")]
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField] private float deathSoundVolume = 1f;
 
     void Start()
     {
@@ -37,6 +39,10 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("El jugador murió.");
 
+        // --- REPRODUCIR SONIDO ---
+        if (deathSound != null)
+            AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RestartScene();
@@ -47,21 +53,20 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
- 
-
     public void Heal(int amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
         Debug.Log($"Player se curó {amount}. HP actual: {currentHealth}");
     }
 
-  
     public int AddArmor(int amount)
     {
         armor += amount;
         return armor;
     }
 
-   
- 
+    public void SetArmor(int value)
+    {
+        armor = value;
+    }
 }

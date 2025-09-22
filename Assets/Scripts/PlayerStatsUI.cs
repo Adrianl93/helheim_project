@@ -5,7 +5,7 @@ public class PlayerStatsUI : MonoBehaviour
 {
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private PlayerInventory playerInventory;
+    
 
     [SerializeField] private TMP_Text armorText;
     [SerializeField] private TMP_Text meleeAttackText;
@@ -26,7 +26,8 @@ public class PlayerStatsUI : MonoBehaviour
                 rangedAttackText.text = $"Ranged: {playerController.RangedDamage}";
         }
 
-        if (playerInventory != null && coinsText != null)
-            coinsText.text = $"Coins: {playerInventory.GetCoins()}";
+        if (playerController != null && coinsText != null)
+            coinsText.text = "Coins: " + playerController.Coins.ToString();
+
     }
 }

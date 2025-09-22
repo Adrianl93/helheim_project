@@ -150,3 +150,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acb175d324a193448809f35e7dcbfce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Checkpoints
+  activateSound: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
+  volume: 1

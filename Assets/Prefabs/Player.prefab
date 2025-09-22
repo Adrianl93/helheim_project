@@ -69,7 +69,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 4538056452343453512}
   - component: {fileID: 4387020073243359538}
   - component: {fileID: 1002076693331550739}
-  - component: {fileID: 5581679216952332057}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -363,6 +362,9 @@ MonoBehaviour:
     m_Bits: 8
   projectilePrefab: {fileID: 4042022002272296592, guid: f87f8162adebf4444872f3a5f5d2bd33, type: 3}
   firePoint: {fileID: 2969829713758814904}
+  coins: 0
+  meleeAttackSound: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
+  meleeSoundVolume: 1
 --- !u!114 &1002076693331550739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,16 +380,5 @@ MonoBehaviour:
   maxHealth: 100
   armor: 3
   currentHealth: 0
---- !u!114 &5581679216952332057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5737316558322232835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb203e84e33e8f44b8d4252393e88def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  coins: 0
+  deathSound: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
+  deathSoundVolume: 1

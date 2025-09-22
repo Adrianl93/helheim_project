@@ -6,10 +6,17 @@ public class Projectile : MonoBehaviour
     GameObject owner;
     [SerializeField] float lifetime = 5f;
 
+    [Header("FX de Sonido")]
+    [SerializeField] private AudioClip shootSFX;   // Sonido al disparar
+    [SerializeField] private AudioClip impactSFX;  // Sonido al impactar
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         Destroy(gameObject, lifetime);
 
+        // Ignorar colisión con el dueño
         Collider2D projCol = GetComponent<Collider2D>();
         if (projCol != null && owner != null)
         {
@@ -17,6 +24,9 @@ public class Projectile : MonoBehaviour
                 if (c != null)
                     Physics2D.IgnoreCollision(projCol, c);
         }
+
+        // Reproducir sonido de disparo
+        PlaySFX(shootSFX);
     }
 
     public void SetDamage(int dmg) => damage = dmg;
@@ -43,6 +53,7 @@ public class Projectile : MonoBehaviour
 
                 Debug.Log($"[Proyectil Player] Impactó a {enemy.name}. Daño aplicado: {dmgApplied}. HP enemigo restante: {newHP}");
 
+                PlaySFX(impactSFX);
                 Destroy(gameObject);
                 return;
             }
@@ -59,11 +70,24 @@ public class Projectile : MonoBehaviour
 
                 Debug.Log($"[Proyectil Enemigo] Impactó al Player. Daño aplicado: {dmgApplied}. HP Player restante: {newHP}");
 
+                PlaySFX(impactSFX);
                 Destroy(gameObject);
                 return;
             }
         }
 
-        if (!collision.isTrigger) Destroy(gameObject);
+        if (!collision.isTrigger)
+        {
+            PlaySFX(impactSFX);
+            Destroy(gameObject);
+        }
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }

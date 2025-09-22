@@ -38,6 +38,13 @@ public class EnemyController : MonoBehaviour
     public int CurrentHealth => health;
     private EnemyType currentAttackMode;
 
+    [SerializeField] private AudioClip meleeAttackSound; 
+    [SerializeField] private float meleeSoundVolume = 1f;
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField] private float deathSoundVolume = 1f;
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -121,6 +128,14 @@ public class EnemyController : MonoBehaviour
         {
             lastMeleeAttackTime = Time.time;
             playerHealth.TakeDamage(meleeDamage);
+
+            // Reproducir sonido de ataque melee
+            if (meleeAttackSound != null)
+            {
+                AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position, meleeSoundVolume);
+            }
+
+            Debug.Log($"[EnemyController] Enemigo {name} atacó melee al Player por {meleeDamage} de daño.");
         }
     }
 
@@ -174,6 +189,9 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     {
+        if (deathSound != null)
+            AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
+
         Destroy(gameObject);
         DropItemManager.Instance.DropItem(transform.position);
     }

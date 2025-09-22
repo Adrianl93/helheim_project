@@ -21,8 +21,14 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastMoveDir = Vector2.right;
     private float lastMeleeAttackTime = 0f;
     private float lastRangedAttackTime = 0f;
+    
+    [SerializeField] private int coins = 0;  
+    public int Coins => coins;
 
-   
+
+    [SerializeField] private AudioClip meleeAttackSound;
+    [SerializeField] private float meleeSoundVolume = 1f;
+
     public int MeleeDamage => meleeAttackDamage;
     public int RangedDamage => rangedAttackDamage;
     public float MeleeAttackRadius => meleeAttackRadius;
@@ -62,6 +68,9 @@ public class PlayerController : MonoBehaviour
 
     private void MeleeAttack()
     {
+        if (meleeAttackSound != null)
+            AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position, meleeSoundVolume);
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, meleeAttackRadius, enemyLayer);
 
         foreach (Collider2D enemyCollider in hitEnemies)
@@ -106,7 +115,23 @@ public class PlayerController : MonoBehaviour
         rangedAttackDamage += amount;
         Debug.Log($"Player recogió un Attack Boost! Nuevo daño melee: {meleeAttackDamage}, daño ranged: {rangedAttackDamage}");
     }
+    public void SetStats(int melee, int ranged)
+    {
+        meleeAttackDamage = melee;
+        rangedAttackDamage = ranged;
+    }
 
+    public void SetCoins(int amount)
+    {
+        coins = amount;
+    }
+    
+
+    public void AddCoins(int amount)
+    {
+        coins += amount;
+        Debug.Log($"Player recogió {amount} monedas. Total: {coins}");
+    }
 
 
 

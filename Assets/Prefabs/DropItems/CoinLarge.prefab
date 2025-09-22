@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &914466581385157631
+--- !u!1 &1726476305267014330
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6799900583805747764}
-  - component: {fileID: 4555486435470770365}
-  - component: {fileID: 4856145842819756944}
-  - component: {fileID: 4589470835194278219}
+  - component: {fileID: 4040852744398970629}
+  - component: {fileID: 6428690279969484361}
+  - component: {fileID: 1968967234199511324}
+  - component: {fileID: 1968555772505384462}
   m_Layer: 0
-  m_Name: StartPoint
-  m_TagString: StartPoint
+  m_Name: CoinLarge
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6799900583805747764
+--- !u!4 &4040852744398970629
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914466581385157631}
+  m_GameObject: {fileID: 1726476305267014330}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -51.65, y: -36.1, z: 0}
-  m_LocalScale: {x: 4.1746182, y: 3.7657385, z: 1.053}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4555486435470770365
+--- !u!212 &6428690279969484361
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914466581385157631}
+  m_GameObject: {fileID: 1726476305267014330}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -80,25 +80,25 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 0.735849, g: 0.6421324, b: 0.6421324, a: 1}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 0.8490566, g: 0.6831302, b: 0.09211465, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8828125, y: 1}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4856145842819756944
-BoxCollider2D:
+--- !u!58 &1968967234199511324
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914466581385157631}
+  m_GameObject: {fileID: 1726476305267014330}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -127,28 +127,19 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8828125, y: 1}
-    newSize: {x: 0.8828125, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.8828125, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &4589470835194278219
+  m_Radius: 0.5
+--- !u!114 &1968555772505384462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914466581385157631}
+  m_GameObject: {fileID: 1726476305267014330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1acb175d324a193448809f35e7dcbfce, type: 3}
+  m_Script: {fileID: 11500000, guid: 33344e62cf240e04086cdf38b19616b1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Checkpoints
-  activateSound: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
-  volume: 0
+  m_EditorClassIdentifier: Assembly-CSharp::CoinPickup
+  coinValue: 3
+  pickupSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
+  volume: 1

@@ -5,13 +5,22 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip ambientMusic;
+    [Range(0f, 1f)][SerializeField] private float musicVolume = 0.5f; // Medidor de volumen
+    private AudioSource audioSource;
+
     [Header("Player")]
-    [SerializeField] private GameObject player; // referencia interna
-    public GameObject Player => player;        // propiedad pública
+    [SerializeField] private GameObject player;
+    public GameObject Player => player;
+    private PlayerController playerController;
+    private PlayerHealth playerHealth;
 
     private GameObject startPoint;
     private GameObject[] checkpoints;
-    private Vector3 lastCheckpointPos; // posición real del último checkpoint
+
+    private Vector3 lastCheckpointPos;
+    private PlayerState lastCheckpointState;
     private bool firstLoad = true;
 
     private void Awake()
@@ -21,14 +30,15 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Recuperar última posición guardada
-            if (PlayerPrefs.HasKey("cpX"))
-            {
-                float x = PlayerPrefs.GetFloat("cpX");
-                float y = PlayerPrefs.GetFloat("cpY");
-                float z = PlayerPrefs.GetFloat("cpZ");
-                lastCheckpointPos = new Vector3(x, y, z);
-            }
+            // Configurar audio
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = ambientMusic;
+            audioSource.loop = true;
+            audioSource.playOnAwake = false;
+            audioSource.volume = musicVolume;
+
+            if (ambientMusic != null)
+                audioSource.Play();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
@@ -54,24 +64,31 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // Detectar StartPoint
+        if (playerController == null)
+            playerController = player.GetComponent<PlayerController>();
+        if (playerHealth == null)
+            playerHealth = player.GetComponent<PlayerHealth>();
+
         if (startPoint == null)
             startPoint = GameObject.FindGameObjectWithTag("StartPoint");
 
-        // Detectar checkpoints
         checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
 
-        // Si no hay checkpoint guardado, usar StartPoint
-        if (lastCheckpointPos == Vector3.zero)
-        {
-            if (startPoint != null)
-                lastCheckpointPos = startPoint.transform.position;
-        }
+        if (lastCheckpointPos == Vector3.zero && startPoint != null)
+            lastCheckpointPos = startPoint.transform.position;
 
-        // Colocar player
         player.transform.position = lastCheckpointPos;
 
-        // Solo mostrar log la primera vez
+        if (lastCheckpointState != null)
+        {
+            playerController.SetStats(
+                lastCheckpointState.meleeAttack,
+                lastCheckpointState.rangedAttack
+            );
+            playerHealth.SetArmor(lastCheckpointState.armor);
+            playerController.SetCoins(lastCheckpointState.coins);
+        }
+
         if (firstLoad)
         {
             Debug.Log($"[GameManager] Player colocado en posición inicial: {lastCheckpointPos}");
@@ -96,12 +113,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         lastCheckpointPos = startPoint != null ? startPoint.transform.position : Vector3.zero;
-
-        PlayerPrefs.DeleteKey("cpX");
-        PlayerPrefs.DeleteKey("cpY");
-        PlayerPrefs.DeleteKey("cpZ");
-        PlayerPrefs.Save();
-
+        lastCheckpointState = null;
         SceneManager.LoadScene("Scene1");
         Debug.Log("[GameManager] Juego reiniciado desde StartPoint");
     }
@@ -112,12 +124,33 @@ public class GameManager : MonoBehaviour
         {
             lastCheckpointPos = checkpoint.transform.position;
 
-            PlayerPrefs.SetFloat("cpX", lastCheckpointPos.x);
-            PlayerPrefs.SetFloat("cpY", lastCheckpointPos.y);
-            PlayerPrefs.SetFloat("cpZ", lastCheckpointPos.z);
-            PlayerPrefs.Save();
+            lastCheckpointState = new PlayerState(
+                checkpoint.transform.position,
+                playerController.MeleeDamage,
+                playerController.RangedDamage,
+                playerHealth.Armor,
+                playerController.Coins
+            );
 
             Debug.Log($"[GameManager] Checkpoint guardado en {lastCheckpointPos} -> {checkpoint.name}");
         }
+    }
+
+
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = Mathf.Clamp01(volume);
+        if (audioSource != null)
+            audioSource.volume = musicVolume;
+    }
+
+    public void IncreaseVolume(float increment = 0.05f)
+    {
+        SetMusicVolume(musicVolume + increment);
+    }
+
+    public void DecreaseVolume(float decrement = 0.05f)
+    {
+        SetMusicVolume(musicVolume - decrement);
     }
 }
