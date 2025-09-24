@@ -62,4 +62,7 @@ Jugar en PC con teclado y mouse. ¡Prepárate para enfrentarte a lo sobrenatural
 ---
 
 ## 🔮 Elevator Pitch
-Has vuelto del más allá por mandato divino. En la piel de un **alma redimida**, debes adentrarte en un antiguo cementerio plagado de corrupción para **purgar las fuerzas oscuras** antes de que escapen y devoren el mundo de los vivos.
+Has vuelto del más allá por mandato divino. En la piel de un
+alma redimida, debes adentrarte en un antiguo cementerio plagado de
+corrupción para purgar las fuerzas oscuras antes de que escapen y devoren
+el mundo de los vivos
