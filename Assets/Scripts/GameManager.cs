@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public static event Action OnTimeout;
+    public static event Action OnGamePaused;
+    public static event Action OnGameResumed;
 
     [Header("Timer")]
-    [SerializeField] private float gameDuration = 1200f; // 20 minutos = 1200s
+    [SerializeField] private float gameDuration = 1200f; // 20 minutos
     private float timer;
     private bool timeoutTriggered = false;
     private bool isPaused = false;
@@ -31,7 +34,13 @@ public class GameManager : MonoBehaviour
     private PlayerState lastCheckpointState;
     private bool firstLoad = true;
 
+  
+    
+
     public float RemainingTime => timer;
+
+
+    private PlayerInput playerInput;
 
     private void Awake()
     {
@@ -40,7 +49,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Configurar audio
+            // Config audio
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = ambientMusic;
             audioSource.loop = true;
@@ -52,8 +61,17 @@ public class GameManager : MonoBehaviour
 
             SceneManager.sceneLoaded += OnSceneLoaded;
 
-            // Inicializar timer
+            // Timer inicial
             timer = gameDuration;
+
+           
+            playerInput = GetComponent<PlayerInput>();
+            if (playerInput != null)
+            {
+                playerInput.actions["Reboot"].performed += ctx => RestartScene();
+                playerInput.actions["Restart"].performed += ctx => RestartGame();
+                playerInput.actions["Pause"].performed += ctx => TogglePause();
+            }
         }
         else
         {
@@ -102,17 +120,14 @@ public class GameManager : MonoBehaviour
             playerController.SetCoins(lastCheckpointState.coins);
             playerController.SetMana(lastCheckpointState.mana);
 
-            // Restaurar tiempo
             timer = lastCheckpointState.remainingTime;
-            timeoutTriggered = false; 
+            timeoutTriggered = false;
         }
         else
         {
-            // Si no hay checkpoint, reiniciar al tiempo original
             timer = gameDuration;
             timeoutTriggered = false;
         }
-
 
         if (firstLoad)
         {
@@ -123,7 +138,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // Control del timer
+        // Timer
         if (!isPaused && !timeoutTriggered)
         {
             timer -= Time.deltaTime;
@@ -135,29 +150,31 @@ public class GameManager : MonoBehaviour
                 Debug.Log("[GameManager] Tiempo agotado: OnTimeout lanzado.");
             }
         }
-
-        // Teclas de reinicio
-        if (Input.GetKeyDown(KeyCode.R) && !Input.GetKey(KeyCode.LeftControl))
-            RestartScene();
-
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.R))
-            RestartGame();
     }
 
-   
+    #region Pausa
+    public void TogglePause()
+    {
+        if (isPaused) ResumeGame();
+        else PauseGame();
+    }
+
     public void PauseGame()
     {
         isPaused = true;
         Time.timeScale = 0f;
+        OnGamePaused?.Invoke();
     }
 
     public void ResumeGame()
     {
         isPaused = false;
         Time.timeScale = 1f;
+        OnGameResumed?.Invoke(); ;
     }
+    #endregion
 
-    
+    #region Reinicio
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -170,13 +187,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Scene1");
         Debug.Log("[GameManager] Juego reiniciado desde StartPoint");
     }
-
+    #endregion
 
     public void SaveCheckpoint(GameObject checkpoint)
     {
         if (checkpoint.CompareTag("Checkpoint"))
         {
-            
             lastCheckpointPos = checkpoint.transform.position;
 
             lastCheckpointState = new PlayerState(
@@ -193,8 +209,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
+    #region Audio
     public void SetMusicVolume(float volume)
     {
         musicVolume = Mathf.Clamp01(volume);
@@ -202,13 +217,7 @@ public class GameManager : MonoBehaviour
             audioSource.volume = musicVolume;
     }
 
-    public void IncreaseVolume(float increment = 0.05f)
-    {
-        SetMusicVolume(musicVolume + increment);
-    }
-
-    public void DecreaseVolume(float decrement = 0.05f)
-    {
-        SetMusicVolume(musicVolume - decrement);
-    }
+    public void IncreaseVolume(float increment = 0.05f) => SetMusicVolume(musicVolume + increment);
+    public void DecreaseVolume(float decrement = 0.05f) => SetMusicVolume(musicVolume - decrement);
+    #endregion
 }

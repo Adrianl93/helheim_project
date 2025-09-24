@@ -1,67 +1,82 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movimiento")]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 5f;
 
+    [Header("Ataques")]
     [SerializeField] private float meleeAttackRadius = 1.5f;
     [SerializeField] private int meleeAttackDamage = 15;
     [SerializeField] private float meleeAttackCooldown = 1f;
 
     [SerializeField] private int rangedAttackDamage = 10;
     [SerializeField] private float rangedAttackCooldown = 1.5f;
-    [SerializeField] private float maxRangedAttackRange = 8f;
+    [SerializeField] private float projectileSpeed = 10f;
 
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
 
-    private Vector3 movement;
-    private Vector2 lastMoveDir = Vector2.right;
-    private float lastMeleeAttackTime = 0f;
-    private float lastRangedAttackTime = 0f;
-
+    [Header("Mana y monedas")]
     [SerializeField] private int coins = 0;
-    public int Coins => coins;
-
-
     [SerializeField] private int maxMana = 50;
     [SerializeField] private int currentMana = 25;
     [SerializeField] private int rangedManaCost = 5;
+
+    private PlayerInput playerInput;
+    private Vector2 input;
+    private Vector2 lastMoveDir = Vector2.right;
+
+    private float lastMeleeAttackTime = 0f;
+    private float lastRangedAttackTime = 0f;
+
+    public int Coins => coins;
     public int CurrentMana => currentMana;
     public int MaxMana => maxMana;
-
     public int MeleeDamage => meleeAttackDamage;
     public int RangedDamage => rangedAttackDamage;
     public float MeleeAttackRadius => meleeAttackRadius;
-    public float RangedAttackRange => maxRangedAttackRange;
+
+    private void Awake()
+    {
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     private void Update()
     {
-        movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
+        // Movimiento
+        input = playerInput.actions["Move"].ReadValue<Vector2>();
+        if (input != Vector2.zero)
+            lastMoveDir = input;
 
-        if (movement != Vector3.zero)
-            lastMoveDir = movement;
-
-        if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
-            && Time.time >= lastMeleeAttackTime + meleeAttackCooldown)
+        // Ataque melee con botón izquierdo del mouse
+        if (playerInput.actions["Melee"].triggered && Time.time >= lastMeleeAttackTime + meleeAttackCooldown)
         {
             lastMeleeAttackTime = Time.time;
             MeleeAttack();
         }
 
-        if ((Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
-            && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
+        // Ataque ranged con botón derecho del mouse
+        if (playerInput.actions["Ranged"].triggered && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
         {
             lastRangedAttackTime = Time.time;
             RangedAttack();
+        }
+
+        // Interactuar
+        if (playerInput.actions["Interact"].triggered)
+        {
+            Interact();
         }
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(transform.position + (movement * speed * Time.fixedDeltaTime));
+        rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
     }
 
     private void MeleeAttack()
@@ -87,10 +102,15 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        // Dirección hacia el mouse
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
+
+        // Crear proyectil
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
         if (prb != null)
-            prb.linearVelocity = lastMoveDir.normalized * 10f;
+            prb.linearVelocity = direction * projectileSpeed;
 
         Projectile projScript = projectile.GetComponent<Projectile>();
         if (projScript != null)
@@ -99,9 +119,16 @@ public class PlayerController : MonoBehaviour
             projScript.SetOwner(gameObject);
         }
 
-        Debug.Log("Player lanzó un proyectil en dirección " + lastMoveDir + " (ranged). Mana restante: " + currentMana);
+        Debug.Log("Player lanzó un proyectil hacia " + direction + " (ranged). Mana restante: " + currentMana);
     }
 
+    private void Interact()
+    {
+        Debug.Log("Jugador intentó interactuar");
+        
+    }
+
+    #region Stats & Mana
     public int AddAttack(int amount)
     {
         meleeAttackDamage += amount;
@@ -122,10 +149,7 @@ public class PlayerController : MonoBehaviour
         rangedAttackDamage = ranged;
     }
 
-    public void SetCoins(int amount)
-    {
-        coins = amount;
-    }
+    public void SetCoins(int amount) => coins = amount;
 
     public void AddCoins(int amount)
     {
@@ -154,6 +178,7 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+    #endregion
 
     private void OnDrawGizmosSelected()
     {
