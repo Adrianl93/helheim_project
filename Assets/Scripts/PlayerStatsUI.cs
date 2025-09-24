@@ -1,16 +1,16 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class PlayerStatsUI : MonoBehaviour
 {
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private PlayerController playerController;
-    
 
     [SerializeField] private TMP_Text armorText;
     [SerializeField] private TMP_Text meleeAttackText;
     [SerializeField] private TMP_Text rangedAttackText;
     [SerializeField] private TMP_Text coinsText;
+
 
     void Update()
     {
@@ -24,10 +24,10 @@ public class PlayerStatsUI : MonoBehaviour
 
             if (rangedAttackText != null)
                 rangedAttackText.text = $"Ranged: {playerController.RangedDamage}";
+
         }
 
         if (playerController != null && coinsText != null)
             coinsText.text = "Coins: " + playerController.Coins.ToString();
-
     }
 }

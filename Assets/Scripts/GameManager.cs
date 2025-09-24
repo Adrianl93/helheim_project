@@ -1,13 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public static event Action OnTimeout;
+
+    [Header("Timer")]
+    [SerializeField] private float gameDuration = 1200f; // 20 minutos = 1200s
+    private float timer;
+    private bool timeoutTriggered = false;
+    private bool isPaused = false;
 
     [Header("Audio")]
     [SerializeField] private AudioClip ambientMusic;
-    [Range(0f, 1f)][SerializeField] private float musicVolume = 0.5f; // Medidor de volumen
+    [Range(0f, 1f)][SerializeField] private float musicVolume = 0.5f;
     private AudioSource audioSource;
 
     [Header("Player")]
@@ -22,6 +30,8 @@ public class GameManager : MonoBehaviour
     private Vector3 lastCheckpointPos;
     private PlayerState lastCheckpointState;
     private bool firstLoad = true;
+
+    public float RemainingTime => timer;
 
     private void Awake()
     {
@@ -41,6 +51,9 @@ public class GameManager : MonoBehaviour
                 audioSource.Play();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            // Inicializar timer
+            timer = gameDuration;
         }
         else
         {
@@ -87,7 +100,19 @@ public class GameManager : MonoBehaviour
             );
             playerHealth.SetArmor(lastCheckpointState.armor);
             playerController.SetCoins(lastCheckpointState.coins);
+            playerController.SetMana(lastCheckpointState.mana);
+
+            // Restaurar tiempo
+            timer = lastCheckpointState.remainingTime;
+            timeoutTriggered = false; 
         }
+        else
+        {
+            // Si no hay checkpoint, reiniciar al tiempo original
+            timer = gameDuration;
+            timeoutTriggered = false;
+        }
+
 
         if (firstLoad)
         {
@@ -96,8 +121,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
+        // Control del timer
+        if (!isPaused && !timeoutTriggered)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
+            {
+                timer = 0f;
+                timeoutTriggered = true;
+                OnTimeout?.Invoke();
+                Debug.Log("[GameManager] Tiempo agotado: OnTimeout lanzado.");
+            }
+        }
+
+        // Teclas de reinicio
         if (Input.GetKeyDown(KeyCode.R) && !Input.GetKey(KeyCode.LeftControl))
             RestartScene();
 
@@ -105,6 +144,20 @@ public class GameManager : MonoBehaviour
             RestartGame();
     }
 
+   
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+    }
+
+    
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -118,10 +171,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("[GameManager] Juego reiniciado desde StartPoint");
     }
 
+
     public void SaveCheckpoint(GameObject checkpoint)
     {
         if (checkpoint.CompareTag("Checkpoint"))
         {
+            
             lastCheckpointPos = checkpoint.transform.position;
 
             lastCheckpointState = new PlayerState(
@@ -129,12 +184,15 @@ public class GameManager : MonoBehaviour
                 playerController.MeleeDamage,
                 playerController.RangedDamage,
                 playerHealth.Armor,
-                playerController.Coins
+                playerController.Coins,
+                playerController.CurrentMana,
+                timer
             );
 
             Debug.Log($"[GameManager] Checkpoint guardado en {lastCheckpointPos} -> {checkpoint.name}");
         }
     }
+
 
 
     public void SetMusicVolume(float volume)
