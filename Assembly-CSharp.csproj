@@ -68,6 +68,8 @@
     <Compile Include="Assets\Scripts\AttackBoost.cs" />
     <Compile Include="Assets\Scripts\PlayerStatsUI.cs" />
     <Compile Include="Assets\Scripts\ArmorBoost.cs" />
+    <Compile Include="Assets\Scripts\PlayerManaUI.cs" />
+    <Compile Include="Assets\Scripts\TimerUI.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />

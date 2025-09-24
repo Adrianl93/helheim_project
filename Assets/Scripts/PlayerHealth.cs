@@ -12,11 +12,19 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     public int CurrentHealth => currentHealth;
 
-    // --- NUEVO: Sonido de muerte ---
+    
     [Header("Audio FX")]
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private float deathSoundVolume = 1f;
+    private void OnEnable()
+    {
+        GameManager.OnTimeout += Die; 
+    }
 
+    private void OnDisable()
+    {
+        GameManager.OnTimeout -= Die; 
+    }
     void Start()
     {
         currentHealth = maxHealth;
@@ -39,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("El jugador murió.");
 
-        // --- REPRODUCIR SONIDO ---
+      
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 

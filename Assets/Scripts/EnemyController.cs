@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
     public enum EnemyType { Melee, Ranged, Boss }
 
     [SerializeField] private EnemyType enemyType = EnemyType.Melee;
-    private Transform player; // ahora se asigna dinámicamente
+    private Transform player; 
 
     [SerializeField] private int health = 50;
     private int maxHealth;
@@ -38,12 +38,13 @@ public class EnemyController : MonoBehaviour
     public int CurrentHealth => health;
     private EnemyType currentAttackMode;
 
-    [SerializeField] private AudioClip meleeAttackSound; 
+    [SerializeField] private AudioClip meleeAttackSound;
     [SerializeField] private float meleeSoundVolume = 1f;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private float deathSoundVolume = 1f;
 
 
+    [SerializeField] private int manaReward = 5;
 
     void Start()
     {
@@ -192,8 +193,19 @@ public class EnemyController : MonoBehaviour
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 
-        Destroy(gameObject);
-        DropItemManager.Instance.DropItem(transform.position);
+        if (player != null)
+        {
+            PlayerController pc = player.GetComponent<PlayerController>();
+            if (pc != null)
+            {
+                int manaRewardRandom = Random.Range(0, manaReward + 1);
+                pc.AddMana(manaRewardRandom);
+                Debug.Log($"[EnemyController] Jugador recuperó {manaRewardRandom} de maná (máximo {manaReward}) al matar {name}.");
+            }
+
+            Destroy(gameObject);
+            DropItemManager.Instance.DropItem(transform.position);
+        }
     }
 
     private void OnDrawGizmos()
