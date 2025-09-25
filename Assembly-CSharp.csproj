@@ -71,9 +71,11 @@
     <Compile Include="Assets\Scripts\PlayerStatsUI.cs" />
     <Compile Include="Assets\Scripts\ArmorBoost.cs" />
     <Compile Include="Assets\Scripts\PlayerManaUI.cs" />
+    <Compile Include="Assets\Scripts\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\TimerUI.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />
+    <Compile Include="Assets\Scripts\Chest.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\DropItemManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />

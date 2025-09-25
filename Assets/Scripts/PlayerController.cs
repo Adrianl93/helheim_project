@@ -154,6 +154,7 @@ public class PlayerController : MonoBehaviour
     public void AddCoins(int amount)
     {
         coins += amount;
+        GameManager.Instance.AddScore(amount*10); 
         Debug.Log($"Player recogió {amount} monedas. Total: {coins}");
     }
 

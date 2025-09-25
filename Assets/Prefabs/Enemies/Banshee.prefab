@@ -225,6 +225,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4042022002272296592, guid: e47dcb59366664741a4471f34fd63be7, type: 3}
   firePoint: {fileID: 1967074461058098233}
   projectileSpeed: 5
+  rewardScore: 100
   enragedDuration: 5
   meleeAttackSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
   meleeSoundVolume: 1
+  deathSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
+  deathSoundVolume: 1
+  manaReward: 5
