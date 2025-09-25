@@ -10,6 +10,18 @@ Hellheim es un videojuego **2D top-down** de acción y aventura creado como part
 
 En este juego, encarnas a un **guerrero vikingo resucitado por mandato divino**. Debes adentrarte en un **cementerio antiguo plagado de corrupción**, derrotar aberraciones sobrenaturales y purgar a una valkiria corrompida antes de que las fuerzas oscuras devoren el mundo de los vivos.  
 
+---
+
+## 🔮 Elevator Pitch
+Has vuelto del más allá por mandato divino. En la piel de un
+alma redimida, debes adentrarte en un antiguo cementerio plagado de
+corrupción para purgar las fuerzas oscuras antes de que escapen y devoren
+el mundo de los vivos
+
+
+---
+
+
 🖤 El juego combina:  
 - Exploración laberíntica  
 - Combates estratégicos y rápidos  
@@ -33,14 +45,6 @@ En este juego, encarnas a un **guerrero vikingo resucitado por mandato divino**.
 - **Mapa Laberíntico:** Encuentra el camino correcto a través de catacumbas y peligros ocultos.  
 - **Recarga de Poder Mágico:** Solo se recarga con ataques físicos exitosos, incentivando un estilo agresivo y estratégico.  
 - **Estilo Visual Oscuro e Inmersivo:** Inspirado en arte sacro, mitología nórdica y decadencia espiritual.  
-
----
-
-## 🔮 Elevator Pitch
-Has vuelto del más allá por mandato divino. En la piel de un
-alma redimida, debes adentrarte en un antiguo cementerio plagado de
-corrupción para purgar las fuerzas oscuras antes de que escapen y devoren
-el mundo de los vivos
 
 ---
 
