@@ -10,8 +10,18 @@ public class PlayerState
     public int coins;
     public int mana;
     public float remainingTime;
+    public int score; 
 
-    public PlayerState(Vector3 pos, int melee, int ranged, int arm, int coin, int manaValue, float time)
+    public PlayerState(
+        Vector3 pos,
+        int melee,
+        int ranged,
+        int arm,
+        int coin,
+        int manaValue,
+        float time,
+        int currentScore
+    )
     {
         position = pos;
         meleeAttack = melee;
@@ -19,6 +29,7 @@ public class PlayerState
         armor = arm;
         coins = coin;
         mana = manaValue;
-        remainingTime = time; 
+        remainingTime = time;
+        score = currentScore; 
     }
 }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static event Action OnTimeout;
     public static event Action OnGamePaused;
     public static event Action OnGameResumed;
+    public static event Action<int> OnScoreChanged;
 
     [Header("Timer")]
     [SerializeField] private float gameDuration = 1200f; // 20 minutos
@@ -34,8 +35,13 @@ public class GameManager : MonoBehaviour
     private PlayerState lastCheckpointState;
     private bool firstLoad = true;
 
-  
+    [Header("Score")]
+    [SerializeField] private int totalScore = 0;
+    public int TotalScore => totalScore;
     
+
+
+
 
     public float RemainingTime => timer;
 
@@ -121,6 +127,9 @@ public class GameManager : MonoBehaviour
             playerController.SetMana(lastCheckpointState.mana);
 
             timer = lastCheckpointState.remainingTime;
+            totalScore = lastCheckpointState.score; 
+            GameManager.OnScoreChanged?.Invoke(totalScore); 
+
             timeoutTriggered = false;
         }
         else
@@ -135,6 +144,7 @@ public class GameManager : MonoBehaviour
             firstLoad = false;
         }
     }
+
 
     private void Update()
     {
@@ -184,8 +194,13 @@ public class GameManager : MonoBehaviour
     {
         lastCheckpointPos = startPoint != null ? startPoint.transform.position : Vector3.zero;
         lastCheckpointState = null;
+
+        totalScore = 0; 
+        OnScoreChanged?.Invoke(totalScore); 
+
         SceneManager.LoadScene("Scene1");
-        Debug.Log("[GameManager] Juego reiniciado desde StartPoint");
+        Debug.Log("[GameManager] Juego reiniciado desde StartPoint con Score en 0");
+
     }
     #endregion
 
@@ -202,11 +217,20 @@ public class GameManager : MonoBehaviour
                 playerHealth.Armor,
                 playerController.Coins,
                 playerController.CurrentMana,
-                timer
+                timer,
+                totalScore
             );
 
             Debug.Log($"[GameManager] Checkpoint guardado en {lastCheckpointPos} -> {checkpoint.name}");
         }
+    }
+
+
+    public void AddScore(int amount)
+    {
+        totalScore += amount;
+        OnScoreChanged?.Invoke(totalScore);
+        Debug.Log($"[GameManager] Score aumentado en {amount}. Total: {totalScore}");
     }
 
     #region Audio

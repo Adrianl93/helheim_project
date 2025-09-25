@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] private int rewardScore = 1000;
 
     [SerializeField] private float enragedDuration = 5f;
 
@@ -204,6 +205,7 @@ public class EnemyController : MonoBehaviour
             }
 
             Destroy(gameObject);
+            GameManager.Instance.AddScore(rewardScore);
             DropItemManager.Instance.DropItem(transform.position);
         }
     }
