@@ -106,11 +106,13 @@ public class PlayerController : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
 
+        Debug.Log(direction);
+
         // Crear proyectil
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
         if (prb != null)
-            prb.linearVelocity = direction * projectileSpeed;
+            prb.linearVelocity = direction.normalized * projectileSpeed;
 
         Projectile projScript = projectile.GetComponent<Projectile>();
         if (projScript != null)
