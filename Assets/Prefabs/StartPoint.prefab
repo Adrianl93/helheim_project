@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4555486435470770365}
   - component: {fileID: 4856145842819756944}
   - component: {fileID: 4589470835194278219}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: StartPoint
   m_TagString: StartPoint
   m_Icon: {fileID: 0}
