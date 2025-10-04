@@ -36,9 +36,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Traps
+  - Checkpoint
+  - Minimap
   m_SortingLayers:
   - name: Default
     uniqueID: 0
