@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1584
     height: 801
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 97
+  controlID: 98
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -327,7 +327,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Sprites/Minimap
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -337,16 +337,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Sprites/Minimap
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\User\Desktop\proyecto_helheim\Proyecto_Helheim
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 127}
-    m_SelectedIDs: 7ac90000
-    m_LastClickedID: 51578
-    m_ExpandedIDs: 0000000016c9000018c900001ac900001cc900001ec900007ac9000086c900002aea000000ca9a3b
+    scrollPos: {x: 0, y: 118}
+    m_SelectedIDs: fac90000
+    m_LastClickedID: 51706
+    m_ExpandedIDs: 000000006cc900006ec9000070c9000072c9000074c90000dcc9000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -375,7 +375,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000016c9000018c900001ac900001cc900001ec90000
+    m_ExpandedIDs: 000000006cc900006ec9000070c9000072c9000074c90000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -455,9 +455,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 1eca0000
-      m_LastClickedID: 51742
-      m_ExpandedIDs: dadfffff20f5ffff58f5ffff04fbffffbac90000ccc9000016ca00003aca000052ca00007eca0000baca0000faca000014cb00001ccb000020cb0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 04fbfffff2c500000ac6000082c60000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1047,9 +1047,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 5.876959, y: -43.48801, z: -0.0888243}
+    m_Target: {x: 3527.9133, y: 405.67615, z: 24.20275}
     speed: 2
-    m_Value: {x: 5.876959, y: -43.48801, z: -0.0888243}
+    m_Value: {x: 3552.8025, y: 397.2702, z: 24.432384}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1099,9 +1099,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.938374
+    m_Target: 533.2691
     speed: 2
-    m_Value: 11.938374
+    m_Value: 510.3054
   m_Ortho:
     m_Target: 1
     speed: 2
