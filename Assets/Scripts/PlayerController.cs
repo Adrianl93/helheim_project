@@ -40,11 +40,29 @@ public class PlayerController : MonoBehaviour
     public int RangedDamage => rangedAttackDamage;
     public float MeleeAttackRadius => meleeAttackRadius;
 
+    private bool rangedUnlocked = false;
+
     private void Awake()
     {
         if (rb == null) rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
     }
+    private void OnEnable()
+    {
+        GameManager.OnRangedUnlocked += EnableRangedAttack; 
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnRangedUnlocked -= EnableRangedAttack; 
+    }
+
+    private void EnableRangedAttack()
+    {
+        rangedUnlocked = true;
+        Debug.Log("[PlayerController] Ataque a distancia activado!");
+    }
+
 
     private void Update()
     {
@@ -61,7 +79,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Ataque ranged con botón derecho del mouse
-        if (playerInput.actions["Ranged"].triggered && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
+        if (rangedUnlocked && playerInput.actions["Ranged"].triggered && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
         {
             lastRangedAttackTime = Time.time;
             RangedAttack();

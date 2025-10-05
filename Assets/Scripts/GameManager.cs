@@ -90,6 +90,14 @@ public class GameManager : MonoBehaviour
         PositionPlayerImmediately();
     }
 
+    public static event Action OnRangedUnlocked;
+
+    public void UnlockRangedAttack()
+    {
+        OnRangedUnlocked?.Invoke();
+        Debug.Log("[GameManager] Ataque a distancia desbloqueado!");
+    }
+
     private void PositionPlayerImmediately()
     {
         if (player == null)
