@@ -1,14 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movimiento")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
+    [SerializeField] private Animator animator;
+
 
     [Header("Ataques")]
-    [SerializeField] private float meleeAttackRadius = 1.5f;
+    [SerializeField] private GameObject meleeHitboxPrefab;
+    [SerializeField] private float meleeDistance = 0.8f;
     [SerializeField] private int meleeAttackDamage = 15;
     [SerializeField] private float meleeAttackCooldown = 1f;
 
@@ -33,12 +37,15 @@ public class PlayerController : MonoBehaviour
     private float lastMeleeAttackTime = 0f;
     private float lastRangedAttackTime = 0f;
 
+  
     public int Coins => coins;
     public int CurrentMana => currentMana;
     public int MaxMana => maxMana;
     public int MeleeDamage => meleeAttackDamage;
     public int RangedDamage => rangedAttackDamage;
-    public float MeleeAttackRadius => meleeAttackRadius;
+    public float MeleeAttackRadius => meleeDistance;
+
+    private bool rangedUnlocked = false;
 
     private void Awake()
     {
@@ -46,25 +53,51 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnRangedUnlocked += EnableRangedAttack;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnRangedUnlocked -= EnableRangedAttack;
+    }
+
+    private void EnableRangedAttack()
+    {
+        rangedUnlocked = true;
+        Debug.Log("[PlayerController] Ataque a distancia activado!");
+    }
+
     private void Update()
     {
         // Movimiento
         input = playerInput.actions["Move"].ReadValue<Vector2>();
-        if (input != Vector2.zero)
-            lastMoveDir = input;
 
-        // Ataque melee con botón izquierdo del mouse
+        if (input != Vector2.zero)
+        {
+            lastMoveDir = input;
+            animator.SetFloat("MoveX", input.x);
+            animator.SetFloat("MoveY", input.y);
+            animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
+
+        // Ataque Melee
         if (playerInput.actions["Melee"].triggered && Time.time >= lastMeleeAttackTime + meleeAttackCooldown)
         {
             lastMeleeAttackTime = Time.time;
-            MeleeAttack();
+            StartCoroutine(MeleeAnimationRoutine());
         }
 
-        // Ataque ranged con botón derecho del mouse
-        if (playerInput.actions["Ranged"].triggered && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
+        // Ataque Ranged
+        if (rangedUnlocked && playerInput.actions["Ranged"].triggered && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
         {
             lastRangedAttackTime = Time.time;
-            RangedAttack();
+            StartCoroutine(RangedAnimationRoutine());
         }
 
         // Interactuar
@@ -81,17 +114,22 @@ public class PlayerController : MonoBehaviour
 
     private void MeleeAttack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, meleeAttackRadius, enemyLayer);
+        if (animator != null)
+            animator.SetTrigger("Attack");
 
-        foreach (Collider2D enemyCollider in hitEnemies)
+        // Generamos un hitbox frente al jugador
+        Vector3 spawnPos = transform.position + (Vector3)lastMoveDir * meleeDistance;
+        GameObject hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
+        hitbox.transform.right = lastMoveDir;
+
+        
+        AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
+        if (hitboxScript != null)
         {
-            EnemyController enemy = enemyCollider.GetComponent<EnemyController>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(meleeAttackDamage);
-                Debug.Log("Player atacó al enemigo con " + meleeAttackDamage + " de daño (melee)");
-            }
+            hitboxScript.Initialize(meleeAttackDamage, enemyLayer);
         }
+
+        Debug.Log("Player realizó un ataque melee hacia " + lastMoveDir);
     }
 
     private void RangedAttack()
@@ -102,17 +140,15 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // Dirección hacia el mouse
+        // El ataque se direcciona con el mouse
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
 
-        Debug.Log(direction);
-
-        // Crear proyectil
+        // creamos el proyectil
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
         if (prb != null)
-            prb.linearVelocity = direction.normalized * projectileSpeed;
+            prb.linearVelocity = direction * projectileSpeed;
 
         Projectile projScript = projectile.GetComponent<Projectile>();
         if (projScript != null)
@@ -127,10 +163,9 @@ public class PlayerController : MonoBehaviour
     private void Interact()
     {
         Debug.Log("Jugador intentó interactuar");
-        
     }
 
-    #region Stats & Mana
+  
     public int AddAttack(int amount)
     {
         meleeAttackDamage += amount;
@@ -156,7 +191,7 @@ public class PlayerController : MonoBehaviour
     public void AddCoins(int amount)
     {
         coins += amount;
-        GameManager.Instance.AddScore(amount*10); 
+        GameManager.Instance.AddScore(amount * 10);
         Debug.Log($"Player recogió {amount} monedas. Total: {coins}");
     }
 
@@ -181,11 +216,28 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-    #endregion
+
+
+    private IEnumerator MeleeAnimationRoutine()
+    {
+        animator.SetBool("IsAttackingMelee", true);
+        MeleeAttack(); 
+        yield return new WaitForSeconds(0.5f); 
+        animator.SetBool("IsAttackingMelee", false);
+    }
+
+    private IEnumerator RangedAnimationRoutine()
+    {
+        animator.SetBool("IsAttackingRanged", true);
+        RangedAttack(); 
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("IsAttackingRanged", false);
+    }
+
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, meleeAttackRadius);
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)lastMoveDir * meleeDistance);
     }
 }

@@ -1,8 +1,10 @@
 using UnityEngine;
+using System.Collections; 
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Estadísticas")]
     [SerializeField] private int maxHealth = 150;
     public int MaxHealth => maxHealth;
 
@@ -12,26 +14,38 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     public int CurrentHealth => currentHealth;
 
-    
-    [Header("Audio FX")]
+    [Header("Animación y Audio")]
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private float deathSoundVolume = 1f;
+    private Animator animator;
+    private PlayerController playerController;
+
+    [Header("Configuración")]
+    [SerializeField] private float deathDelay = 4f; 
+
+    private bool isDead = false;
+
     private void OnEnable()
     {
-        GameManager.OnTimeout += Die; 
+        GameManager.OnTimeout += Die;
     }
 
     private void OnDisable()
     {
-        GameManager.OnTimeout -= Die; 
+        GameManager.OnTimeout -= Die;
     }
+
     void Start()
     {
         currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
+        playerController = GetComponent<PlayerController>();
     }
 
     public void TakeDamage(int damage)
     {
+        if (isDead) return;
+
         int finalDamage = Mathf.Max(damage - armor, 0);
         currentHealth -= finalDamage;
 
@@ -39,18 +53,33 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            StartCoroutine(HandleDeath());
         }
     }
 
-    private void Die()
+    private IEnumerator HandleDeath()
     {
+        if (isDead) yield break;
+        isDead = true;
+
         Debug.Log("El jugador murió.");
 
-      
+        
+        if (playerController != null)
+            playerController.enabled = false;
+
+        
+        if (animator != null)
+            animator.SetTrigger("Die");
+
+        
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 
+        
+        yield return new WaitForSeconds(deathDelay);
+
+       
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RestartScene();
@@ -61,8 +90,16 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private void Die()
+    {
+        
+        StartCoroutine(HandleDeath());
+    }
+
     public void Heal(int amount)
     {
+        if (isDead) return;
+
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
         Debug.Log($"Player se curó {amount}. HP actual: {currentHealth}");
     }

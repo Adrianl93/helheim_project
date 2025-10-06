@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\CoinPickUp.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Combat\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\BasicPickUp.cs" />
     <Compile Include="Assets\Scripts\AttackBoost.cs" />
     <Compile Include="Assets\Scripts\Trap.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Scripts\PlayerState.cs" />
     <Compile Include="Assets\Scripts\PlayerHealthUI.cs" />
     <Compile Include="Assets\Scripts\HealthPotion.cs" />
+    <Compile Include="Assets\Scripts\RangedUnlockTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
