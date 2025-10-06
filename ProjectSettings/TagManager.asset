@@ -34,8 +34,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Hitbox
+  - Projectile
   - Traps
   - Checkpoint
   - Minimap

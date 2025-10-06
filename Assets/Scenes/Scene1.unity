@@ -1723,6 +1723,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2047852067476692107, guid: 7df51794513d37149a293ca98563060c, type: 3}
   m_PrefabInstance: {fileID: 675937314600135631}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &549680781
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549680765}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27fe96ac27af0434f8c2922e5bc5437a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &577949783
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,7 +4946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af7a52dce9f5d443bc5690b2722920b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedUnlockTrigger
-  delaySeconds: 10
+  delaySeconds: 1
   destroyAfterUnlock: 1
 --- !u!212 &1638340192
 SpriteRenderer:
@@ -5799,12 +5821,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4387020073243359538, guid: 7df51794513d37149a293ca98563060c, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 549680781}
+    - target: {fileID: 4387020073243359538, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: currentMana
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4387020073243359538, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: rangedManaCost
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387020073243359538, guid: 7df51794513d37149a293ca98563060c, type: 3}
+      propertyPath: meleeHitboxPrefab
+      value: 
+      objectReference: {fileID: 8345104391409692722, guid: 61635601529876146b32bedaeed294a5, type: 3}
+    - target: {fileID: 5588852602738133776, guid: 7df51794513d37149a293ca98563060c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5737316558322232835, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: m_Name
@@ -5827,6 +5861,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5737316558322232835, guid: 7df51794513d37149a293ca98563060c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 549680776}
+    - targetCorrespondingSourceObject: {fileID: 5737316558322232835, guid: 7df51794513d37149a293ca98563060c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 549680781}
   m_SourcePrefab: {fileID: 100100000, guid: 7df51794513d37149a293ca98563060c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
