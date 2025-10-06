@@ -4,13 +4,13 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movimiento")]
+    
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
     [SerializeField] private Animator animator;
 
 
-    [Header("Ataques")]
+    
     [SerializeField] private GameObject meleeHitboxPrefab;
     [SerializeField] private float meleeDistance = 0.8f;
     [SerializeField] private int meleeAttackDamage = 15;
@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
 
-    [Header("Mana y monedas")]
     [SerializeField] private int coins = 0;
     [SerializeField] private int maxMana = 50;
     [SerializeField] private int currentMana = 25;
@@ -71,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Movimiento
+       
         input = playerInput.actions["Move"].ReadValue<Vector2>();
 
         if (input != Vector2.zero)
@@ -86,21 +85,21 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsMoving", false);
         }
 
-        // Ataque Melee
+        
         if (playerInput.actions["Melee"].triggered && Time.time >= lastMeleeAttackTime + meleeAttackCooldown)
         {
             lastMeleeAttackTime = Time.time;
             StartCoroutine(MeleeAnimationRoutine());
         }
 
-        // Ataque Ranged
+        
         if (rangedUnlocked && playerInput.actions["Ranged"].triggered && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
         {
             lastRangedAttackTime = Time.time;
             StartCoroutine(RangedAnimationRoutine());
         }
 
-        // Interactuar
+       
         if (playerInput.actions["Interact"].triggered)
         {
             Interact();

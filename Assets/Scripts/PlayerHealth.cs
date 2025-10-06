@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Estadísticas")]
+    
     [SerializeField] private int maxHealth = 150;
     public int MaxHealth => maxHealth;
 
@@ -14,13 +14,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     public int CurrentHealth => currentHealth;
 
-    [Header("Animación y Audio")]
+    
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private float deathSoundVolume = 1f;
     private Animator animator;
     private PlayerController playerController;
 
-    [Header("Configuración")]
+    
     [SerializeField] private float deathDelay = 4f; 
 
     private bool isDead = false;

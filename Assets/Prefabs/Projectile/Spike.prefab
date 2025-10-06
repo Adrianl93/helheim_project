@@ -168,6 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc7d6cdbae1d074c979b59d0df0bfe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  lifetime: 5
+  lifetime: 3
   shootSFX: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
   impactSFX: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
