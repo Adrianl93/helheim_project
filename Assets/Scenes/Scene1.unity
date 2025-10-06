@@ -2006,6 +2006,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Valkirye(FInal Boss)
       objectReference: {fileID: 0}
+    - target: {fileID: 1780890801826430144, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665190981654623793, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665190981654623793, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
+      propertyPath: enragedDuration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665190981654623793, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
+      propertyPath: projectileSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665190981654623793, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
+      propertyPath: rangedBurstInterval
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6336704046382752915, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -2044,6 +2064,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336704046382752915, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724962901228412926, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2243,7 +2267,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: -1
   m_Sprite: {fileID: 6702996480915375718, guid: 9ee6fdb7e420d6648b87e2d1bd8f2ccc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4851,6 +4875,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1915528925257780542, guid: d56e959f42b2c1d429a662a1883791a8, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 5060296631385567516, guid: d56e959f42b2c1d429a662a1883791a8, type: 3}
       propertyPath: m_Name
       value: Banshee (1)
@@ -5895,6 +5923,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 984527133}
     m_Modifications:
+    - target: {fileID: 3840194520264074437, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5299848985272100037, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.23843002
