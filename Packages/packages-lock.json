@@ -152,6 +152,7 @@
       "dependencies": {}
     },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "com.unity.ide.rider": {
       "version": "3.0.37",
       "depth": 0,
@@ -161,6 +162,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     "com.unity.ide.visualstudio": {
