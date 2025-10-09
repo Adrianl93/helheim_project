@@ -151,21 +151,6 @@
       "source": "builtin",
       "dependencies": {}
     },
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    "com.unity.ide.rider": {
-      "version": "3.0.37",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ext.nunit": "1.0.6"
-      },
-      "url": "https://packages.unity.com"
-    },
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     "com.unity.ide.visualstudio": {
       "version": "2.0.25",
       "depth": 0,

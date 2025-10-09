@@ -1,34 +1,20 @@
-# --- Unity ---
+# --- Unity Generated Folders ---
 [Ll]ibrary/
 [Tt]emp/
+[Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
-Obj/
 
-# --- Archivos de Unity innecesarios ---
-sysinfo.txt
-*.pidb
-*.booproj
-*.svd
-*.pdb
-*.mdb
-*.opendb
-*.VC.db
+# --- UserSettings (evitar conflictos) ---
+UserSettings/
 
-# --- Builds ---
-*.apk
-*.aab
-*.unitypackage
-*.exe
-*.app
-*.xcodeproj
-*.xcworkspace
-*.xcuserdata
-*.ipa
+# --- Unity Package Manager Cache ---
+Library/PackageCache/
+Packages/packages-lock.json
 
-# --- IDEs / Editores ---
+# --- Mono / Visual Studio / Rider / IDEs ---
 .vs/
 .vscode/
 .idea/
@@ -41,14 +27,37 @@ sysinfo.txt
 *.userprefs
 *.iml
 
-# --- Archivos del sistema operativo ---
+# --- Unity Generated Files ---
+sysinfo.txt
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# --- Builds (evitar subir ejecutables) ---
+*.apk
+*.aab
+*.unitypackage
+*.exe
+*.app
+*.xcodeproj
+*.xcworkspace
+*.xcuserdata
+*.ipa
+
+# --- Sistema Operativo ---
 .DS_Store
 Thumbs.db
 
-# --- Unity Package Manager cache ---
-Library/PackageCache/
-
-# --- Rider logs ---
+# --- Rider Logs ---
 .idea/
 *.iml
+
+# --- Cache / Temp de Unity ---
+Library/ScriptAssemblies/
+Library/ShaderCache/
+Library/assetDatabase/
 
