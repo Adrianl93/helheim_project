@@ -5,11 +5,19 @@ fetchPreview = true
 defaultFlags = 0
 keepOpen = true
 queryFolder = "Assets"
+<<<<<<< Updated upstream
 onBoardingDoNotAskAgain = false
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
 	"picker_window_position_offset.00000000" = "22;32;320;550"
+=======
+onBoardingDoNotAskAgain = true
+showPackageIndexes = false
+showStatusBar = false
+scopes = {
+	"picker_window_position_offset.00000000" = "87;332;320;550"
+>>>>>>> Stashed changes
 	"picker_visibility_flags.00000000" = "0"
 	"picker_item_size.00000000" = "1"
 	"picker_inspector.00000000" = "0"
