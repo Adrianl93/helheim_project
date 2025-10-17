@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
                 playerInput.actions["Reboot"].performed += ctx => RestartScene();
                 playerInput.actions["Restart"].performed += ctx => RestartGame();
                 playerInput.actions["Pause"].performed += ctx => TogglePause();
+                playerInput.actions["Exit"].performed += ctx => ExitGame();
             }
         }
         else
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
     {
         PositionPlayerImmediately();
     }
+
 
     public static event Action OnRangedUnlocked;
 
@@ -234,6 +236,25 @@ public class GameManager : MonoBehaviour
             );
             Debug.Log($"[SaveCheckpoint] rangedUnlocked = {playerController.RangedUnlocked}");
             Debug.Log($"[GameManager] Checkpoint guardado en {lastCheckpointPos} -> {checkpoint.name}");
+        }
+    }
+
+
+
+    public void ExitGame()
+    {
+        Debug.Log("[GameManager] Cerrando el juego...");
+
+        // Verifica si estamos en el editor o en una build
+        if (Application.isEditor)
+        {
+            // si es editor lo frena
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+        else
+        {
+            // Si es una build cierra el juego
+            Application.Quit();
         }
     }
 
