@@ -181,29 +181,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyType: 2
-  health: 100
-  armor: 2
+  health: 200
+  armor: 5
   meleeDamage: 13
   rangedDamage: 10
-  speed: 3
-  detectionRadius: 11
+  speed: 1.5
+  detectionRadius: 15
   meleeRadius: 5
   meleeCooldown: 1.5
   rangedCooldown: 2
-  rangedAttackRange: 9.5
+  rangedAttackRange: 15
   minRangedDistance: 6.5
   projectilePrefab: {fileID: 4042022002272296592, guid: 61ed20ce984a1f64da979235084e5abc, type: 3}
   firePoint: {fileID: 5319732507448216370}
-  projectileSpeed: 5
+  projectileSpeed: 7
+  burstMultiplier: 3
   rewardScore: 1000
-  enragedDuration: 5
+  enragedDuration: 8
   meleeAttackSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
   meleeSoundVolume: 1
   deathSound: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
   deathSoundVolume: 1
   manaReward: 5
-  rangedBurstInterval: 15
-  burstProjectileCount: 8
+  rangedBurstInterval: 5
+  burstProjectileCount: 5
+  burstPauseDuration: 1
 --- !u!1 &4748223859733213215
 GameObject:
   m_ObjectHideFlags: 0

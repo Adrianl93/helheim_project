@@ -133,6 +133,8 @@ public class GameManager : MonoBehaviour
             playerHealth.SetArmor(lastCheckpointState.armor);
             playerController.SetCoins(lastCheckpointState.coins);
             playerController.SetMana(lastCheckpointState.mana);
+            playerController.SetRangedUnlocked(lastCheckpointState.rangedUnlocked);
+            Debug.Log($"[LoadCheckpoint] rangedUnlocked = {lastCheckpointState.rangedUnlocked}");
 
             timer = lastCheckpointState.remainingTime;
             totalScore = lastCheckpointState.score; 
@@ -226,9 +228,11 @@ public class GameManager : MonoBehaviour
                 playerController.Coins,
                 playerController.CurrentMana,
                 timer,
-                totalScore
-            );
+                totalScore,
+                playerController.RangedUnlocked
 
+            );
+            Debug.Log($"[SaveCheckpoint] rangedUnlocked = {playerController.RangedUnlocked}");
             Debug.Log($"[GameManager] Checkpoint guardado en {lastCheckpointPos} -> {checkpoint.name}");
         }
     }
@@ -240,6 +244,13 @@ public class GameManager : MonoBehaviour
         OnScoreChanged?.Invoke(totalScore);
         Debug.Log($"[GameManager] Score aumentado en {amount}. Total: {totalScore}");
     }
+
+    public void TriggerRangedUnlocked()
+    {
+        OnRangedUnlocked?.Invoke();
+        Debug.Log("[GameManager] Evento OnRangedUnlocked disparado desde RestoreCheckpoint");
+    }
+
 
     #region Audio
     public void SetMusicVolume(float volume)

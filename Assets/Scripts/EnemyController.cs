@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] private float burstMultiplier = 2f;
     [SerializeField] private int rewardScore = 1000;
 
     [SerializeField] private float enragedDuration = 5f;
@@ -54,7 +55,7 @@ public class EnemyController : MonoBehaviour
 
     private bool hasTriggeredEngagement = false;
     private bool isBursting = false;
-    [SerializeField] private float burstPauseDuration = 1f;
+    [SerializeField] private float burstPauseDuration = 8f;
 
     private Coroutine engagementCheckRoutine;
 
@@ -165,14 +166,14 @@ public class EnemyController : MonoBehaviour
         detectionRadius = originalDetectionRadius * 2f;
         enragedTimer = enragedDuration;
 
-     
+
         if (engagementCheckRoutine != null)
             StopCoroutine(engagementCheckRoutine);
 
         engagementCheckRoutine = StartCoroutine(CheckPlayerPresence());
     }
 
-    
+
     private IEnumerator CheckPlayerPresence()
     {
         //se checkea cada 3 segundos si el player continua en el rango de deteccion original, si huye se vuelve al estado normal
@@ -184,14 +185,14 @@ public class EnemyController : MonoBehaviour
 
             float distance = Vector2.Distance(transform.position, player.position);
 
-           
+
             if (distance <= originalDetectionRadius)
             {
                 enragedTimer = enragedDuration;
             }
             else
             {
-                
+
                 hasTriggeredEngagement = false;
                 StopCoroutine(engagementCheckRoutine);
                 engagementCheckRoutine = null;
@@ -246,14 +247,23 @@ public class EnemyController : MonoBehaviour
     private IEnumerator FireRangedBurstAndPause()
     {
         isBursting = true;
-        FireRangedBurst();
+
+        int burstCount = 3;            // Cantidad de ráfagas
+        float delayBetweenBursts = 1f; // Medio segundo entre ráfagas
+
+        for (int i = 0; i < burstCount; i++)
+        {
+            FireRangedBurst();
+            yield return new WaitForSeconds(delayBetweenBursts);
+        }
+
+        // Pausa final después de la última ráfaga
         yield return new WaitForSeconds(burstPauseDuration);
         isBursting = false;
     }
 
     private void FireRangedBurst()
     {
-
         //ataque del boss que lanza varios proyectiles en todas direcciones cada cierto tiempo
         if (projectilePrefab == null || firePoint == null) return;
 
@@ -265,20 +275,18 @@ public class EnemyController : MonoBehaviour
             Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)).normalized;
 
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-            Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
-            if (prb != null)
-                prb.linearVelocity = dir * projectileSpeed;
-
-            Projectile projScript = projectile.GetComponent<Projectile>();
-            if (projScript != null)
+            SpiralProjectile spiralProj = projectile.GetComponent<SpiralProjectile>();
+            if (spiralProj != null)
             {
-                projScript.SetDamage(rangedDamage);
-                projScript.SetOwner(gameObject);
+                float spiralRotation = 90f; // velocidad de rotación en grados por segundo
+                                             // le paso al proyectil dirección, velocidad, rotación, daño y dueño
+                spiralProj.Initialize(dir, projectileSpeed * burstMultiplier, spiralRotation, rangedDamage, gameObject);
             }
         }
 
-        Debug.Log($"[Boss] lanzó un burst de {burstProjectileCount} proyectiles en todas direcciones.");
+        Debug.Log($"[Boss] lanzó un burst de {burstProjectileCount} proyectiles en espiral.");
     }
+
 
     public void TakeDamage(int incomingDamage)
     //el enemigo recibe daño (se calcula daño del player - armadura del enemigo)

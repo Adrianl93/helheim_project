@@ -10,7 +10,10 @@ public class PlayerState
     public int coins;
     public int mana;
     public float remainingTime;
-    public int score; 
+    public int score;
+    public bool rangedUnlocked;
+
+
 
     public PlayerState(
         Vector3 pos,
@@ -20,7 +23,8 @@ public class PlayerState
         int coin,
         int manaValue,
         float time,
-        int currentScore
+        int currentScore,
+        bool rangedUnlocked
     )
     {
         position = pos;
@@ -30,6 +34,9 @@ public class PlayerState
         coins = coin;
         mana = manaValue;
         remainingTime = time;
-        score = currentScore; 
+        score = currentScore;
+        this.rangedUnlocked = rangedUnlocked;
+
+
     }
 }

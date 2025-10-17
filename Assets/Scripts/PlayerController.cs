@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public float MeleeAttackRadius => meleeDistance;
 
     private bool rangedUnlocked = false;
-
+    public bool RangedUnlocked => rangedUnlocked;
     private void Awake()
     {
         if (rb == null) rb = GetComponent<Rigidbody2D>();
@@ -116,12 +116,22 @@ public class PlayerController : MonoBehaviour
         if (animator != null)
             animator.SetTrigger("Attack");
 
-        // Generamos un hitbox frente al jugador
-        Vector3 spawnPos = transform.position + (Vector3)lastMoveDir * meleeDistance;
-        GameObject hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
+        // se calcula un offset segun la direccion del ataque
+        Vector2 normalizedDir = lastMoveDir.normalized;
+        float xOffset = normalizedDir.x * meleeDistance;
+        float yOffset = normalizedDir.y * meleeDistance;
+
+        // se agrega este offset para evitar que se superponga al personaje
+        if (Mathf.Abs(normalizedDir.y) > 0.1f)
+        {
+            yOffset += normalizedDir.y * 0.3f; 
+        }
+
+        // Se genera el hitbox
+        Vector3 spawnPos = transform.position + new Vector3(xOffset, yOffset, 0f);
+        GameObject hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity, transform);
         hitbox.transform.right = lastMoveDir;
 
-        
         AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
         if (hitboxScript != null)
         {
@@ -139,7 +149,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // El ataque se direcciona con el mouse
+        // El ataque se apunta con el mouse
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
 
@@ -147,7 +157,7 @@ public class PlayerController : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
         if (prb != null)
-            prb.linearVelocity = direction * projectileSpeed;
+            prb.linearVelocity = direction.normalized * projectileSpeed;
 
         Projectile projScript = projectile.GetComponent<Projectile>();
         if (projScript != null)
@@ -204,6 +214,19 @@ public class PlayerController : MonoBehaviour
         currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
         Debug.Log($"Mana aumentado en {amount}. Mana actual: {currentMana}/{maxMana}");
     }
+
+    public void SetRangedUnlocked(bool value)
+    {
+        rangedUnlocked = value;
+        if (rangedUnlocked)
+        {
+            Debug.Log("[PlayerController] Ataque a distancia restaurado desde checkpoint");
+            GameManager.Instance.TriggerRangedUnlocked(); 
+        }
+    }
+
+
+
 
     public bool TryConsumeMana(int cost)
     {
