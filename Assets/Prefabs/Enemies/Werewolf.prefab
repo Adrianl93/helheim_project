@@ -274,7 +274,7 @@ MonoBehaviour:
   armor: 2
   meleeDamage: 10
   rangedDamage: 0
-  speed: 3
+  speed: 7
   detectionRadius: 9
   meleeRadius: 3.5
   meleeCooldown: 1.5
@@ -293,3 +293,4 @@ MonoBehaviour:
   manaReward: 5
   rangedBurstInterval: 15
   burstProjectileCount: 8
+  burstPauseDuration: 1

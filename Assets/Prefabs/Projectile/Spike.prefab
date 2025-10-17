@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7530400412940123289}
   - component: {fileID: 9080080138376052628}
   - component: {fileID: 7620872113804155802}
-  - component: {fileID: 2087318607014198883}
+  - component: {fileID: 2321096201419405552}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -156,7 +156,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &2087318607014198883
+--- !u!114 &2321096201419405552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,9 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4042022002272296592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc7d6cdbae1d074c979b59d0df0bfe8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b50b374eba4e5447bd23847fe832e1b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  lifetime: 3
-  shootSFX: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
-  impactSFX: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::SpiralProjectile
+  lifetime: 5
