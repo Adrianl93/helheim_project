@@ -59,6 +59,10 @@ public class EnemyController : MonoBehaviour
 
     private Coroutine engagementCheckRoutine;
 
+    [Header("Animaciones")]
+    [SerializeField] private Animator animator;
+    private Vector2 lastMoveDir = Vector2.down;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -137,11 +141,28 @@ public class EnemyController : MonoBehaviour
                     TryRangedAttack();
             }
         }
+
+        // Actualizamos animaciones
+        UpdateAnimator();
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    private void UpdateAnimator()
+    {
+        if (animator != null)
+        {
+            // actualizamos la dirección solo si hay movimiento
+            if (movement.sqrMagnitude > 0.01f)
+                lastMoveDir = movement.normalized;
+
+            animator.SetFloat("MoveX", lastMoveDir.x);
+            animator.SetFloat("MoveY", lastMoveDir.y);
+            animator.SetBool("IsMoving", movement.sqrMagnitude > 0.01f);
+        }
     }
 
     private void AssignPlayerReference()
@@ -203,14 +224,16 @@ public class EnemyController : MonoBehaviour
 
     private void TryMeleeAttack()
     {
-
-        //recibe el ccomponente playerhealth del player y le aplica daño 
         if (player == null) return;
 
         PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
         if (playerHealth != null && Time.time >= lastMeleeAttackTime + meleeCooldown)
         {
             lastMeleeAttackTime = Time.time;
+
+            if (animator != null)
+                animator.SetTrigger("AttackMelee");
+
             playerHealth.TakeDamage(meleeDamage);
 
             if (meleeAttackSound != null)
@@ -219,14 +242,14 @@ public class EnemyController : MonoBehaviour
     }
 
     private void TryRangedAttack()
-    //ataca al player con proyectiles, consume mana al hacerlo
-    //el ataque tiene un cooldown
-    //se dispara en direccion al player
     {
         if (projectilePrefab == null || player == null) return;
         if (Time.time < lastRangedAttackTime + rangedCooldown) return;
 
         lastRangedAttackTime = Time.time;
+
+        if (animator != null)
+            animator.SetTrigger("AttackRanged");
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
@@ -248,8 +271,8 @@ public class EnemyController : MonoBehaviour
     {
         isBursting = true;
 
-        int burstCount = 3;            // Cantidad de ráfagas
-        float delayBetweenBursts = 1f; // Medio segundo entre ráfagas
+        int burstCount = 3;     //cantidad de rafagas       
+        float delayBetweenBursts = 1f; //tiempo entre rafagas de ataques
 
         for (int i = 0; i < burstCount; i++)
         {
@@ -264,7 +287,6 @@ public class EnemyController : MonoBehaviour
 
     private void FireRangedBurst()
     {
-        //ataque del boss que lanza varios proyectiles en todas direcciones cada cierto tiempo
         if (projectilePrefab == null || firePoint == null) return;
 
         float angleStep = 360f / burstProjectileCount;
@@ -278,8 +300,7 @@ public class EnemyController : MonoBehaviour
             SpiralProjectile spiralProj = projectile.GetComponent<SpiralProjectile>();
             if (spiralProj != null)
             {
-                float spiralRotation = 90f; // velocidad de rotación en grados por segundo
-                                             // le paso al proyectil dirección, velocidad, rotación, daño y dueño
+                float spiralRotation = 90f;
                 spiralProj.Initialize(dir, projectileSpeed * burstMultiplier, spiralRotation, rangedDamage, gameObject);
             }
         }
@@ -289,8 +310,6 @@ public class EnemyController : MonoBehaviour
 
 
     public void TakeDamage(int incomingDamage)
-    //el enemigo recibe daño (se calcula daño del player - armadura del enemigo)
-    //al ser atacado se activa el enraged state
     {
         int finalDamage = Mathf.Max(incomingDamage - armor, 0);
         health -= finalDamage;
@@ -303,6 +322,9 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     {
+        if (animator != null)
+            animator.SetTrigger("Die");
+
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 
