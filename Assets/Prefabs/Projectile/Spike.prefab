@@ -168,4 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b50b374eba4e5447bd23847fe832e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpiralProjectile
-  lifetime: 5
+  lifetime: 2
