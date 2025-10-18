@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 1637143195596928289}
   - component: {fileID: 2547765559180086470}
   - component: {fileID: 8132161840245388206}
+  - component: {fileID: 7789641532434229222}
   m_Layer: 3
   m_Name: Banshee
   m_TagString: Untagged
@@ -388,3 +389,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &7789641532434229222
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5060296631385567516}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 4.1
+  m_BaseOffset: 2.05
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class EnemyController : MonoBehaviour
@@ -29,7 +30,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float enragedDuration = 5f;
 
-    private Rigidbody2D rb;
+    private NavMeshAgent agent; 
     private Vector2 movement;
     private float lastMeleeAttackTime = -1f;
     private float lastRangedAttackTime = 0f;
@@ -65,12 +66,21 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
+
+        // configuracion del navmesh
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+       
+        // le paso la speed del enemy al agent del navmesh
+        agent.speed = speed;
+
         originalDetectionRadius = detectionRadius;
         maxHealth = health;
 
         currentAttackMode = (enemyType == EnemyType.Boss) ? EnemyType.Melee : enemyType;
         rangedBurstTimer = rangedBurstInterval;
+
 
         AssignPlayerReference();
     }
@@ -108,7 +118,9 @@ public class EnemyController : MonoBehaviour
                 if (distanceToPlayer <= meleeRadius)
                     TryMeleeAttack();
                 else if (distanceToPlayer <= detectionRadius)
-                    movement = (player.position - transform.position).normalized;
+                    MoveTowardsPlayer();
+                else
+                    agent.ResetPath();
             }
 
             if (playerDetected)
@@ -124,44 +136,69 @@ public class EnemyController : MonoBehaviour
         else if (enemyType == EnemyType.Melee)
         {
             if (distanceToPlayer <= meleeRadius)
+            {
                 TryMeleeAttack();
+                agent.ResetPath();
+            }
             else if (distanceToPlayer <= detectionRadius)
-                movement = (player.position - transform.position).normalized;
+                MoveTowardsPlayer();
+            else
+                agent.ResetPath();
         }
         else if (enemyType == EnemyType.Ranged)
         {
             if (distanceToPlayer <= detectionRadius)
             {
+                // Si el player se acerca demasiado, busca alejarse para seguir atacando a distancia
                 if (distanceToPlayer < minRangedDistance)
-                    movement = (transform.position - player.position).normalized;
+                    MoveAwayFromPlayer();
                 else if (distanceToPlayer > rangedAttackRange)
-                    movement = (player.position - transform.position).normalized;
+                    MoveTowardsPlayer();
+                else
+                    agent.ResetPath();
 
                 if (distanceToPlayer <= rangedAttackRange)
                     TryRangedAttack();
             }
+            else
+            {
+                agent.ResetPath();
+            }
         }
 
-        // Actualizamos animaciones
+        
         UpdateAnimator();
     }
 
-    void FixedUpdate()
+    private void MoveTowardsPlayer()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        if (agent != null && player != null)
+            agent.SetDestination(player.position);
+    }
+
+    private void MoveAwayFromPlayer()
+    {
+        if (agent == null || player == null) return;
+
+        // dirección contraria al jugador
+        Vector2 dir = (transform.position - player.position).normalized;
+        Vector2 retreatPos = (Vector2)transform.position + dir * 2f;
+
+        agent.SetDestination(retreatPos);
     }
 
     private void UpdateAnimator()
     {
         if (animator != null)
         {
-            // actualizamos la dirección solo si hay movimiento
-            if (movement.sqrMagnitude > 0.01f)
-                lastMoveDir = movement.normalized;
+            Vector2 velocity = new Vector2(agent.velocity.x, agent.velocity.y);
+
+            if (velocity.sqrMagnitude > 0.01f)
+                lastMoveDir = velocity.normalized;
 
             animator.SetFloat("MoveX", lastMoveDir.x);
             animator.SetFloat("MoveY", lastMoveDir.y);
-            animator.SetBool("IsMoving", movement.sqrMagnitude > 0.01f);
+            animator.SetBool("IsMoving", velocity.sqrMagnitude > 0.01f);
         }
     }
 
@@ -187,13 +224,11 @@ public class EnemyController : MonoBehaviour
         detectionRadius = originalDetectionRadius * 2f;
         enragedTimer = enragedDuration;
 
-
         if (engagementCheckRoutine != null)
             StopCoroutine(engagementCheckRoutine);
 
         engagementCheckRoutine = StartCoroutine(CheckPlayerPresence());
     }
-
 
     private IEnumerator CheckPlayerPresence()
     {
@@ -206,14 +241,12 @@ public class EnemyController : MonoBehaviour
 
             float distance = Vector2.Distance(transform.position, player.position);
 
-
             if (distance <= originalDetectionRadius)
             {
                 enragedTimer = enragedDuration;
             }
             else
             {
-
                 hasTriggeredEngagement = false;
                 StopCoroutine(engagementCheckRoutine);
                 engagementCheckRoutine = null;
@@ -308,7 +341,6 @@ public class EnemyController : MonoBehaviour
         Debug.Log($"[Boss] lanzó un burst de {burstProjectileCount} proyectiles en espiral.");
     }
 
-
     public void TakeDamage(int incomingDamage)
     {
         int finalDamage = Mathf.Max(incomingDamage - armor, 0);
@@ -353,7 +385,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, meleeRadius);
-        Gizmos.color = Color.orangeRed;
+        Gizmos.color = new Color(1f, 0.5f, 0f); // naranja
         Gizmos.DrawWireSphere(transform.position, rangedAttackRange);
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, minRangedDistance);

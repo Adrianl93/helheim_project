@@ -1,16 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.AI; 
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
     [SerializeField] private Animator animator;
 
+   
+    private NavMeshAgent agent;
 
-    
+    private PlayerInput playerInput;
+    private Vector2 input;
+    private Vector2 lastMoveDir = Vector2.right;
+
     [SerializeField] private GameObject meleeHitboxPrefab;
     [SerializeField] private float meleeDistance = 0.8f;
     [SerializeField] private int meleeAttackDamage = 15;
@@ -24,32 +29,37 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
 
+    private float lastMeleeAttackTime = 0f;
+    private float lastRangedAttackTime = 0f;
+
+  
     [SerializeField] private int coins = 0;
     [SerializeField] private int maxMana = 50;
     [SerializeField] private int currentMana = 25;
     [SerializeField] private int rangedManaCost = 5;
 
-    private PlayerInput playerInput;
-    private Vector2 input;
-    private Vector2 lastMoveDir = Vector2.right;
+    private bool rangedUnlocked = false;
 
-    private float lastMeleeAttackTime = 0f;
-    private float lastRangedAttackTime = 0f;
-
-  
     public int Coins => coins;
     public int CurrentMana => currentMana;
     public int MaxMana => maxMana;
     public int MeleeDamage => meleeAttackDamage;
     public int RangedDamage => rangedAttackDamage;
     public float MeleeAttackRadius => meleeDistance;
-
-    private bool rangedUnlocked = false;
     public bool RangedUnlocked => rangedUnlocked;
+
+ 
     private void Awake()
     {
-        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
         playerInput = GetComponent<PlayerInput>();
+
+        // configuracion del navmesh
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+        // le paso la speed del player al agent del navmesh
+        agent.speed = speed;
     }
 
     private void OnEnable()
@@ -70,47 +80,48 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-       
+        //input de botones para controlar al player
         input = playerInput.actions["Move"].ReadValue<Vector2>();
 
         if (input != Vector2.zero)
         {
+            
             lastMoveDir = input;
             animator.SetFloat("MoveX", input.x);
             animator.SetFloat("MoveY", input.y);
             animator.SetBool("IsMoving", true);
+
+            // movimiento con navmesh X Y
+            Vector2 moveDir = input.normalized;
+            Vector3 move = new Vector3(moveDir.x, moveDir.y, 0f);
+            agent.Move(move * speed * Time.deltaTime);
         }
         else
         {
             animator.SetBool("IsMoving", false);
         }
 
-        
         if (playerInput.actions["Melee"].triggered && Time.time >= lastMeleeAttackTime + meleeAttackCooldown)
         {
             lastMeleeAttackTime = Time.time;
             StartCoroutine(MeleeAnimationRoutine());
         }
 
-        
+     
         if (rangedUnlocked && playerInput.actions["Ranged"].triggered && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
         {
             lastRangedAttackTime = Time.time;
             StartCoroutine(RangedAnimationRoutine());
         }
 
-       
+ 
         if (playerInput.actions["Interact"].triggered)
         {
             Interact();
         }
     }
 
-    private void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
-    }
-
+   
     private void MeleeAttack()
     {
         if (animator != null)
@@ -124,7 +135,7 @@ public class PlayerController : MonoBehaviour
         // se agrega este offset para evitar que se superponga al personaje
         if (Mathf.Abs(normalizedDir.y) > 0.1f)
         {
-            yOffset += normalizedDir.y * 0.3f; 
+            yOffset += normalizedDir.y * 0.3f;
         }
 
         // Se genera el hitbox
@@ -169,6 +180,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player lanzó un proyectil hacia " + direction + " (ranged). Mana restante: " + currentMana);
     }
 
+   
     private void Interact()
     {
         Debug.Log("Jugador intentó interactuar");
@@ -221,12 +233,9 @@ public class PlayerController : MonoBehaviour
         if (rangedUnlocked)
         {
             Debug.Log("[PlayerController] Ataque a distancia restaurado desde checkpoint");
-            GameManager.Instance.TriggerRangedUnlocked(); 
+            GameManager.Instance.TriggerRangedUnlocked();
         }
     }
-
-
-
 
     public bool TryConsumeMana(int cost)
     {
@@ -243,19 +252,18 @@ public class PlayerController : MonoBehaviour
     private IEnumerator MeleeAnimationRoutine()
     {
         animator.SetBool("IsAttackingMelee", true);
-        MeleeAttack(); 
-        yield return new WaitForSeconds(0.5f); 
+        MeleeAttack();
+        yield return new WaitForSeconds(0.5f);
         animator.SetBool("IsAttackingMelee", false);
     }
 
     private IEnumerator RangedAnimationRoutine()
     {
         animator.SetBool("IsAttackingRanged", true);
-        RangedAttack(); 
+        RangedAttack();
         yield return new WaitForSeconds(0.5f);
         animator.SetBool("IsAttackingRanged", false);
     }
-
 
     private void OnDrawGizmosSelected()
     {

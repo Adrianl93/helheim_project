@@ -3,12 +3,16 @@ using UnityEngine.EventSystems;
 
 public class EnsureSingleEventSystem : MonoBehaviour
 {
+    //CODIGO PARA EVITAR DUPLICAR EVENT SYSTEMS 
+    //si ya existe un event system, destruye el nuevo
     void Awake()
     {
-        // Si ya existe otro EventSystem, destruye este
-        if (FindObjectsOfType<EventSystem>().Length > 1)
+        var eventSystems = FindObjectsByType<EventSystem>(FindObjectsSortMode.None);
+
+        if (eventSystems.Length > 1)
         {
             Destroy(gameObject);
         }
     }
 }
+
