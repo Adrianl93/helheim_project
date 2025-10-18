@@ -38,7 +38,7 @@ el mundo de los vivos
 | Pausa | ⏸️ Enter |
 | Reiniciar Escena | 🔄 R |
 | Reiniciar Juego | ❌ Supr / Del |
-
+| Salir del Juego | ✖ Esc |
 ---
 
 ## ✨ Características Clave
