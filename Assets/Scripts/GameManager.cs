@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
                 playerInput.actions["Reboot"].performed += ctx => RestartScene();
                 playerInput.actions["Restart"].performed += ctx => RestartGame();
                 playerInput.actions["Pause"].performed += ctx => TogglePause();
-                playerInput.actions["Exit"].performed += ctx => ExitGame();
+                //playerInput.actions["Exit"].performed += ctx => ExitGame();
             }
         }
         else
@@ -241,22 +241,22 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void ExitGame()
-    {
-        Debug.Log("[GameManager] Cerrando el juego...");
+    //public void ExitGame()
+    //{
+    //    Debug.Log("[GameManager] Cerrando el juego...");
 
-        // Verifica si estamos en el editor o en una build
-        if (Application.isEditor)
-        {
-            // si es editor lo frena
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-        else
-        {
-            // Si es una build cierra el juego
-            Application.Quit();
-        }
-    }
+    //    // Verifica si estamos en el editor o en una build
+    //    if (Application.isEditor)
+    //    {
+    //        // si es editor lo frena
+    //        UnityEditor.EditorApplication.isPlaying = false;
+    //    }
+    //    else
+    //    {
+    //        // Si es una build cierra el juego
+    //        Application.Quit();
+    //    }
+    //}
 
 
     public void AddScore(int amount)

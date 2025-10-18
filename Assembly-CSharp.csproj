@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\SeeMessage.cs" />
     <Compile Include="Assets\Scripts\TimerUI.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\EnsureSingleEventSystem.cs" />
     <Compile Include="Assets\Scripts\Message.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\SpiralProjectile.cs" />

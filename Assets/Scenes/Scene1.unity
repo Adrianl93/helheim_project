@@ -247,8 +247,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4520,6 +4520,7 @@ GameObject:
   - component: {fileID: 1447421744}
   - component: {fileID: 1447421743}
   - component: {fileID: 1447421742}
+  - component: {fileID: 1447421745}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4588,6 +4589,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1447421745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447421741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb807c2e5825ab4082d7e07511ed47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnsureSingleEventSystem
 --- !u!1 &1479482779
 GameObject:
   m_ObjectHideFlags: 0
@@ -5768,7 +5781,7 @@ MonoBehaviour:
   gameDuration: 1200
   ambientMusic: {fileID: 8300000, guid: a417f93b558fa1340a526375678cce5c, type: 3}
   musicVolume: 0.094
-  player: {fileID: 549680765}
+  player: {fileID: 0}
   totalScore: 0
 --- !u!4 &1736350274
 Transform:
@@ -6346,12 +6359,12 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1736350274}
   - {fileID: 619394802}
   - {fileID: 577949785}
   - {fileID: 675937314600135631}
   - {fileID: 1745452365}
   - {fileID: 984527133}
-  - {fileID: 1736350274}
   - {fileID: 298446277}
   - {fileID: 1447421744}
   - {fileID: 161405892}
