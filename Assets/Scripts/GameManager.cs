@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
                 playerInput.actions["Reboot"].performed += ctx => RestartScene();
                 playerInput.actions["Restart"].performed += ctx => RestartGame();
                 playerInput.actions["Pause"].performed += ctx => TogglePause();
-                //playerInput.actions["Exit"].performed += ctx => ExitGame();
+                playerInput.actions["Exit"].performed += ctx => ExitGame();
             }
         }
         else
@@ -241,22 +241,19 @@ public class GameManager : MonoBehaviour
 
 
 
-    //public void ExitGame()
-    //{
-    //    Debug.Log("[GameManager] Cerrando el juego...");
+    public void ExitGame()
+    {
+        Debug.Log("[GameManager] Cerrando el juego...");
+        //IMPORTANTE NO TOCAR: este IF raro funciona para que lo detecte unity editor y no tire error al ejecutar Application.Quit en el editor ya que esta funcion no se permite en el editor
+#if UNITY_EDITOR
 
-    //    // Verifica si estamos en el editor o en una build
-    //    if (Application.isEditor)
-    //    {
-    //        // si es editor lo frena
-    //        UnityEditor.EditorApplication.isPlaying = false;
-    //    }
-    //    else
-    //    {
-    //        // Si es una build cierra el juego
-    //        Application.Quit();
-    //    }
-    //}
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+    // Si es una build, cierra la aplicación normalmente
+    Application.Quit();
+#endif
+    }
+
 
 
     public void AddScore(int amount)
