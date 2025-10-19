@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{19CD5A57-6A86-1304-DEDA-AE47D3BFA3A3}</ProjectGuid>
+    <ProjectGuid>{8D9522D8-8A50-FA50-42E2-9D9E4AED51A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PauseUI.cs" />
+    <Compile Include="Assets\Scripts\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\CoinPickUp.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Scripts\SeeMessage.cs" />
     <Compile Include="Assets\Scripts\TimerUI.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\DamagePopup.cs" />
     <Compile Include="Assets\Scripts\EnsureSingleEventSystem.cs" />
     <Compile Include="Assets\Scripts\Message.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />

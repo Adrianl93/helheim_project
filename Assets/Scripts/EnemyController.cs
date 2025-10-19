@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float enragedDuration = 5f;
 
-    private NavMeshAgent agent; 
+    private NavMeshAgent agent;
     private Vector2 movement;
     private float lastMeleeAttackTime = -1f;
     private float lastRangedAttackTime = 0f;
@@ -54,36 +54,105 @@ public class EnemyController : MonoBehaviour
     private float rangedBurstTimer = 0f;
     private bool playerDetected = false;
 
-    private bool hasTriggeredEngagement = false;
+    private bool hasTriggeredEnragement = false;
     private bool isBursting = false;
     [SerializeField] private float burstPauseDuration = 8f;
 
-    private Coroutine engagementCheckRoutine;
+    private Coroutine enragementCheckRoutine;
 
     [Header("Animaciones")]
     [SerializeField] private Animator animator;
     private Vector2 lastMoveDir = Vector2.down;
 
+    [Header("UI de vida de enemigos")]
+    public GameObject damagePopupPrefab;
+    [SerializeField] private GameObject healthBarPrefab;
+    private EnemyHealthBar healthBar;
+    private GameObject healthBarInstance;
+    private UnityEngine.UI.Image healthBarFill;
+    [SerializeField] private Vector3 healthBarOffset = new Vector3(0f, 1.2f, 0f);
+
+
+
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        Debug.Log($"[EnemyController] Iniciando enemigo {name}...");
 
-        // configuracion del navmesh
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-       
-        // le paso la speed del enemy al agent del navmesh
-        agent.speed = speed;
+        // Crear la barra de vida
+        if (healthBarPrefab != null)
+        {
+            // ✅ Se elimina la búsqueda de un Canvas global, el prefab ya tiene su Canvas en World Space
+            healthBarInstance = Instantiate(healthBarPrefab, transform.position + healthBarOffset, Quaternion.identity);
+
+            if (healthBarInstance == null)
+            {
+                Debug.LogError($"[EnemyController] Falló la instancia del prefab de barra de vida para {name}.");
+            }
+            else
+            {
+                Debug.Log($"[EnemyController] Instanciada barra de vida para {name} en posición {healthBarInstance.transform.position}.");
+
+                // ✅ Asignar el componente EnemyHealthBar
+                healthBar = healthBarInstance.GetComponent<EnemyHealthBar>();
+                if (healthBar == null)
+                {
+                    Debug.LogError($"[EnemyController] El prefab de barra de vida no tiene componente EnemyHealthBar.");
+                }
+                else
+                {
+                    healthBar.SetTarget(transform);
+                    Debug.Log($"[EnemyController] EnemyHealthBar asignado correctamente al enemigo {name}.");
+                }
+
+                // ✅ Asignar cámara principal al Canvas del prefab (importante para World Space)
+                var canvas = healthBarInstance.GetComponentInChildren<Canvas>();
+                if (canvas != null)
+                {
+                    canvas.worldCamera = Camera.main;
+                    Debug.Log($"[EnemyController] Cámara asignada al Canvas de {name}: {canvas.worldCamera?.name ?? "Ninguna"}");
+                }
+
+                // Buscar el fill de la barra
+                Transform fillTransform = healthBarInstance.transform.Find("HealthBar Foreground");
+                if (fillTransform == null)
+                {
+                    Debug.LogWarning($"[EnemyController] No se encontró el objeto hijo 'HealthBar Foreground' en el prefab de barra de vida.");
+                    healthBarFill = healthBarInstance.GetComponentInChildren<UnityEngine.UI.Image>();
+                    if (healthBarFill != null)
+                        Debug.Log($"[EnemyController] healthBarFill asignado con GetComponentInChildren (objeto: {healthBarFill.name}).");
+                    else
+                        Debug.LogError($"[EnemyController] No se pudo encontrar ningún Image en los hijos del prefab.");
+                }
+                else
+                {
+                    healthBarFill = fillTransform.GetComponent<UnityEngine.UI.Image>();
+                    Debug.Log($"[EnemyController] healthBarFill asignado correctamente: {healthBarFill.name}");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError($"[EnemyController] healthBarPrefab no asignado en el inspector para {name}.");
+        }
+
+        // configuración del NavMeshAgent
+        agent = GetComponent<NavMeshAgent>();
+        if (agent == null)
+            Debug.LogError($"[EnemyController] No se encontró NavMeshAgent en {name}");
+        else
+        {
+            agent.updateRotation = false;
+            agent.updateUpAxis = false;
+            agent.speed = speed;
+        }
 
         originalDetectionRadius = detectionRadius;
         maxHealth = health;
-
         currentAttackMode = (enemyType == EnemyType.Boss) ? EnemyType.Melee : enemyType;
         rangedBurstTimer = rangedBurstInterval;
-
-
         AssignPlayerReference();
     }
+
 
     void Update()
     {
@@ -98,10 +167,10 @@ public class EnemyController : MonoBehaviour
         movement = Vector2.zero;
 
         // al detectar al player activa el enraged state
-        if (!hasTriggeredEngagement && distanceToPlayer <= originalDetectionRadius)
+        if (!hasTriggeredEnragement && distanceToPlayer <= originalDetectionRadius)
         {
-            hasTriggeredEngagement = true;
-            TriggerEngagement();
+            hasTriggeredEnragement = true;
+            TriggerEnragement();
         }
 
         // lógica variable segun el tipo de enemigo boss/valkirye/werewolf
@@ -166,7 +235,19 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        
+
+        if (healthBarInstance == null && healthBarPrefab != null)
+        {
+            Debug.LogWarning($"[EnemyController] {name}: healthBarInstance desapareció o nunca se creó.");
+        }
+
+        if (healthBarInstance != null)
+        {
+            // Mantener la barra siguiendo al enemigo
+            healthBarInstance.transform.position = transform.position + healthBarOffset;
+            Debug.DrawLine(transform.position, healthBarInstance.transform.position, Color.magenta);
+        }
+
         UpdateAnimator();
     }
 
@@ -219,15 +300,15 @@ public class EnemyController : MonoBehaviour
     }
 
     // si se activa el rango de deteccion aumenta su tamaño para perseguir al player
-    private void TriggerEngagement()
+    private void TriggerEnragement()
     {
         detectionRadius = originalDetectionRadius * 2f;
         enragedTimer = enragedDuration;
 
-        if (engagementCheckRoutine != null)
-            StopCoroutine(engagementCheckRoutine);
+        if (enragementCheckRoutine != null)
+            StopCoroutine(enragementCheckRoutine);
 
-        engagementCheckRoutine = StartCoroutine(CheckPlayerPresence());
+        enragementCheckRoutine = StartCoroutine(CheckPlayerPresence());
     }
 
     private IEnumerator CheckPlayerPresence()
@@ -247,9 +328,9 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                hasTriggeredEngagement = false;
-                StopCoroutine(engagementCheckRoutine);
-                engagementCheckRoutine = null;
+                hasTriggeredEnragement = false;
+                StopCoroutine(enragementCheckRoutine);
+                enragementCheckRoutine = null;
                 yield break;
             }
         }
@@ -271,6 +352,7 @@ public class EnemyController : MonoBehaviour
 
             if (meleeAttackSound != null)
                 AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position, meleeSoundVolume);
+
         }
     }
 
@@ -346,34 +428,70 @@ public class EnemyController : MonoBehaviour
         int finalDamage = Mathf.Max(incomingDamage - armor, 0);
         health -= finalDamage;
 
-        TriggerEngagement();
+        // Pop up de daño
+        if (damagePopupPrefab != null)
+        {
+            Vector3 spawnPos = transform.position + new Vector3(1f, -1f, 0);
+            GameObject popup = Instantiate(damagePopupPrefab, spawnPos, Quaternion.identity);
+            var popupScript = popup.GetComponentInChildren<DamagePopup>();
 
+            if (popupScript != null)
+                popupScript.Setup(finalDamage);
+        }
+
+        // Actualizamos la barra de vida
+        if (healthBarFill != null)
+            healthBarFill.fillAmount = Mathf.Clamp01((float)health / maxHealth);
+
+        
+        if (healthBar != null)
+            healthBar.UpdateHealth(health, maxHealth);
+
+        // al llegar a 0 activamos el metodo Die
         if (health <= 0)
+        {
+            health = 0;
             Die();
+            return;
+        }
+
+        // Activa el estado de enraged al recibir daño
+        TriggerEnragement();
     }
+
 
     private void Die()
     {
+        
         if (animator != null)
             animator.SetTrigger("Die");
 
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 
+        
         if (player != null)
         {
             PlayerController pc = player.GetComponent<PlayerController>();
             if (pc != null)
             {
-                int manaRewardRandom = Random.Range(0, manaReward + 1);
+                int manaRewardRandom = Random.Range(3, manaReward + 1);
                 pc.AddMana(manaRewardRandom);
             }
-
-            Destroy(gameObject);
-            GameManager.Instance.AddScore(rewardScore);
-            DropItemManager.Instance.DropItem(transform.position);
         }
+
+        // destuimos la barra de vida al quedarnos sin vida
+        if (healthBarInstance != null)
+            Destroy(healthBarInstance);
+
+        // aumentamos el score y dropeamos un item al morir
+        GameManager.Instance.AddScore(rewardScore);
+        DropItemManager.Instance.DropItem(transform.position);
+
+        // Destruir enemigo
+        Destroy(gameObject);
     }
+
 
     private void OnDrawGizmos()
     {
