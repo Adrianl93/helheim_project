@@ -331,6 +331,9 @@ MonoBehaviour:
   burstProjectileCount: 8
   burstPauseDuration: 1
   animator: {fileID: 8132161840245388206}
+  damagePopupPrefab: {fileID: 729577960662426316, guid: 7ef00887a3e293c48bf7f13fec1c6f2c, type: 3}
+  healthBarPrefab: {fileID: 5791407845845436287, guid: 1a5b6fcedc36a8f43bf4e3d1780b276b, type: 3}
+  healthBarOffset: {x: 0, y: 1.2, z: 0}
 --- !u!111 &2547765559180086470
 Animation:
   m_ObjectHideFlags: 0

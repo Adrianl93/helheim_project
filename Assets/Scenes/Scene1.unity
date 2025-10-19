@@ -2508,6 +2508,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Valkirye(FInal Boss)
       objectReference: {fileID: 0}
+    - target: {fileID: 1780890801826430144, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4089156599538007085, guid: 00e3f3ea20fd23a4692c6a1d3ce2b9c3, type: 3}
     - target: {fileID: 6336704046382752915, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -5645,7 +5649,7 @@ GameObject:
   - component: {fileID: 1572769025}
   - component: {fileID: 1572769024}
   m_Layer: 5
-  m_Name: UI
+  m_Name: Canvas HUD UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6164,7 +6168,7 @@ GameObject:
   - component: {fileID: 1638340191}
   - component: {fileID: 1638340193}
   m_Layer: 0
-  m_Name: Isometric Diamond
+  m_Name: ManaUnlockTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7252,7 +7256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4387020073243359538, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: speed
-      value: 8
+      value: 8.7
       objectReference: {fileID: 0}
     - target: {fileID: 4387020073243359538, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: maxMana
@@ -7296,7 +7300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8741148515225629542, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1610612863
+      value: 2013266047
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
