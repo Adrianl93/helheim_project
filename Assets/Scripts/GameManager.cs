@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
 
 
+
     public float RemainingTime => timer;
 
 
@@ -194,6 +195,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         OnGameResumed?.Invoke(); ;
     }
+
+    public void Salir1()
+    {
+        SceneManager.LoadScene("Menu 1");
+    }
+
+   
     #endregion
 
     #region Reinicio
