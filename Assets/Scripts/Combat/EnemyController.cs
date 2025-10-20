@@ -59,6 +59,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float burstPauseDuration = 8f;
 
     private Coroutine enragementCheckRoutine;
+    private Coroutine burstRoutine; // tiempo entre rafagas (burst)
 
     [Header("Animaciones")]
     [SerializeField] private Animator animator;
@@ -81,7 +82,7 @@ public class EnemyController : MonoBehaviour
         // Crear la barra de vida
         if (healthBarPrefab != null)
         {
-            // ✅ Se elimina la búsqueda de un Canvas global, el prefab ya tiene su Canvas en World Space
+            // Se instancia el prefab dela healthBar
             healthBarInstance = Instantiate(healthBarPrefab, transform.position + healthBarOffset, Quaternion.identity);
 
             if (healthBarInstance == null)
@@ -92,7 +93,7 @@ public class EnemyController : MonoBehaviour
             {
                 Debug.Log($"[EnemyController] Instanciada barra de vida para {name} en posición {healthBarInstance.transform.position}.");
 
-                // ✅ Asignar el componente EnemyHealthBar
+                // asignamos el componente EnemyHealthBar
                 healthBar = healthBarInstance.GetComponent<EnemyHealthBar>();
                 if (healthBar == null)
                 {
@@ -104,7 +105,7 @@ public class EnemyController : MonoBehaviour
                     Debug.Log($"[EnemyController] EnemyHealthBar asignado correctamente al enemigo {name}.");
                 }
 
-                // ✅ Asignar cámara principal al Canvas del prefab (importante para World Space)
+                // Asignamos cámara principal al Canvas del prefab
                 var canvas = healthBarInstance.GetComponentInChildren<Canvas>();
                 if (canvas != null)
                 {
@@ -176,10 +177,29 @@ public class EnemyController : MonoBehaviour
         // lógica variable segun el tipo de enemigo boss/valkirye/werewolf
         if (enemyType == EnemyType.Boss)
         {
-            if (!playerDetected && distanceToPlayer <= detectionRadius)
+            // Detectamos entrada y salida del rango
+            if (distanceToPlayer <= detectionRadius)
             {
-                playerDetected = true;
-                rangedBurstTimer = rangedBurstInterval;
+                if (!playerDetected)
+                {
+                    playerDetected = true;
+                    rangedBurstTimer = rangedBurstInterval;
+                }
+            }
+            else
+            {
+                // Si el jugador se aleja por determinado tiempo, el burst se detiene
+                if (playerDetected)
+                {
+                    playerDetected = false;
+                    if (burstRoutine != null)
+                    {
+                        StopCoroutine(burstRoutine);
+                        burstRoutine = null;
+                    }
+                    isBursting = false;
+                    Debug.Log($"[Boss] Jugador fuera de rango, burst detenido.");
+                }
             }
 
             if (!isBursting)
@@ -197,7 +217,10 @@ public class EnemyController : MonoBehaviour
                 rangedBurstTimer -= Time.deltaTime;
                 if (rangedBurstTimer <= 0f)
                 {
-                    StartCoroutine(FireRangedBurstAndPause());
+                    if (burstRoutine != null)
+                        StopCoroutine(burstRoutine);
+
+                    burstRoutine = StartCoroutine(FireRangedBurstAndPause());
                     rangedBurstTimer = rangedBurstInterval;
                 }
             }
@@ -243,7 +266,7 @@ public class EnemyController : MonoBehaviour
 
         if (healthBarInstance != null)
         {
-            // Mantener la barra siguiendo al enemigo
+            // hacemos que la barra siga al enemigo
             healthBarInstance.transform.position = transform.position + healthBarOffset;
             Debug.DrawLine(transform.position, healthBarInstance.transform.position, Color.magenta);
         }
@@ -352,7 +375,6 @@ public class EnemyController : MonoBehaviour
 
             if (meleeAttackSound != null)
                 AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position, meleeSoundVolume);
-
         }
     }
 
@@ -443,7 +465,6 @@ public class EnemyController : MonoBehaviour
         if (healthBarFill != null)
             healthBarFill.fillAmount = Mathf.Clamp01((float)health / maxHealth);
 
-        
         if (healthBar != null)
             healthBar.UpdateHealth(health, maxHealth);
 
@@ -462,14 +483,12 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     {
-        
         if (animator != null)
             animator.SetTrigger("Die");
 
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 
-        
         if (player != null)
         {
             PlayerController pc = player.GetComponent<PlayerController>();
@@ -488,7 +507,7 @@ public class EnemyController : MonoBehaviour
         GameManager.Instance.AddScore(rewardScore);
         DropItemManager.Instance.DropItem(transform.position);
 
-        // Destruir enemigo
+        // Destruimos al enemigo
         Destroy(gameObject);
     }
 
