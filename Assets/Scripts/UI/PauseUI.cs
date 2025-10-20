@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class PauseUI : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMessageUI; 
+    [SerializeField] private GameObject pauseMessageUI;
 
     private void OnEnable()
     {
-        GameManager.OnGamePaused += ShowPauseMessage;
-        GameManager.OnGameResumed += HidePauseMessage;
+        PauseManager.OnGamePaused += ShowPauseMessage;
+        PauseManager.OnGameResumed += HidePauseMessage;
     }
 
     private void OnDisable()
     {
-        GameManager.OnGamePaused -= ShowPauseMessage;
-        GameManager.OnGameResumed -= HidePauseMessage;
+        PauseManager.OnGamePaused -= ShowPauseMessage;
+        PauseManager.OnGameResumed -= HidePauseMessage;
     }
 
     private void ShowPauseMessage()
@@ -27,4 +27,27 @@ public class PauseUI : MonoBehaviour
         if (pauseMessageUI != null)
             pauseMessageUI.SetActive(false);
     }
+
+    // Métodos UI para botones
+    public void TogglePause()
+    {
+        if (PauseManagerInstance != null)
+            PauseManagerInstance.TogglePause();
+    }
+
+    public void PauseGame()
+    {
+        if (PauseManagerInstance != null)
+            PauseManagerInstance.PauseGame();
+    }
+
+    public void ResumeGame()
+    {
+        if (PauseManagerInstance != null)
+            PauseManagerInstance.ResumeGame();
+    }
+
+    private PauseManager PauseManagerInstance => _pauseManager != null ? _pauseManager : _pauseManager = Object.FindFirstObjectByType<PauseManager>();
+
+    private PauseManager _pauseManager;
 }
