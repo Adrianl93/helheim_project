@@ -61,35 +61,35 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.6f2\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\PauseUI.cs" />
-    <Compile Include="Assets\Scripts\EnemyHealthBar.cs" />
-    <Compile Include="Assets\Scripts\CoinPickUp.cs" />
+    <Compile Include="Assets\Scripts\UI\ScoreUI.cs" />
+    <Compile Include="Assets\Scripts\Combat\Trap.cs" />
+    <Compile Include="Assets\Scripts\Combat\Projectile.cs" />
+    <Compile Include="Assets\Scripts\UI\SeeMessage.cs" />
+    <Compile Include="Assets\Scripts\UI\DamagePopup.cs" />
+    <Compile Include="Assets\Scripts\UI\TimerUI.cs" />
+    <Compile Include="Assets\Scripts\UI\PlayerManaUI.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Combat\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Combat\AttackHitbox.cs" />
-    <Compile Include="Assets\Scripts\BasicPickUp.cs" />
-    <Compile Include="Assets\Scripts\AttackBoost.cs" />
-    <Compile Include="Assets\Scripts\Trap.cs" />
-    <Compile Include="Assets\Scripts\PlayerStatsUI.cs" />
-    <Compile Include="Assets\Scripts\ArmorBoost.cs" />
-    <Compile Include="Assets\Scripts\PlayerManaUI.cs" />
-    <Compile Include="Assets\Scripts\ScoreUI.cs" />
-    <Compile Include="Assets\Scripts\SeeMessage.cs" />
-    <Compile Include="Assets\Scripts\TimerUI.cs" />
-    <Compile Include="Assets\Scripts\EnemyController.cs" />
-    <Compile Include="Assets\Scripts\DamagePopup.cs" />
+    <Compile Include="Assets\Scripts\PickUps\DropItemManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Message.cs" />
+    <Compile Include="Assets\Scripts\PickUps\BasicPickUp.cs" />
+    <Compile Include="Assets\Scripts\PickUps\Chest.cs" />
+    <Compile Include="Assets\Scripts\PickUps\ArmorBoost.cs" />
+    <Compile Include="Assets\Scripts\UI\PlayerStatsUI.cs" />
+    <Compile Include="Assets\Scripts\PickUps\HealthPotion.cs" />
     <Compile Include="Assets\Scripts\EnsureSingleEventSystem.cs" />
-    <Compile Include="Assets\Scripts\Message.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />
-    <Compile Include="Assets\Scripts\SpiralProjectile.cs" />
-    <Compile Include="Assets\Scripts\Chest.cs" />
-    <Compile Include="Assets\Scripts\Projectile.cs" />
-    <Compile Include="Assets\Scripts\DropItemManager.cs" />
+    <Compile Include="Assets\Scripts\PickUps\CoinPickUp.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseUI.cs" />
+    <Compile Include="Assets\Scripts\Combat\SpiralProjectile.cs" />
+    <Compile Include="Assets\Scripts\Combat\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayerState.cs" />
     <Compile Include="Assets\Scripts\Mainmenu.cs" />
-    <Compile Include="Assets\Scripts\PlayerHealthUI.cs" />
-    <Compile Include="Assets\Scripts\HealthPotion.cs" />
+    <Compile Include="Assets\Scripts\PickUps\AttackBoost.cs" />
+    <Compile Include="Assets\Scripts\UI\PlayerHealthUI.cs" />
     <Compile Include="Assets\Scripts\RangedUnlockTrigger.cs" />
   </ItemGroup>
   <ItemGroup>

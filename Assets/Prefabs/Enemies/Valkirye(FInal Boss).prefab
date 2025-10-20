@@ -182,11 +182,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyType: 2
-  health: 200
+  health: 125
   armor: 5
-  meleeDamage: 13
-  rangedDamage: 10
-  speed: 1.5
+  meleeDamage: 17
+  rangedDamage: 14
+  speed: 9
   detectionRadius: 15
   meleeRadius: 5
   meleeCooldown: 1.5
@@ -343,7 +343,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -5443816857556984033, guid: 290a1c2303cc13645aaa413a5e6e45a2, type: 3}
+  m_Sprite: {fileID: -4089156599538007085, guid: 00e3f3ea20fd23a4692c6a1d3ce2b9c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

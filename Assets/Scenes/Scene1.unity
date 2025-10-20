@@ -998,7 +998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &215998618
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2641,10 +2641,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Valkirye(FInal Boss)
       objectReference: {fileID: 0}
-    - target: {fileID: 1780890801826430144, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -4089156599538007085, guid: 00e3f3ea20fd23a4692c6a1d3ce2b9c3, type: 3}
+    - target: {fileID: 4665190981654623793, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
+      propertyPath: manaReward
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6336704046382752915, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -4449,6 +4449,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11500000, guid: ba5327b3e45f3d044bda348c4947d22f, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
