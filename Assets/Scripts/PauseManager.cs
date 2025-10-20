@@ -1,13 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
+    [Header("UI asignada en Inspector (solo Scene1)")]
     [SerializeField] private GameObject pauseUI;
 
     private PlayerInput playerInput;
+    private InputAction pauseAction;
     private bool isPaused = false;
 
     public static event Action OnGamePaused;
@@ -15,36 +18,63 @@ public class PauseManager : MonoBehaviour
 
     private void Awake()
     {
+        // No usar singleton global ni DontDestroyOnLoad
+        // El PauseManager solo vive dentro de la escena jugable.
+
         playerInput = GetComponent<PlayerInput>();
-        if (playerInput != null)
+        if (playerInput == null)
         {
-            // Nos suscribimos a la acción "Pause" directamente
-            var pauseAction = playerInput.actions["Pause"];
-            if (pauseAction != null)
-                pauseAction.performed += ctx => TogglePause();
-            else
-                Debug.LogError("[PauseManager] No se encontró la acción 'Pause' en PlayerInput.");
-        }
-        else
-        {
-            Debug.LogWarning("[PauseManager] Falta PlayerInput en este objeto.");
+            Debug.LogError("[PauseManager] Falta componente PlayerInput.");
+            return;
         }
 
-        Time.timeScale = 1f; // aseguramos tiempo normal al iniciar
+        pauseAction = playerInput.actions["Pause"];
+        if (pauseAction != null)
+            pauseAction.performed += OnPausePerformed;
+        else
+            Debug.LogError("[PauseManager] No se encontró la acción 'Pause'.");
+
+        // En caso de entrar desde el menú con el juego pausado
+        ResumeGame();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDestroy()
     {
-        if (playerInput != null)
+        if (pauseAction != null)
+            pauseAction.performed -= OnPausePerformed;
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Si cargamos una escena de menú, este objeto se destruye
+        if (scene.name.ToLower().Contains("menu"))
         {
-            var pauseAction = playerInput.actions["Pause"];
-            if (pauseAction != null)
-                pauseAction.performed -= ctx => TogglePause();
+            Destroy(gameObject);
+            return;
         }
+
+        // Reset por seguridad
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        if (pauseUI != null)
+            pauseUI.SetActive(false);
+    }
+
+    private void OnPausePerformed(InputAction.CallbackContext ctx)
+    {
+        TogglePause();
     }
 
     public void TogglePause()
     {
+        // Soltar el foco de la UI antes de cambiar el estado
+        EventSystem.current?.SetSelectedGameObject(null);
+
         if (isPaused)
             ResumeGame();
         else
@@ -53,11 +83,16 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame()
     {
+        if (pauseUI == null)
+        {
+            Debug.LogWarning("[PauseManager] No se asignó el Pause UI en el inspector.");
+            return;
+        }
+
         isPaused = true;
         Time.timeScale = 0f;
-        pauseUI?.SetActive(true);
+        pauseUI.SetActive(true);
         OnGamePaused?.Invoke();
-        Debug.Log("[PauseManager] Juego en pausa.");
     }
 
     public void ResumeGame()
@@ -66,30 +101,18 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
         pauseUI?.SetActive(false);
         OnGameResumed?.Invoke();
-        Debug.Log("[PauseManager] Juego reanudado.");
-    }
-
-    public void ExitToMenu()
-    {
-        Debug.Log("[PauseManager] Intentando ir al menú...");
-        bool sceneExists = false;
-
-        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
-        {
-            string path = SceneUtility.GetScenePathByBuildIndex(i);
-            string sceneName = System.IO.Path.GetFileNameWithoutExtension(path);
-            if (sceneName == "Menu 1") sceneExists = true;
-        }
-
-        if (!sceneExists)
-        {
-            Debug.LogError("[ExitToMenu] La escena 'Menu 1' NO se encuentra en Build Settings!");
-            return;
-        }
-
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu 1");
     }
 
     public void ResumeFromButton() => ResumeGame();
+
+    public void ExitToMenu()
+    {
+        // Siempre asegurarse de restaurar TimeScale antes de salir
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        Debug.Log("[PauseManager] Volviendo al menú principal...");
+        SceneManager.LoadScene("Menu 1");
+        Destroy(gameObject);
+    }
 }

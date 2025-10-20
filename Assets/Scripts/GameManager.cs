@@ -1,7 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
-using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float gameDuration = 1200f; // 20 minutos
     private float timer;
     private bool timeoutTriggered = false;
-   
+
 
     [Header("Audio")]
     [SerializeField] private AudioClip ambientMusic;
@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
 
     private PlayerInput playerInput;
 
+   
+    private InputAction rebootAction;
+    private InputAction restartAction;
+    private InputAction exitAction;
+
     private void Awake()
     {
         if (Instance == null)
@@ -48,7 +53,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Config audio
+          
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = ambientMusic;
             audioSource.loop = true;
@@ -60,21 +65,52 @@ public class GameManager : MonoBehaviour
 
             SceneManager.sceneLoaded += OnSceneLoaded;
 
-            // Timer inicial
+         
             timer = gameDuration;
 
             playerInput = GetComponent<PlayerInput>();
             if (playerInput != null)
             {
-                playerInput.actions["Reboot"].performed += ctx => RestartScene();
-                playerInput.actions["Restart"].performed += ctx => RestartGame();
-                playerInput.actions["Exit"].performed += ctx => ExitGame();
+                
+                rebootAction = playerInput.actions["Reboot"];
+                restartAction = playerInput.actions["Restart"];
+                exitAction = playerInput.actions["Exit"];
+
+                if (rebootAction != null) rebootAction.performed += OnRebootPerformed;
+                if (restartAction != null) restartAction.performed += OnRestartPerformed;
+                if (exitAction != null) exitAction.performed += OnExitPerformed;
             }
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+      
+        if (rebootAction != null) rebootAction.performed -= OnRebootPerformed;
+        if (restartAction != null) restartAction.performed -= OnRestartPerformed;
+        if (exitAction != null) exitAction.performed -= OnExitPerformed;
+
+        
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnRebootPerformed(InputAction.CallbackContext ctx)
+    {
+        RestartScene();
+    }
+
+    private void OnRestartPerformed(InputAction.CallbackContext ctx)
+    {
+        RestartGame();
+    }
+
+    private void OnExitPerformed(InputAction.CallbackContext ctx)
+    {
+        ExitGame();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -227,7 +263,7 @@ public class GameManager : MonoBehaviour
         OnRangedUnlocked?.Invoke();
         Debug.Log("[GameManager] Evento OnRangedUnlocked disparado desde RestoreCheckpoint");
     }
-    
+
 
     #region Audio
     public void SetMusicVolume(float volume)

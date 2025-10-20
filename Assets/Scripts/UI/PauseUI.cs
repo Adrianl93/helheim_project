@@ -4,6 +4,13 @@ public class PauseUI : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMessageUI;
 
+    private PauseManager pauseManager;
+
+    private void Awake()
+    {
+        pauseManager = FindFirstObjectByType<PauseManager>();
+    }
+
     private void OnEnable()
     {
         PauseManager.OnGamePaused += ShowPauseMessage;
@@ -28,26 +35,7 @@ public class PauseUI : MonoBehaviour
             pauseMessageUI.SetActive(false);
     }
 
-    // Métodos UI para botones
-    public void TogglePause()
-    {
-        if (PauseManagerInstance != null)
-            PauseManagerInstance.TogglePause();
-    }
-
-    public void PauseGame()
-    {
-        if (PauseManagerInstance != null)
-            PauseManagerInstance.PauseGame();
-    }
-
-    public void ResumeGame()
-    {
-        if (PauseManagerInstance != null)
-            PauseManagerInstance.ResumeGame();
-    }
-
-    private PauseManager PauseManagerInstance => _pauseManager != null ? _pauseManager : _pauseManager = Object.FindFirstObjectByType<PauseManager>();
-
-    private PauseManager _pauseManager;
+    // Métodos conectados a los botones del menú de pausa
+    public void OnResumeButton() => pauseManager?.ResumeFromButton();
+    public void OnExitButton() => pauseManager?.ExitToMenu();
 }
