@@ -77,8 +77,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"[EnemyController] Iniciando enemigo {name}...");
-
+       
         // Crear la barra de vida
         if (healthBarPrefab != null)
         {
@@ -91,7 +90,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                Debug.Log($"[EnemyController] Instanciada barra de vida para {name} en posición {healthBarInstance.transform.position}.");
+                
 
                 // asignamos el componente EnemyHealthBar
                 healthBar = healthBarInstance.GetComponent<EnemyHealthBar>();
@@ -102,7 +101,7 @@ public class EnemyController : MonoBehaviour
                 else
                 {
                     healthBar.SetTarget(transform);
-                    Debug.Log($"[EnemyController] EnemyHealthBar asignado correctamente al enemigo {name}.");
+                    
                 }
 
                 // Asignamos cámara principal al Canvas del prefab
@@ -110,7 +109,7 @@ public class EnemyController : MonoBehaviour
                 if (canvas != null)
                 {
                     canvas.worldCamera = Camera.main;
-                    Debug.Log($"[EnemyController] Cámara asignada al Canvas de {name}: {canvas.worldCamera?.name ?? "Ninguna"}");
+                    
                 }
 
                 // Buscar el fill de la barra
@@ -119,15 +118,13 @@ public class EnemyController : MonoBehaviour
                 {
                     Debug.LogWarning($"[EnemyController] No se encontró el objeto hijo 'HealthBar Foreground' en el prefab de barra de vida.");
                     healthBarFill = healthBarInstance.GetComponentInChildren<UnityEngine.UI.Image>();
-                    if (healthBarFill != null)
-                        Debug.Log($"[EnemyController] healthBarFill asignado con GetComponentInChildren (objeto: {healthBarFill.name}).");
-                    else
-                        Debug.LogError($"[EnemyController] No se pudo encontrar ningún Image en los hijos del prefab.");
+                    
                 }
                 else
                 {
                     healthBarFill = fillTransform.GetComponent<UnityEngine.UI.Image>();
-                    Debug.Log($"[EnemyController] healthBarFill asignado correctamente: {healthBarFill.name}");
+                    
+
                 }
             }
         }

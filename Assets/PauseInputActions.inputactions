@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "PauseInputActions",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "a125dda6-bf56-46fc-b673-260616f61bc8",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "567912a3-b0d5-4d2d-8380-e48d8a493c74",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0f2bd139-9233-4880-87e7-516bf4a6b973",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

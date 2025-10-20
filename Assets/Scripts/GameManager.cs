@@ -1,21 +1,19 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
-using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public static event Action OnTimeout;
-    public static event Action OnGamePaused;
-    public static event Action OnGameResumed;
     public static event Action<int> OnScoreChanged;
 
     [Header("Timer")]
     [SerializeField] private float gameDuration = 1200f; // 20 minutos
     private float timer;
     private bool timeoutTriggered = false;
-    private bool isPaused = false;
+
 
     [Header("Audio")]
     [SerializeField] private AudioClip ambientMusic;
@@ -38,16 +36,15 @@ public class GameManager : MonoBehaviour
     [Header("Score")]
     [SerializeField] private int totalScore = 0;
     public int TotalScore => totalScore;
-    
-
-
-
-
 
     public float RemainingTime => timer;
 
-
     private PlayerInput playerInput;
+
+   
+    private InputAction rebootAction;
+    private InputAction restartAction;
+    private InputAction exitAction;
 
     private void Awake()
     {
@@ -56,7 +53,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Config audio
+          
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = ambientMusic;
             audioSource.loop = true;
@@ -68,17 +65,20 @@ public class GameManager : MonoBehaviour
 
             SceneManager.sceneLoaded += OnSceneLoaded;
 
-            // Timer inicial
+         
             timer = gameDuration;
 
-           
             playerInput = GetComponent<PlayerInput>();
             if (playerInput != null)
             {
-                playerInput.actions["Reboot"].performed += ctx => RestartScene();
-                playerInput.actions["Restart"].performed += ctx => RestartGame();
-                playerInput.actions["Pause"].performed += ctx => TogglePause();
-                playerInput.actions["Exit"].performed += ctx => ExitGame();
+                
+                rebootAction = playerInput.actions["Reboot"];
+                restartAction = playerInput.actions["Restart"];
+                exitAction = playerInput.actions["Exit"];
+
+                if (rebootAction != null) rebootAction.performed += OnRebootPerformed;
+                if (restartAction != null) restartAction.performed += OnRestartPerformed;
+                if (exitAction != null) exitAction.performed += OnExitPerformed;
             }
         }
         else
@@ -87,11 +87,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+      
+        if (rebootAction != null) rebootAction.performed -= OnRebootPerformed;
+        if (restartAction != null) restartAction.performed -= OnRestartPerformed;
+        if (exitAction != null) exitAction.performed -= OnExitPerformed;
+
+        
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnRebootPerformed(InputAction.CallbackContext ctx)
+    {
+        RestartScene();
+    }
+
+    private void OnRestartPerformed(InputAction.CallbackContext ctx)
+    {
+        RestartGame();
+    }
+
+    private void OnExitPerformed(InputAction.CallbackContext ctx)
+    {
+        ExitGame();
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         PositionPlayerImmediately();
     }
-
 
     public static event Action OnRangedUnlocked;
 
@@ -140,8 +165,8 @@ public class GameManager : MonoBehaviour
             Debug.Log($"[LoadCheckpoint] rangedUnlocked = {lastCheckpointState.rangedUnlocked}");
 
             timer = lastCheckpointState.remainingTime;
-            totalScore = lastCheckpointState.score; 
-            GameManager.OnScoreChanged?.Invoke(totalScore); 
+            totalScore = lastCheckpointState.score;
+            GameManager.OnScoreChanged?.Invoke(totalScore);
 
             timeoutTriggered = false;
         }
@@ -158,11 +183,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
         // Timer
-        if (!isPaused && !timeoutTriggered)
+        if (!timeoutTriggered)
         {
             timer -= Time.deltaTime;
             if (timer <= 0f)
@@ -175,35 +199,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #region Pausa
-    public void TogglePause()
-    {
-        if (isPaused) ResumeGame();
-        else PauseGame();
-    }
-
-    public void PauseGame()
-    {
-        isPaused = true;
-        Time.timeScale = 0f;
-        OnGamePaused?.Invoke();
-    }
-
-    public void ResumeGame()
-    {
-        isPaused = false;
-        Time.timeScale = 1f;
-        OnGameResumed?.Invoke(); ;
-    }
-
-    public void Salir1()
-    {
-        SceneManager.LoadScene("Menu 1");
-    }
-
-   
-    #endregion
-
     #region Reinicio
     public void RestartScene()
     {
@@ -215,12 +210,11 @@ public class GameManager : MonoBehaviour
         lastCheckpointPos = startPoint != null ? startPoint.transform.position : Vector3.zero;
         lastCheckpointState = null;
 
-        totalScore = 0; 
-        OnScoreChanged?.Invoke(totalScore); 
+        totalScore = 0;
+        OnScoreChanged?.Invoke(totalScore);
 
         SceneManager.LoadScene("Scene1");
         Debug.Log("[GameManager] Juego reiniciado desde StartPoint con Score en 0");
-
     }
     #endregion
 
@@ -240,29 +234,22 @@ public class GameManager : MonoBehaviour
                 timer,
                 totalScore,
                 playerController.RangedUnlocked
-
             );
             Debug.Log($"[SaveCheckpoint] rangedUnlocked = {playerController.RangedUnlocked}");
             Debug.Log($"[GameManager] Checkpoint guardado en {lastCheckpointPos} -> {checkpoint.name}");
         }
     }
 
-
-
+    //IMPORTANTE NO TOCAR: este IF raro funciona para que lo detecte unity editor y no tire error al ejecutar Application.Quit en el editor ya que esta funcion no se permite en el editor
     public void ExitGame()
     {
         Debug.Log("[GameManager] Cerrando el juego...");
-        //IMPORTANTE NO TOCAR: este IF raro funciona para que lo detecte unity editor y no tire error al ejecutar Application.Quit en el editor ya que esta funcion no se permite en el editor
 #if UNITY_EDITOR
-
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-    // Si es una build, cierra la aplicación normalmente
-    Application.Quit();
+        Application.Quit();
 #endif
     }
-
-
 
     public void AddScore(int amount)
     {
