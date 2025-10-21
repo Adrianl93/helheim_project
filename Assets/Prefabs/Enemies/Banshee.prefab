@@ -280,17 +280,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.031326294, y: 0.031326294}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 4.1}
+    oldSize: {x: 2.6666667, y: 5.4666667}
     newSize: {x: 2, y: 4.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.5, y: 1.6}
+  m_Size: {x: 1.7819519, y: 5.234024}
   m_EdgeRadius: 0
 --- !u!114 &1637143195596928289
 MonoBehaviour:
@@ -315,7 +315,7 @@ MonoBehaviour:
   meleeCooldown: 1.5
   rangedCooldown: 2
   rangedAttackRange: 11
-  minRangedDistance: 4
+  minRangedDistance: 5
   projectilePrefab: {fileID: 4042022002272296592, guid: e47dcb59366664741a4471f34fd63be7, type: 3}
   firePoint: {fileID: 1967074461058098233}
   projectileSpeed: 22

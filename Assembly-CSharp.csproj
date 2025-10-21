@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\UI\PlayerStatsUI.cs" />
     <Compile Include="Assets\Scripts\PauseManager.cs" />
     <Compile Include="Assets\Scripts\PickUps\HealthPotion.cs" />
+    <Compile Include="Assets\Scripts\MinimapArrow.cs" />
     <Compile Include="Assets\Scripts\EnsureSingleEventSystem.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\PickUps\CoinPickUp.cs" />

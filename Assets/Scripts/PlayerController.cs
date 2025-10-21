@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float meleeDistance = 0.8f;
     [SerializeField] private int meleeAttackDamage = 15;
     [SerializeField] private float meleeAttackCooldown = 1f;
+    [SerializeField] private float meleeOffsetY = 0.5f;
+    [SerializeField] private float meleeOffsetDiagonal = 0.2f;
 
     [SerializeField] private int rangedAttackDamage = 10;
     [SerializeField] private float rangedAttackCooldown = 1.5f;
@@ -121,7 +123,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
+
     private void MeleeAttack()
     {
         if (animator != null)
@@ -132,13 +134,22 @@ public class PlayerController : MonoBehaviour
         float xOffset = normalizedDir.x * meleeDistance;
         float yOffset = normalizedDir.y * meleeDistance;
 
-        // se agrega este offset para evitar que se superponga al personaje
-        if (Mathf.Abs(normalizedDir.y) > 0.1f)
+        //  ataque vertical 
+        if (Mathf.Abs(normalizedDir.y) > 0.1f && Mathf.Abs(normalizedDir.x) < 0.1f)
         {
-            yOffset += normalizedDir.y * 0.3f;
+            // sumamos un offset extra en Y para no superponerse al player
+            yOffset += normalizedDir.y * meleeOffsetY;
         }
 
-        // Se genera el hitbox
+        // ataque diagonal (mueve tanto en X como en Y)
+        else if (Mathf.Abs(normalizedDir.x) > 0.1f && Mathf.Abs(normalizedDir.y) > 0.1f)
+        {
+            // sumamos un pequeño offset en ambas direcciones
+            xOffset += normalizedDir.x * meleeOffsetDiagonal;
+            yOffset += normalizedDir.y * meleeOffsetDiagonal;
+        }
+
+        // Instanciamos el hitbox
         Vector3 spawnPos = transform.position + new Vector3(xOffset, yOffset, 0f);
         GameObject hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity, transform);
         hitbox.transform.right = lastMoveDir;
@@ -149,8 +160,9 @@ public class PlayerController : MonoBehaviour
             hitboxScript.Initialize(meleeAttackDamage, enemyLayer);
         }
 
-        Debug.Log("Player realizó un ataque melee hacia " + lastMoveDir);
+        Debug.Log($"Player realizó un ataque melee hacia {lastMoveDir}");
     }
+
 
     private void RangedAttack()
     {
