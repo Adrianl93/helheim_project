@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.27743, y: 6.40789, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.2735849, g: 0.11743503, b: 0.11743503, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -168,4 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b50b374eba4e5447bd23847fe832e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpiralProjectile
+  speed: 2
+  rotationSpeed: 180
+  selfRotationSpeed: 70
   lifetime: 2

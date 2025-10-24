@@ -107,6 +107,8 @@ MonoBehaviour:
   healAmount: 50
   pickupSound: {fileID: 8300000, guid: 92627920b848e8e468d1254fd38c5f75, type: 3}
   volume: 1
+  itemPopupPrefab: {fileID: 6797549877393150901, guid: 156ca708541567245838efdb66cda2ca, type: 3}
+  popupOffset: {x: 1, y: 2, z: 0}
 --- !u!61 &3816691425158078050
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,7 +139,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

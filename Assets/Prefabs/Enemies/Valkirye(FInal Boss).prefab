@@ -203,14 +203,18 @@ MonoBehaviour:
   meleeSoundVolume: 1
   deathSound: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
   deathSoundVolume: 1
-  manaReward: 5
+  minManaReward: 5
+  maxManaReward: 10
   rangedBurstInterval: 5
-  burstProjectileCount: 8
+  burstProjectileCount: 6
   burstPauseDuration: 2
   animator: {fileID: 0}
-  damagePopupPrefab: {fileID: 729577960662426316, guid: 7ef00887a3e293c48bf7f13fec1c6f2c, type: 3}
+  damagePopupPrefab: {fileID: 4748611389434153029, guid: 52c42afc98ef69543aefdacac0d05a33, type: 3}
+  manaPopupPrefab: {fileID: 5912721023921850787, guid: ba5bf45ac2318de4bbc0d73ca2914e66, type: 3}
   healthBarPrefab: {fileID: 5791407845845436287, guid: 1a5b6fcedc36a8f43bf4e3d1780b276b, type: 3}
   healthBarOffset: {x: 0, y: 1.2, z: 0}
+  damagePopupOffset: {x: 1, y: 1.5, z: 0}
+  manaPopupOffset: {x: 1.2, y: 0.5, z: 0}
 --- !u!195 &5751771839797051989
 NavMeshAgent:
   m_ObjectHideFlags: 0

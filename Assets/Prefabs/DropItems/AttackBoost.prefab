@@ -157,3 +157,5 @@ MonoBehaviour:
   boostAmount: 2
   pickupSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
   soundVolume: 1
+  AttackBoostPopup: {fileID: 6642263271108912720, guid: 7a17cedbd91deda408fc67e32ea8d479, type: 3}
+  popupOffset: {x: 0, y: 2, z: 0}
