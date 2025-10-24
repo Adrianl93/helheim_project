@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\MinimapArrow.cs" />
     <Compile Include="Assets\Scripts\EnsureSingleEventSystem.cs" />
     <Compile Include="Assets\Scripts\Triggers\RangedUnlockTrigger.cs" />
+    <Compile Include="Assets\Scripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\PickUps\CoinPickUp.cs" />
     <Compile Include="Assets\Scripts\UI\PauseUI.cs" />
