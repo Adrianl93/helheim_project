@@ -117,7 +117,7 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            sr.sortingLayerName = "Default"; // Ajusta si tenés otro Sorting Layer
+            sr.sortingLayerName = "Default"; 
             sr.sortingOrder = 0;
         }
     }
