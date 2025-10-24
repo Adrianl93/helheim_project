@@ -2,20 +2,21 @@ using UnityEngine;
 
 public class SpiralProjectile : MonoBehaviour
 {
-    private float currentAngle;      
-    private float radius;            
-    private float speed = 5f;       
-    private float rotationSpeed = 10f; 
+    private float currentAngle;        // Ángulo de la espiral
+    private float radius;              // Radio de la espiral
+    [SerializeField] private float speed = 2f;          // Velocidad de alejamiento (crecimiento del radio)
+    [SerializeField] private float rotationSpeed = 180f; // Velocidad de giro de la espiral en grados por segundo
+    [SerializeField] private float selfRotationSpeed = 90f; // Rotación del sprite sobre su propio eje
     private int damage;
     private GameObject owner;
-    private Vector2 origin;          // Punto de origen del disparo
+    private Vector2 origin;            // Punto de origen del disparo
     [SerializeField] private float lifetime = 5f;
 
     void Start()
     {
         Destroy(gameObject, lifetime);
 
-        // evito daño al lanzador
+        // Evitamos daño al lanzador
         Collider2D projCol = GetComponent<Collider2D>();
         if (projCol != null && owner != null)
         {
@@ -24,29 +25,29 @@ public class SpiralProjectile : MonoBehaviour
                     Physics2D.IgnoreCollision(projCol, c);
         }
 
-       //radio en 0 al iniciar
-        radius = 0f;
+        radius = 0f; // Radio inicial
     }
 
     void Update()
     {
-        // Incremento ángulo para giro
+        // Incrementamos el ángulo y el radio
         currentAngle += rotationSpeed * Time.deltaTime;
-
-        // Incremento radio para alejamiento
         radius += speed * Time.deltaTime;
 
-        // Calculo posición usando coordenadas polares
+        // Calculamos posición usando coordenadas polares
         float rad = currentAngle * Mathf.Deg2Rad;
         Vector2 offset = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
         transform.position = origin + offset;
+
+        // Rotación sobre su propio eje
+        transform.Rotate(0f, 0f, selfRotationSpeed * Time.deltaTime, Space.Self);
     }
 
-    //se crea el prefab en enemycontroller
-    public void Initialize(Vector2 direction, float projectileSpeed, float spiralRotation, int dmg, GameObject projOwner)
+    // Inicialización desde EnemyController
+    public void Initialize(Vector2 direction, float projectileSpeed, float spiralRotation, int dmg, GameObject projOwner, float initialAngle)
     {
-        origin = transform.position; //guardo el punto de origen
-        currentAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        origin = transform.position;
+        currentAngle = initialAngle;
         speed = projectileSpeed;
         rotationSpeed = spiralRotation;
         damage = dmg;
@@ -55,27 +56,16 @@ public class SpiralProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == owner) return;
-
-        if (owner != null && owner.GetComponent<PlayerController>() != null)
+        // Daño solo al jugador
+        PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
         {
-            EnemyController enemy = collision.GetComponent<EnemyController>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damage);
-                Destroy(gameObject);
-            }
-        }
-        else
-        {
-            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damage);
-                Destroy(gameObject);
-            }
+            playerHealth.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
         }
 
+        // Destruye al impactar con otros objetos sólidos
         if (!collision.isTrigger)
             Destroy(gameObject);
     }

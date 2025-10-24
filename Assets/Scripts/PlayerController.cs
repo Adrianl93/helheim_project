@@ -176,11 +176,14 @@ public class PlayerController : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
 
-        // creamos el proyectil
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        // Calculamos el ángulo para rotar el proyectil
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Instanciamos el proyectil rotado en la dirección del disparo
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0f, 0f, angle - 90f));
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
         if (prb != null)
-            prb.linearVelocity = direction.normalized * projectileSpeed;
+            prb.linearVelocity = direction * projectileSpeed;
 
         Projectile projScript = projectile.GetComponent<Projectile>();
         if (projScript != null)
@@ -192,7 +195,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player lanzó un proyectil hacia " + direction + " (ranged). Mana restante: " + currentMana);
     }
 
-   
+
+
     private void Interact()
     {
         Debug.Log("Jugador intentó interactuar");

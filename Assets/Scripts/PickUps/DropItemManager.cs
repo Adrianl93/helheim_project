@@ -10,6 +10,7 @@ public class DropItemManager : MonoBehaviour
     [SerializeField] private GameObject[] easyItems = new GameObject[10];
     [SerializeField] private GameObject[] mediumItems = new GameObject[10];
     [SerializeField] private GameObject[] hardItems = new GameObject[10];
+    [SerializeField] private GameObject[] killItems = new GameObject[10];
 
     [SerializeField] private float dropOffsetRadius = 0.5f;
 
@@ -85,6 +86,7 @@ public class DropItemManager : MonoBehaviour
 
         int armor = playerHealth.Armor;
         int meleeAttack = playerController.MeleeDamage;
+        int coins = playerController.Coins;
 
         GameObject[] chosenPool;
         string poolName;
@@ -99,10 +101,16 @@ public class DropItemManager : MonoBehaviour
             chosenPool = mediumItems;
             poolName = "Medium";
         }
-        else
+        else if ((armor < 11 && meleeAttack < 25) && coins >= 200 )
         {
             chosenPool = hardItems;
             poolName = "Hard";
+           
+        }
+        else
+        {
+            chosenPool = killItems;
+            poolName = "Kill";
         }
 
         if (chosenPool == null || chosenPool.Length == 0) return (null, poolName);
