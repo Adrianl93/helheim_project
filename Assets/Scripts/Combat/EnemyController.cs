@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
+using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
@@ -47,10 +48,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private float deathSoundVolume = 1f;
 
-    [SerializeField] private int manaReward = 5;
+    [SerializeField] private int minManaReward = 3;
+    [SerializeField] private int maxManaReward = 5;
 
-    [SerializeField] private float rangedBurstInterval = 15f;
-    [SerializeField] private int burstProjectileCount = 8;
+
+    [SerializeField] private float rangedBurstInterval = 8f;
+    [SerializeField] private int burstProjectileCount = 6; 
     private float rangedBurstTimer = 0f;
     private bool playerDetected = false;
 
@@ -66,18 +69,18 @@ public class EnemyController : MonoBehaviour
     private Vector2 lastMoveDir = Vector2.down;
 
     [Header("UI de vida de enemigos")]
-    public GameObject damagePopupPrefab;
+    [SerializeField] private GameObject damagePopupPrefab;
+    [SerializeField] private GameObject manaPopupPrefab;
     [SerializeField] private GameObject healthBarPrefab;
     private EnemyHealthBar healthBar;
     private GameObject healthBarInstance;
     private UnityEngine.UI.Image healthBarFill;
     [SerializeField] private Vector3 healthBarOffset = new Vector3(0f, 1.2f, 0f);
-
-
+    [SerializeField] private Vector3 damagePopupOffset = new Vector3(0f, 1.5f, 0f);
+    [SerializeField] private Vector3 manaPopupOffset = new Vector3(0f, 2f, 0f);
 
     void Start()
     {
-       
         // Crear la barra de vida
         if (healthBarPrefab != null)
         {
@@ -90,8 +93,6 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                
-
                 // asignamos el componente EnemyHealthBar
                 healthBar = healthBarInstance.GetComponent<EnemyHealthBar>();
                 if (healthBar == null)
@@ -101,7 +102,6 @@ public class EnemyController : MonoBehaviour
                 else
                 {
                     healthBar.SetTarget(transform);
-                    
                 }
 
                 // Asignamos cámara principal al Canvas del prefab
@@ -109,7 +109,6 @@ public class EnemyController : MonoBehaviour
                 if (canvas != null)
                 {
                     canvas.worldCamera = Camera.main;
-                    
                 }
 
                 // Buscar el fill de la barra
@@ -118,13 +117,10 @@ public class EnemyController : MonoBehaviour
                 {
                     Debug.LogWarning($"[EnemyController] No se encontró el objeto hijo 'HealthBar Foreground' en el prefab de barra de vida.");
                     healthBarFill = healthBarInstance.GetComponentInChildren<UnityEngine.UI.Image>();
-                    
                 }
                 else
                 {
                     healthBarFill = fillTransform.GetComponent<UnityEngine.UI.Image>();
-                    
-
                 }
             }
         }
@@ -150,7 +146,6 @@ public class EnemyController : MonoBehaviour
         rangedBurstTimer = rangedBurstInterval;
         AssignPlayerReference();
     }
-
 
     void Update()
     {
@@ -254,7 +249,6 @@ public class EnemyController : MonoBehaviour
                 agent.ResetPath();
             }
         }
-
 
         if (healthBarInstance == null && healthBarPrefab != null)
         {
@@ -385,11 +379,13 @@ public class EnemyController : MonoBehaviour
         if (animator != null)
             animator.SetTrigger("AttackRanged");
 
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        Vector2 dir = (player.position - firePoint.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, angle - 90f));
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
         if (prb != null)
         {
-            Vector2 dir = (player.position - firePoint.position).normalized;
             prb.linearVelocity = dir * projectileSpeed;
         }
 
@@ -423,24 +419,30 @@ public class EnemyController : MonoBehaviour
     {
         if (projectilePrefab == null || firePoint == null) return;
 
-        float angleStep = 360f / burstProjectileCount;
+        int projectileCount = burstProjectileCount; // ahora sí tomamos la cantidad de proyectiles por burst desde el inspector
+        float angleStep = 360f / projectileCount;
 
-        for (int i = 0; i < burstProjectileCount; i++)
+        for (int i = 0; i < projectileCount; i++)
         {
             float angle = i * angleStep;
             Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)).normalized;
 
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            // Instanciamos el proyectil con la rotación inicial correcta
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
             SpiralProjectile spiralProj = projectile.GetComponent<SpiralProjectile>();
             if (spiralProj != null)
             {
-                float spiralRotation = 90f;
-                spiralProj.Initialize(dir, projectileSpeed * burstMultiplier, spiralRotation, rangedDamage, gameObject);
+                float spiralRotation = 90f; // velocidad de giro de la espiral
+                spiralProj.Initialize(dir, projectileSpeed * burstMultiplier, spiralRotation, rangedDamage, gameObject, angle);
+
             }
         }
 
-        Debug.Log($"[Boss] lanzó un burst de {burstProjectileCount} proyectiles en espiral.");
+        Debug.Log($"[Boss] lanzó un burst de {projectileCount} proyectiles en espiral.");
     }
+
+
+   
 
     public void TakeDamage(int incomingDamage)
     {
@@ -450,12 +452,12 @@ public class EnemyController : MonoBehaviour
         // Pop up de daño
         if (damagePopupPrefab != null)
         {
-            Vector3 spawnPos = transform.position + new Vector3(1f, -1f, 0);
+            Vector3 spawnPos = transform.position + damagePopupOffset;
             GameObject popup = Instantiate(damagePopupPrefab, spawnPos, Quaternion.identity);
-            var popupScript = popup.GetComponentInChildren<DamagePopup>();
+            var popupScript = popup.GetComponentInChildren<PopupUI>();
 
             if (popupScript != null)
-                popupScript.Setup(finalDamage);
+                popupScript.Setup("-" + finalDamage);
         }
 
         // Actualizamos la barra de vida
@@ -477,7 +479,6 @@ public class EnemyController : MonoBehaviour
         TriggerEnragement();
     }
 
-
     private void Die()
     {
         if (animator != null)
@@ -491,8 +492,19 @@ public class EnemyController : MonoBehaviour
             PlayerController pc = player.GetComponent<PlayerController>();
             if (pc != null)
             {
-                int manaRewardRandom = Random.Range(3, manaReward + 1);
+                int manaRewardRandom = Random.Range(minManaReward, maxManaReward + 1);
+
                 pc.AddMana(manaRewardRandom);
+
+                // Pop up de maná
+                if (manaPopupPrefab != null)
+                {
+                    Vector3 spawnPos = transform.position + manaPopupOffset;
+                    GameObject popup = Instantiate(manaPopupPrefab, spawnPos, Quaternion.identity);
+                    var popupScript = popup.GetComponentInChildren<PopupUI>();
+                    if (popupScript != null)
+                        popupScript.Setup("+" + manaRewardRandom);
+                }
             }
         }
 
@@ -507,7 +519,6 @@ public class EnemyController : MonoBehaviour
         // Destruimos al enemigo
         Destroy(gameObject);
     }
-
 
     private void OnDrawGizmos()
     {

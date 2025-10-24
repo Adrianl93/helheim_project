@@ -65,7 +65,6 @@
     <Compile Include="Assets\Scripts\Combat\Trap.cs" />
     <Compile Include="Assets\Scripts\Combat\Projectile.cs" />
     <Compile Include="Assets\Scripts\UI\SeeMessage.cs" />
-    <Compile Include="Assets\Scripts\UI\DamagePopup.cs" />
     <Compile Include="Assets\Scripts\UI\TimerUI.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerManaUI.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
@@ -86,6 +85,7 @@
     <Compile Include="Assets\Scripts\PickUps\CoinPickUp.cs" />
     <Compile Include="Assets\Scripts\UI\PauseUI.cs" />
     <Compile Include="Assets\Scripts\Combat\SpiralProjectile.cs" />
+    <Compile Include="Assets\Scripts\UI\PopupUI.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayerState.cs" />

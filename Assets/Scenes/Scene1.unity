@@ -3767,11 +3767,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 171887834743265021, guid: d56e959f42b2c1d429a662a1883791a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.9
+      value: 11.4
       objectReference: {fileID: 0}
     - target: {fileID: 171887834743265021, guid: d56e959f42b2c1d429a662a1883791a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -72.3
+      value: -46.4
       objectReference: {fileID: 0}
     - target: {fileID: 171887834743265021, guid: d56e959f42b2c1d429a662a1883791a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4324,10 +4324,6 @@ PrefabInstance:
     - target: {fileID: 1685934789025675195, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
       propertyPath: m_Name
       value: Valkirye(FInal Boss)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665190981654623793, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
-      propertyPath: manaReward
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6336704046382752915, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7972,11 +7968,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5299848985272100037, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.3
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5299848985272100037, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -45.46
+      value: -80.8
       objectReference: {fileID: 0}
     - target: {fileID: 5299848985272100037, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8884,13 +8880,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 984527133}
     m_Modifications:
+    - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: maxManaReward
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5299848985272100037, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.23843002
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 5299848985272100037, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -69
+      value: -46.1
       objectReference: {fileID: 0}
     - target: {fileID: 5299848985272100037, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9151,6 +9151,10 @@ PrefabInstance:
     - target: {fileID: 973089661622327677, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002076693331550739, guid: 7df51794513d37149a293ca98563060c, type: 3}
+      propertyPath: armor
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2047852067476692107, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: m_LocalPosition.x

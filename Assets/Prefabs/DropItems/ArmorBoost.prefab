@@ -160,3 +160,5 @@ MonoBehaviour:
   armorIncrease: 2
   pickupSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
   soundVolume: 1
+  armorPopup: {fileID: 3985607691740547109, guid: 3073f40b227340d4eba496d4921f6cd1, type: 3}
+  popupOffset: {x: 0, y: 2, z: 0}
