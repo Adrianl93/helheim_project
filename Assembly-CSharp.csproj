@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\UI\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\Combat\Trap.cs" />
     <Compile Include="Assets\Scripts\Triggers\SpawnerTrigger.cs" />
+    <Compile Include="Assets\Scripts\Intro.cs" />
     <Compile Include="Assets\Scripts\Combat\Projectile.cs" />
     <Compile Include="Assets\Scripts\UI\SeeMessage.cs" />
     <Compile Include="Assets\Scripts\UI\TimerUI.cs" />
