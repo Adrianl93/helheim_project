@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class IntroController : MonoBehaviour
+public class Instructions : MonoBehaviour
 {
     public float delayBeforeLoading = 5f; // segundos de duración
-    public string nextSceneName = "Instructions";
+    public string nextSceneName = "MainMenu";
 
     void Start()
     {
@@ -13,6 +13,6 @@ public class IntroController : MonoBehaviour
 
     void LoadNextScene()
     {
-        SceneManager.LoadScene("instructions");
+        SceneManager.LoadScene("Menu 1");
     }
 }
