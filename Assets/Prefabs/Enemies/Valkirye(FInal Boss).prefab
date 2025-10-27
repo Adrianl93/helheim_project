@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 542694191114577885}
   - component: {fileID: 4665190981654623793}
   - component: {fileID: 5751771839797051989}
+  - component: {fileID: 228271090258802604}
   m_Layer: 3
   m_Name: Valkirye(FInal Boss)
   m_TagString: Untagged
@@ -209,7 +210,7 @@ MonoBehaviour:
   rangedBurstInterval: 8
   burstProjectileCount: 6
   burstPauseDuration: 2
-  animator: {fileID: 0}
+  animator: {fileID: 228271090258802604}
   damagePopupPrefab: {fileID: 4748611389434153029, guid: 52c42afc98ef69543aefdacac0d05a33, type: 3}
   manaPopupPrefab: {fileID: 5912721023921850787, guid: ba5bf45ac2318de4bbc0d73ca2914e66, type: 3}
   healthBarPrefab: {fileID: 5791407845845436287, guid: 1a5b6fcedc36a8f43bf4e3d1780b276b, type: 3}
@@ -238,6 +239,28 @@ NavMeshAgent:
   m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &228271090258802604
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685934789025675195}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0cdbb3cc6f2173b439e9e60c75a7ba1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4748223859733213215
 GameObject:
   m_ObjectHideFlags: 0

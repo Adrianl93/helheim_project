@@ -71,8 +71,9 @@ public class PlayerHealth : MonoBehaviour
         
         if (animator != null)
             animator.SetTrigger("Die");
+            animator.SetBool("IsDead", true);
 
-        
+
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 
