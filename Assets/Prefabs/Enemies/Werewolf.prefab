@@ -193,7 +193,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5720880954985142441}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -287,12 +287,14 @@ MonoBehaviour:
   projectileSpeed: 10
   burstMultiplier: 2
   rewardScore: 200
+  knockbackForce: 50
   enragedDuration: 5
   meleeAttackSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
   meleeSoundVolume: 1
   deathSound: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
   deathSoundVolume: 1
-  manaReward: 5
+  minManaReward: 3
+  maxManaReward: 6
   rangedBurstInterval: 15
   burstProjectileCount: 8
   burstPauseDuration: 1

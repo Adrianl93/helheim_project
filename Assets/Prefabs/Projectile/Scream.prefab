@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5563584448081725443}
   - component: {fileID: 7530400412940123289}
   - component: {fileID: 9080080138376052628}
-  - component: {fileID: 7620872113804155802}
   - component: {fileID: 2087318607014198883}
+  - component: {fileID: 6145845379281983036}
   m_Layer: 0
   m_Name: Scream
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.27743, y: 6.40789, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,8 +120,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &7620872113804155802
-CircleCollider2D:
+--- !u!114 &2087318607014198883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042022002272296592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc7d6cdbae1d074c979b59d0df0bfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  lifetime: 0.5
+  shootSFX: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
+  impactSFX: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
+  fadeDuration: 0.3
+  popScale: 1.2
+  fadeExponent: 3
+--- !u!68 &6145845379281983036
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -155,19 +173,13 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!114 &2087318607014198883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4042022002272296592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc7d6cdbae1d074c979b59d0df0bfe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  lifetime: 2
-  shootSFX: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
-  impactSFX: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: -0.2803065}
+  - {x: 0.0077065527, y: 0.5712266}
+  - {x: 0.5326538, y: -0.29220766}
+  - {x: -0.496133, y: -0.28030652}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
