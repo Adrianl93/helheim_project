@@ -5,11 +5,13 @@ public class AttackHitbox : MonoBehaviour
     private int damage;
     private float lifetime = 0.2f;
     private LayerMask enemyLayer;
+    private Vector2 attackOrigin;
 
-    public void Initialize(int dmg, LayerMask targetLayer)
+    public void Initialize(int dmg, LayerMask targetLayer, Vector2 origin)
     {
         damage = dmg;
         enemyLayer = targetLayer;
+        attackOrigin = origin;
         Destroy(gameObject, lifetime);
     }
 
@@ -19,7 +21,7 @@ public class AttackHitbox : MonoBehaviour
         {
             var enemy = other.GetComponent<EnemyController>();
             if (enemy != null)
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(damage, attackOrigin);
         }
     }
 }

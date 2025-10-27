@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5563584448081725443}
   - component: {fileID: 7530400412940123289}
   - component: {fileID: 9080080138376052628}
-  - component: {fileID: 7620872113804155802}
   - component: {fileID: 2321096201419405552}
+  - component: {fileID: 7983711032720706566}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -120,8 +120,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &7620872113804155802
-CircleCollider2D:
+--- !u!114 &2321096201419405552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042022002272296592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b50b374eba4e5447bd23847fe832e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpiralProjectile
+  speed: 22
+  rotationSpeed: 180
+  selfRotationSpeed: 120
+  lifetime: 2
+  fadeDuration: 0.5
+  popScale: 1.5
+  fadeExponent: 9
+--- !u!68 &7983711032720706566
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -155,20 +174,13 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!114 &2321096201419405552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4042022002272296592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b50b374eba4e5447bd23847fe832e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpiralProjectile
-  speed: 2
-  rotationSpeed: 180
-  selfRotationSpeed: 70
-  lifetime: 2
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.4960326, y: -0.28856674}
+  - {x: -0.0008897707, y: 0.5724957}
+  - {x: 0.51165354, y: -0.29390782}
+  - {x: -0.49612212, y: -0.29055017}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

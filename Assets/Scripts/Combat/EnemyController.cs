@@ -28,8 +28,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private float burstMultiplier = 2f;
     [SerializeField] private int rewardScore = 1000;
+    [SerializeField] private float knockbackForce;
 
-    [SerializeField] private float enragedDuration = 5f;
+   [SerializeField] private float enragedDuration = 5f;
 
     private NavMeshAgent agent;
     private Vector2 movement;
@@ -145,6 +146,7 @@ public class EnemyController : MonoBehaviour
         currentAttackMode = (enemyType == EnemyType.Boss) ? EnemyType.Melee : enemyType;
         rangedBurstTimer = rangedBurstInterval;
         AssignPlayerReference();
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 
     void Update()
@@ -313,7 +315,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // si se activa el rango de deteccion aumenta su tamaño para perseguir al player
+    // si se activa, el rango de deteccion aumenta su tamaño para perseguir al player
     private void TriggerEnragement()
     {
         detectionRadius = originalDetectionRadius * 2f;
@@ -419,7 +421,7 @@ public class EnemyController : MonoBehaviour
     {
         if (projectilePrefab == null || firePoint == null) return;
 
-        int projectileCount = burstProjectileCount; // ahora sí tomamos la cantidad de proyectiles por burst desde el inspector
+        int projectileCount = burstProjectileCount; //tomamos la cantidad de disparos desde el inspector
         float angleStep = 360f / projectileCount;
 
         for (int i = 0; i < projectileCount; i++)
@@ -432,22 +434,37 @@ public class EnemyController : MonoBehaviour
             SpiralProjectile spiralProj = projectile.GetComponent<SpiralProjectile>();
             if (spiralProj != null)
             {
-                float spiralRotation = 90f; // velocidad de giro de la espiral
-                spiralProj.Initialize(dir, projectileSpeed * burstMultiplier, spiralRotation, rangedDamage, gameObject, angle);
-
+                spiralProj.Initialize(
+                    dir,               // dirección del disparo 
+                    rangedDamage,      // daño
+                    gameObject,        // owner
+                    firePoint.position,// posición inicial
+                    angle              // ángulo inicial
+                );
             }
-        }
 
-        Debug.Log($"[Boss] lanzó un burst de {projectileCount} proyectiles en espiral.");
+
+            Debug.Log($"[Boss] lanzó un burst de {projectileCount} proyectiles en espiral.");
+        }
     }
 
 
-   
 
-    public void TakeDamage(int incomingDamage)
+
+    public void TakeDamage(int incomingDamage, Vector2 attackOrigin)
     {
         int finalDamage = Mathf.Max(incomingDamage - armor, 0);
         health -= finalDamage;
+
+        
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            Vector2 knockbackDir = ((Vector2)transform.position - attackOrigin).normalized;
+
+            // iniciamos una corrutina para manejar el knockback sin romper el navmesh
+            StartCoroutine(ApplyKnockback(rb, knockbackDir));
+        }
 
         // Pop up de daño
         if (damagePopupPrefab != null)
@@ -478,6 +495,42 @@ public class EnemyController : MonoBehaviour
         // Activa el estado de enraged al recibir daño
         TriggerEnragement();
     }
+
+    // knockback (retroceso) al recibir daño
+    private IEnumerator ApplyKnockback(Rigidbody2D rb, Vector2 dir)
+    {
+        float knockbackDuration = 0.1f;   // duración total del empuje
+        float knockbackDistance = 0.5f;   // distancia del retroceso
+        float elapsed = 0f;
+
+        // micro stun(aturdimiento temporal)
+        bool wasStopped = false;
+        if (agent != null)
+        {
+            wasStopped = agent.isStopped;
+            agent.isStopped = true;
+        }
+
+        Vector2 startPos = transform.position;
+        Vector2 targetPos = startPos + dir.normalized * knockbackDistance;
+
+        
+        while (elapsed < knockbackDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / knockbackDuration;
+            transform.position = Vector2.Lerp(startPos, targetPos, t);
+            yield return null;
+        }
+
+        // micro stun (aturdimiento)
+        yield return new WaitForSeconds(0.05f);
+
+        // reanudar movimiento
+        if (agent != null)
+            agent.isStopped = wasStopped;
+    }
+
 
     private void Die()
     {

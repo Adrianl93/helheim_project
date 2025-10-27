@@ -152,12 +152,14 @@ public class PlayerController : MonoBehaviour
         // Instanciamos el hitbox
         Vector3 spawnPos = transform.position + new Vector3(xOffset, yOffset, 0f);
         GameObject hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity, transform);
+
         hitbox.transform.right = lastMoveDir;
 
         AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
         if (hitboxScript != null)
         {
-            hitboxScript.Initialize(meleeAttackDamage, enemyLayer);
+            
+            hitboxScript.Initialize(meleeAttackDamage, enemyLayer, transform.position);
         }
 
         Debug.Log($"Player realizó un ataque melee hacia {lastMoveDir}");
@@ -190,6 +192,8 @@ public class PlayerController : MonoBehaviour
         {
             projScript.SetDamage(rangedAttackDamage);
             projScript.SetOwner(gameObject);
+            // PASAMOS la posición de origen del ataque (la posición del player)
+            projScript.SetAttackOrigin(transform.position);
         }
 
         Debug.Log("Player lanzó un proyectil hacia " + direction + " (ranged). Mana restante: " + currentMana);
