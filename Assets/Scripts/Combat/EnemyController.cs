@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float knockbackForce;
 
    [SerializeField] private float enragedDuration = 5f;
+    private bool isDead = false;
 
     private NavMeshAgent agent;
     private Vector2 movement;
@@ -151,6 +152,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return;
         if (player == null)
         {
             AssignPlayerReference();
@@ -275,14 +277,30 @@ public class EnemyController : MonoBehaviour
 
     private void MoveAwayFromPlayer()
     {
+        //se aleja del player para tratar de evitar ser atacado, manteniendo una distancia minima
         if (agent == null || player == null) return;
 
-        // dirección contraria al jugador
         Vector2 dir = (transform.position - player.position).normalized;
-        Vector2 retreatPos = (Vector2)transform.position + dir * 2f;
+        Vector2 basePos = transform.position;
 
-        agent.SetDestination(retreatPos);
+        // Probar varios ángulos alternativos si el camino directo no es navegable
+        for (int i = 0; i < 5; i++)
+        {
+            float angle = i * 30f - 60f; // prueba otras direcciones en un rango de -60 a +60 grados
+            Vector2 rotatedDir = Quaternion.Euler(0, 0, angle) * dir;
+            Vector2 testPos = basePos + rotatedDir * 2f;
+
+            if (NavMesh.SamplePosition(testPos, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
+            {
+                agent.SetDestination(hit.position);
+                return;
+            }
+        }
+
+        agent.ResetPath();
     }
+
+
 
     private void UpdateAnimator()
     {
@@ -381,6 +399,16 @@ public class EnemyController : MonoBehaviour
         if (animator != null)
             animator.SetTrigger("AttackRanged");
 
+        // Esperamos que termine la animación antes de instanciar el proyectil
+        StartCoroutine(DelayedRangedAttack(0.8f)); // duración del clip (0.613s)
+    }
+
+    private IEnumerator DelayedRangedAttack(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (projectilePrefab == null || player == null) yield break;
+
         Vector2 dir = (player.position - firePoint.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
@@ -398,6 +426,7 @@ public class EnemyController : MonoBehaviour
             projScript.SetOwner(gameObject);
         }
     }
+
 
     private IEnumerator FireRangedBurstAndPause()
     {
@@ -453,10 +482,15 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int incomingDamage, Vector2 attackOrigin)
     {
+        if (isDead) return; //si esta muerto no se aplica daño
         int finalDamage = Mathf.Max(incomingDamage - armor, 0);
         health -= finalDamage;
 
-        
+        // animación de daño
+        if (animator != null && health > 0)
+            animator.SetTrigger("TakeDamage");
+
+
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
@@ -496,6 +530,7 @@ public class EnemyController : MonoBehaviour
         TriggerEnragement();
     }
 
+
     // knockback (retroceso) al recibir daño
     private IEnumerator ApplyKnockback(Rigidbody2D rb, Vector2 dir)
     {
@@ -514,64 +549,89 @@ public class EnemyController : MonoBehaviour
         Vector2 startPos = transform.position;
         Vector2 targetPos = startPos + dir.normalized * knockbackDistance;
 
-        
+
         while (elapsed < knockbackDuration)
         {
             elapsed += Time.deltaTime;
             float t = elapsed / knockbackDuration;
-            transform.position = Vector2.Lerp(startPos, targetPos, t);
+            Vector2 newPos = Vector2.Lerp(startPos, targetPos, t);
+            Vector3 validPos;
+            if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, 0.5f, NavMesh.AllAreas))
+                validPos = hit.position;
+            else
+                validPos = transform.position; // no se mueve si no hay posición válida (navmesh)
+
+            agent.Warp(validPos);
+
             yield return null;
         }
+
 
         // micro stun (aturdimiento)
         yield return new WaitForSeconds(0.05f);
 
-        // reanudar movimiento
-        if (agent != null)
+        // reanudar movimiento SOLO si el enemigo sigue vivo y el agente está activo
+        if (!isDead && agent != null && agent.enabled)
             agent.isStopped = wasStopped;
+
     }
 
 
     private void Die()
     {
-        if (animator != null)
-            animator.SetTrigger("Die");
+        if (isDead) return;
+        isDead = true;
 
+        // Detener movimiento del navmesh
+        if (agent != null)
+        {
+            agent.ResetPath();
+            agent.isStopped = true;
+            agent.enabled = false;
+        }
+
+        // Detener movimiento físico
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+
+        // Animación de muerte
+        if (animator != null)
+        {
+            animator.SetBool("IsMoving", false);
+            animator.SetTrigger("Die");
+            animator.SetBool("IsDead", true);
+        }
+
+        // Sonido
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 
-        if (player != null)
-        {
-            PlayerController pc = player.GetComponent<PlayerController>();
-            if (pc != null)
-            {
-                int manaRewardRandom = Random.Range(minManaReward, maxManaReward + 1);
+        // Desactivamos colisiones para no chocarlo
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+            col.enabled = false;
 
-                pc.AddMana(manaRewardRandom);
+        StartCoroutine(DeathSequence());
+    }
 
-                // Pop up de maná
-                if (manaPopupPrefab != null)
-                {
-                    Vector3 spawnPos = transform.position + manaPopupOffset;
-                    GameObject popup = Instantiate(manaPopupPrefab, spawnPos, Quaternion.identity);
-                    var popupScript = popup.GetComponentInChildren<PopupUI>();
-                    if (popupScript != null)
-                        popupScript.Setup("+" + manaRewardRandom);
-                }
-            }
-        }
 
-        // destuimos la barra de vida al quedarnos sin vida
-        if (healthBarInstance != null)
-            Destroy(healthBarInstance);
-
-        // aumentamos el score y dropeamos un item al morir
+    private IEnumerator DeathSequence()
+    {
+        yield return new WaitForSeconds(1.2f); 
         GameManager.Instance.AddScore(rewardScore);
         DropItemManager.Instance.DropItem(transform.position);
 
-        // Destruimos al enemigo
+        if (healthBarInstance != null)
+            Destroy(healthBarInstance);
+
         Destroy(gameObject);
     }
+
 
     private void OnDrawGizmos()
     {
