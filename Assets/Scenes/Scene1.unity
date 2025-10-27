@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5736825264741776231, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 781198215ca0fc74faf2c0e10cfbbfd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2612,6 +2616,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5736825264741776231, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 781198215ca0fc74faf2c0e10cfbbfd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3230,8 +3238,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TIME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2a1cf5b625fd8994bb6b5995c7d6d05d, type: 2}
+  m_sharedMaterial: {fileID: -9006132606749469081, guid: 2a1cf5b625fd8994bb6b5995c7d6d05d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3255,7 +3263,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 48.35
   m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5317,6 +5325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5736825264741776231, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 781198215ca0fc74faf2c0e10cfbbfd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5947,6 +5959,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5736825264741776231, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 781198215ca0fc74faf2c0e10cfbbfd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6873,6 +6889,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5736825264741776231, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 781198215ca0fc74faf2c0e10cfbbfd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7330,6 +7350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5736825264741776231, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 781198215ca0fc74faf2c0e10cfbbfd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7542,6 +7566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5736825264741776231, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 781198215ca0fc74faf2c0e10cfbbfd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8575,6 +8603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5736825264741776231, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 781198215ca0fc74faf2c0e10cfbbfd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8637,6 +8669,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5736825264741776231, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 781198215ca0fc74faf2c0e10cfbbfd4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
