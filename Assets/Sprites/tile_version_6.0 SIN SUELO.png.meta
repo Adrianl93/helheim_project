@@ -125,9 +125,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2d45a417db96435a0800000000000000
+      spriteID: 62b3b848926edc1468d967ebd739f0c0
       internalID: -6542488096292055854
       vertices: []
       indices: 
@@ -147,9 +147,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c2073ae06c1788130800000000000000
+      spriteID: e4cc9289623b27b4389939c353905131
       internalID: 3569227800154173484
       vertices: []
       indices: 
@@ -169,9 +169,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ecc8e820132bc7620800000000000000
+      spriteID: bb00278cc6dfaf045b21aeb8fd7eb39a
       internalID: 2773287394119421134
       vertices: []
       indices: 
@@ -191,9 +191,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2fc2fc816f2349310800000000000000
+      spriteID: f356c13b64dc2c54ab79b6bbe838386c
       internalID: 1410808615833382130
       vertices: []
       indices: 
@@ -213,9 +213,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dc9aaba13832d7580800000000000000
+      spriteID: c709883a8fa914e478c8aac668b14bab
       internalID: -8827860648580175411
       vertices: []
       indices: 
@@ -237,7 +237,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 803508de8107a98418168d1194ba999c
+      spriteID: 2dd352cf0a8179c4491ee553a32e8905
       internalID: -1053816908
       vertices: []
       indices: 
@@ -259,7 +259,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 310552b199c1eba49a470edf203c1e16
+      spriteID: 11e406fd2269002478cdea493db65534
       internalID: 388806961
       vertices: []
       indices: 
@@ -281,7 +281,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 392f877d7ad051d4abf35dd2c4f84e4d
+      spriteID: 3fb4ec16b6c5c954d81a06346cf76ff5
       internalID: -2059288082
       vertices: []
       indices: 
@@ -303,7 +303,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cef692bd89b2d745bf006cb63a844f7
+      spriteID: 49124bfeeebb9b84fa003960215f463a
       internalID: 1098711103
       vertices: []
       indices: 
@@ -325,7 +325,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc187b5d93a4f214c94f3db6efb1bcad
+      spriteID: f244ae7a1cba7b3459362ab164831ce0
       internalID: -1550169246
       vertices: []
       indices: 
@@ -347,7 +347,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 395487011505b2841af2cf35aadd1bf9
+      spriteID: a20da607358565143a06d686b6295362
       internalID: 890052265
       vertices: []
       indices: 
@@ -369,7 +369,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45e4786a94996724ab1728e9b36815b3
+      spriteID: e88765a1ed7ad6f4fb870fd7ba393eaf
       internalID: 1265505740
       vertices: []
       indices: 
@@ -391,7 +391,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d158c3dbb4088b4f950f71de21bc5e2
+      spriteID: 3711aa7536062d64c9ac4c5f3797ac52
       internalID: 2030559597
       vertices: []
       indices: 
@@ -413,7 +413,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d27175e0a8f1ac41a075297d30c3d67
+      spriteID: d0ab7ec4790c916438e708f8fb0ca2db
       internalID: 173703564
       vertices: []
       indices: 
@@ -435,7 +435,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e91744b3b901734e8d22ade2581cc0f
+      spriteID: d34cd7c9ca1633540867a0bb9e1d07c5
       internalID: 164914162
       vertices: []
       indices: 
@@ -457,7 +457,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 648909b764b8c8f49a4b692d19ea0a3f
+      spriteID: 2547690d5619afd46b80a6d747c66c58
       internalID: 1799634844
       vertices: []
       indices: 
@@ -479,7 +479,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 058d0632bfaadef47a346e67f480b88d
+      spriteID: 03bf87e08bb11ab44944f7d0f157be5b
       internalID: -1186137241
       vertices: []
       indices: 
@@ -501,7 +501,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cfbc9b22ade43c4d9baa71df0f322b4
+      spriteID: 9d51e46827f141c43ba08ef279f99ef4
       internalID: 899030172
       vertices: []
       indices: 
@@ -523,7 +523,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 984a3c5c86f42a04b8fe5a51633f5cc3
+      spriteID: b4146b9b23f4f864fa5c58ad484ee571
       internalID: -133239812
       vertices: []
       indices: 
@@ -545,7 +545,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47caaec483c922b44aa98a6b37f16eaf
+      spriteID: 9d80dd977ff8a3841936ab84822328d3
       internalID: 1770655643
       vertices: []
       indices: 
@@ -555,7 +555,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_20
       rect:
         serializedVersion: 2
-        x: 192
+        x: 384
         y: 1120
         width: 96
         height: 112
@@ -567,7 +567,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63acfd1a9b5c39046b4ab5e9f3dd46bf
+      spriteID: bca141c7a039152409abeee17c2a5a76
       internalID: -351301066
       vertices: []
       indices: 
@@ -577,7 +577,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_21
       rect:
         serializedVersion: 2
-        x: 288
+        x: 480
         y: 1120
         width: 96
         height: 112
@@ -589,7 +589,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 746312814a80a914bb9b607a1faba751
+      spriteID: f6c72aaa1845346489b2bfc9e10f6d66
       internalID: -1666029287
       vertices: []
       indices: 
@@ -599,7 +599,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_22
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1056
         y: 1120
         width: 96
         height: 112
@@ -611,7 +611,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c239bd595bbc5b84081b7aa77df1acba
+      spriteID: 7fd2b66a30a034e49866064ec2122b0c
       internalID: 1364472614
       vertices: []
       indices: 
@@ -621,7 +621,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_23
       rect:
         serializedVersion: 2
-        x: 480
+        x: 1152
         y: 1120
         width: 96
         height: 112
@@ -633,7 +633,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd9ef59c170eac44e80caacace02a530
+      spriteID: 0cb81c76f79c6f44b8e6ac9492e04b9b
       internalID: -44817790
       vertices: []
       indices: 
@@ -643,7 +643,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_24
       rect:
         serializedVersion: 2
-        x: 1056
+        x: 1248
         y: 1120
         width: 96
         height: 112
@@ -655,7 +655,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1f316c753713b642971be7472b366de
+      spriteID: d4f0e524ad118ab48adeb456812352ab
       internalID: 2001221783
       vertices: []
       indices: 
@@ -665,7 +665,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_25
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1344
         y: 1120
         width: 96
         height: 112
@@ -677,7 +677,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0523c9fec0cde814c9cc5abb8f1b1b56
+      spriteID: e200992b707ed7b4da78185e0c407286
       internalID: 1713340616
       vertices: []
       indices: 
@@ -687,8 +687,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_26
       rect:
         serializedVersion: 2
-        x: 1248
-        y: 1120
+        x: 96
+        y: 1008
         width: 96
         height: 112
       alignment: 0
@@ -699,7 +699,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a80245d760844e49970dda8a08b8527
+      spriteID: eb11dd66ef2fea54d80eb885452e0dd4
       internalID: -113983109
       vertices: []
       indices: 
@@ -709,8 +709,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_27
       rect:
         serializedVersion: 2
-        x: 1344
-        y: 1120
+        x: 384
+        y: 1008
         width: 96
         height: 112
       alignment: 0
@@ -721,7 +721,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7963693512f34042982fcc6e274c3fb
+      spriteID: 21666b1ede7b5b446995e90ab4821317
       internalID: -854635909
       vertices: []
       indices: 
@@ -731,7 +731,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_28
       rect:
         serializedVersion: 2
-        x: 96
+        x: 1152
         y: 1008
         width: 96
         height: 112
@@ -743,7 +743,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f9f124814dbb294a90351acaa03617c
+      spriteID: cdbd55e5a037f3540a55d683b6a64225
       internalID: 268909000
       vertices: []
       indices: 
@@ -753,7 +753,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_29
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1248
         y: 1008
         width: 96
         height: 112
@@ -765,7 +765,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 706df4e1bd6a0d443b0f61c3b6fe7e70
+      spriteID: 42a0d6b251c95f34db6ae206ce63194f
       internalID: -650801924
       vertices: []
       indices: 
@@ -775,8 +775,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_30
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 1008
+        x: 0
+        y: 896
         width: 96
         height: 112
       alignment: 0
@@ -787,7 +787,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 455ee99af4c4e30418ea783b6be84bc8
+      spriteID: bb1cd805389db814b9178160e0f38b8e
       internalID: -359686016
       vertices: []
       indices: 
@@ -797,8 +797,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_31
       rect:
         serializedVersion: 2
-        x: 1248
-        y: 1008
+        x: 96
+        y: 896
         width: 96
         height: 112
       alignment: 0
@@ -809,7 +809,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a36473e14172a954a890b9e114cc9421
+      spriteID: bf8a689e119a1624d8c69ee390574535
       internalID: -1004483435
       vertices: []
       indices: 
@@ -819,7 +819,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_32
       rect:
         serializedVersion: 2
-        x: 0
+        x: 192
         y: 896
         width: 96
         height: 112
@@ -831,7 +831,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3065d8a830b14c4dbd4d319859a0fc6
+      spriteID: b82f1ac9cd14f534ab5ccbb30ee8c7e1
       internalID: 2001320840
       vertices: []
       indices: 
@@ -841,7 +841,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_33
       rect:
         serializedVersion: 2
-        x: 96
+        x: 288
         y: 896
         width: 96
         height: 112
@@ -853,7 +853,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2a32a04081569e4d8ef5a27c182036c
+      spriteID: ba1a8bce13329064e93161b4241d8616
       internalID: -1200322159
       vertices: []
       indices: 
@@ -863,7 +863,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_34
       rect:
         serializedVersion: 2
-        x: 192
+        x: 384
         y: 896
         width: 96
         height: 112
@@ -875,7 +875,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fcff3b2ffa1875488138c5f00e41b5f
+      spriteID: 58fb97d4788304449a2945487c58f514
       internalID: 1693392783
       vertices: []
       indices: 
@@ -885,7 +885,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_35
       rect:
         serializedVersion: 2
-        x: 288
+        x: 480
         y: 896
         width: 96
         height: 112
@@ -897,7 +897,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 924a3bfa955eaa1419f61e64fe84be44
+      spriteID: 4b374d90cfdb0694d956eaff4c6d49a6
       internalID: 1718371846
       vertices: []
       indices: 
@@ -907,50 +907,6 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_36
       rect:
         serializedVersion: 2
-        x: 384
-        y: 896
-        width: 96
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf3612a5ca317d04889dc8165dcba847
-      internalID: 1707481894
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_37
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 896
-        width: 96
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34b5f08b4ed19024fbdeef554120942e
-      internalID: -1188931284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_38
-      rect:
-        serializedVersion: 2
         x: 672
         y: 896
         width: 96
@@ -963,14 +919,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17694aeddd51aaf4a8ab79693c634e10
-      internalID: -384890591
+      spriteID: f340b4a6dcc913a42909acfa2a6653bb
+      internalID: 1707481894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_39
+      name: tile_version_6.0 SIN SUELO_37
       rect:
         serializedVersion: 2
         x: 768
@@ -985,14 +941,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 100efb1ab74b03b428cc74a8b270b28c
-      internalID: -194402329
+      spriteID: d42a4ea428cced340b2c9fe1e423ea4e
+      internalID: -1188931284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_40
+      name: tile_version_6.0 SIN SUELO_38
       rect:
         serializedVersion: 2
         x: 960
@@ -1007,14 +963,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ae5852036125be47898f314cbe4f344
-      internalID: -1108368036
+      spriteID: a6b54747f0189f443966beb34a1c9acd
+      internalID: -384890591
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_41
+      name: tile_version_6.0 SIN SUELO_39
       rect:
         serializedVersion: 2
         x: 1056
@@ -1029,14 +985,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59aa16863af9f244d895ddf6ac1742c8
-      internalID: 1858777489
+      spriteID: f5ab0cbf46d0fcc43bfea1c8f62e3fea
+      internalID: -194402329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_42
+      name: tile_version_6.0 SIN SUELO_40
       rect:
         serializedVersion: 2
         x: 1152
@@ -1051,14 +1007,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed9ec77ebf1923b49bea89bb49d95af7
-      internalID: 1650202292
+      spriteID: 0de633a7f2b940a48a933f3209a8b5d0
+      internalID: -1108368036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_43
+      name: tile_version_6.0 SIN SUELO_41
       rect:
         serializedVersion: 2
         x: 1248
@@ -1073,14 +1029,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44019fde47af2f54d82b140c5655e952
-      internalID: 914652876
+      spriteID: fff8b5425ddc0a645acbdd58977bd61a
+      internalID: 1858777489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_44
+      name: tile_version_6.0 SIN SUELO_42
       rect:
         serializedVersion: 2
         x: 1344
@@ -1095,14 +1051,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c64367401e25424faf400954311d65b
-      internalID: 240184318
+      spriteID: 026cb2477bb0a414bab61624cd388c87
+      internalID: 1650202292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_45
+      name: tile_version_6.0 SIN SUELO_43
       rect:
         serializedVersion: 2
         x: 1440
@@ -1117,14 +1073,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9eabc732d616e2f438734081e40c92fe
-      internalID: 488292433
+      spriteID: 6f9699d6e493bb644853c964c403da95
+      internalID: 914652876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_46
+      name: tile_version_6.0 SIN SUELO_44
       rect:
         serializedVersion: 2
         x: 1536
@@ -1139,14 +1095,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2186bf005f4681e4dac86139aa4415be
-      internalID: -1361918708
+      spriteID: b24bebdac99a82b468aad993176aa39b
+      internalID: 240184318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_47
+      name: tile_version_6.0 SIN SUELO_45
       rect:
         serializedVersion: 2
         x: 0
@@ -1161,14 +1117,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6f1bcb98b06aa149905c8b3318fc9f5
-      internalID: -963051815
+      spriteID: d2a1eb33d78be9846b3e822fd942a3b2
+      internalID: 488292433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_48
+      name: tile_version_6.0 SIN SUELO_46
       rect:
         serializedVersion: 2
         x: 96
@@ -1183,14 +1139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7810b9bd9793ef4b98b9304e1ddbbf6
-      internalID: 421412426
+      spriteID: fb6c239b7a833fc4aa663b00439032ae
+      internalID: -1361918708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_49
+      name: tile_version_6.0 SIN SUELO_47
       rect:
         serializedVersion: 2
         x: 192
@@ -1205,14 +1161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 633dc4a034d314148b7b08c58f4be9c2
-      internalID: 403915797
+      spriteID: 8caa61b43bbe2d94a85b17ea25db0b3f
+      internalID: -963051815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_50
+      name: tile_version_6.0 SIN SUELO_48
       rect:
         serializedVersion: 2
         x: 288
@@ -1227,14 +1183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 226d0c9ca4ef43042901f1784c714ff4
-      internalID: -1275474690
+      spriteID: 9aeee6b65fb1fc5468881e728ea02438
+      internalID: 421412426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_51
+      name: tile_version_6.0 SIN SUELO_49
       rect:
         serializedVersion: 2
         x: 384
@@ -1249,14 +1205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5641b59f50130b04da75adc0fa38a885
-      internalID: -1253499510
+      spriteID: e1ad6b3384e371f47b28c7c05a7bb23a
+      internalID: 403915797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_52
+      name: tile_version_6.0 SIN SUELO_50
       rect:
         serializedVersion: 2
         x: 480
@@ -1271,7 +1227,51 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4adb40d3a16aa1449f921cd4c000578
+      spriteID: bc233cc8989caa64f8cc1c912667b966
+      internalID: -1275474690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_version_6.0 SIN SUELO_51
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 784
+        width: 96
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 437e2176e9d3928438bd760f1c087366
+      internalID: -1253499510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_version_6.0 SIN SUELO_52
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 784
+        width: 96
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8abdda2c0a540498eb897007ebe256
       internalID: -1305578299
       vertices: []
       indices: 
@@ -1281,7 +1281,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_53
       rect:
         serializedVersion: 2
-        x: 672
+        x: 864
         y: 784
         width: 96
         height: 112
@@ -1293,7 +1293,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31acd0be3934ff64fbbf6776b63d37e1
+      spriteID: 72526d39b9394964e8789dc3a689ad29
       internalID: -134687804
       vertices: []
       indices: 
@@ -1303,7 +1303,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_54
       rect:
         serializedVersion: 2
-        x: 768
+        x: 960
         y: 784
         width: 96
         height: 112
@@ -1315,7 +1315,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4981395f637eccc4488569b85aaacb7c
+      spriteID: cd514e0c568da0d4fb1f7ed8b307e506
       internalID: 620513427
       vertices: []
       indices: 
@@ -1325,7 +1325,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_55
       rect:
         serializedVersion: 2
-        x: 864
+        x: 1536
         y: 784
         width: 96
         height: 112
@@ -1337,7 +1337,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0926a9bafafb69541a5057f05f4c835e
+      spriteID: 633261dd1ea96c948a8efa217390a8df
       internalID: -1584261793
       vertices: []
       indices: 
@@ -1347,7 +1347,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_56
       rect:
         serializedVersion: 2
-        x: 960
+        x: 1632
         y: 784
         width: 96
         height: 112
@@ -1359,7 +1359,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80e94b1f1e8ef6040a6d67cd4d7bb384
+      spriteID: 1ec93ea65c6e10a4ba38ab11e17f5f37
       internalID: 1138421125
       vertices: []
       indices: 
@@ -1369,7 +1369,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_57
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1728
         y: 784
         width: 96
         height: 112
@@ -1381,7 +1381,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5efb19eadbaa8694ab9beae1b382a900
+      spriteID: 7791edd239fd71342b2db9c38aa8b8dd
       internalID: 892916069
       vertices: []
       indices: 
@@ -1391,50 +1391,6 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_58
       rect:
         serializedVersion: 2
-        x: 1632
-        y: 784
-        width: 96
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 443e85af62c3b204980c76d6534f71cf
-      internalID: -284905486
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_59
-      rect:
-        serializedVersion: 2
-        x: 1728
-        y: 784
-        width: 96
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34be22adf69e8fc44b2e0b251fbc5de5
-      internalID: 890077789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_60
-      rect:
-        serializedVersion: 2
         x: 1824
         y: 784
         width: 96
@@ -1447,14 +1403,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f386f1b93ff0a084b8a81cb9948a4cff
-      internalID: 1551430022
+      spriteID: df7b199cb2e98e0469d80be4a91f8463
+      internalID: -284905486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_61
+      name: tile_version_6.0 SIN SUELO_59
       rect:
         serializedVersion: 2
         x: 672
@@ -1469,14 +1425,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcb56f98f5e117d46885976ee6fbb105
-      internalID: -558766538
+      spriteID: 8bb1918bb6c7158478d38627413be5b1
+      internalID: 890077789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_62
+      name: tile_version_6.0 SIN SUELO_60
       rect:
         serializedVersion: 2
         x: 1152
@@ -1491,14 +1447,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ee0635db0ed4fe459c5be222eac9303
-      internalID: -247601496
+      spriteID: 0aa527a6742c53047ac6d881fbd4338e
+      internalID: 1551430022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_63
+      name: tile_version_6.0 SIN SUELO_61
       rect:
         serializedVersion: 2
         x: 1440
@@ -1513,14 +1469,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00c3c8bc9cd14354c98b45ea676ff711
-      internalID: 162237923
+      spriteID: a68b26aa6bfd05a449806772ce6fd1d4
+      internalID: -558766538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_64
+      name: tile_version_6.0 SIN SUELO_62
       rect:
         serializedVersion: 2
         x: 1536
@@ -1535,14 +1491,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 494635d6c1a84b24c914900c1856922c
-      internalID: -932857003
+      spriteID: 6a1c733f333860841804bb3b38f30df1
+      internalID: -247601496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_65
+      name: tile_version_6.0 SIN SUELO_63
       rect:
         serializedVersion: 2
         x: 1632
@@ -1557,14 +1513,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c36f908e3e74a3e4fb48166916ab667c
-      internalID: 191006477
+      spriteID: 653a622567263ce40a6e11853eeee69d
+      internalID: 162237923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_66
+      name: tile_version_6.0 SIN SUELO_64
       rect:
         serializedVersion: 2
         x: 1824
@@ -1579,14 +1535,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a272bca51dd9d446bac0392c46c2f30
-      internalID: 1771760236
+      spriteID: 88ce016390f01f843991f09566abf2f0
+      internalID: -932857003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_67
+      name: tile_version_6.0 SIN SUELO_65
       rect:
         serializedVersion: 2
         x: 0
@@ -1601,14 +1557,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 353fed76fc5d40e478f1e0d25069566d
-      internalID: -1401564266
+      spriteID: f781cfc5ae6527d42927df80b2c0183d
+      internalID: 191006477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_68
+      name: tile_version_6.0 SIN SUELO_66
       rect:
         serializedVersion: 2
         x: 96
@@ -1623,14 +1579,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0be77826509a8a245a0249e389892cc2
-      internalID: 829915356
+      spriteID: bed0a203ca261444a83053727d02be83
+      internalID: 1771760236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_69
+      name: tile_version_6.0 SIN SUELO_67
       rect:
         serializedVersion: 2
         x: 192
@@ -1645,14 +1601,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34d65fd734c084249bf0e07e595926e9
-      internalID: 628090140
+      spriteID: 41dcfda6a8143d34cac930742108d7d5
+      internalID: -1401564266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_70
+      name: tile_version_6.0 SIN SUELO_68
       rect:
         serializedVersion: 2
         x: 672
@@ -1667,14 +1623,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6be8c6610e74a34db742349cf2dd8d2
-      internalID: -1855281138
+      spriteID: bf02d04f999b1aa4c84d7193bd03d5a2
+      internalID: 829915356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_71
+      name: tile_version_6.0 SIN SUELO_69
       rect:
         serializedVersion: 2
         x: 768
@@ -1689,14 +1645,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42b376cc227166e4dbe9f7c88fbc291d
-      internalID: 1011784095
+      spriteID: 738b883470633b14ba428f87fb5d59a9
+      internalID: 628090140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_72
+      name: tile_version_6.0 SIN SUELO_70
       rect:
         serializedVersion: 2
         x: 864
@@ -1711,14 +1667,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb4ebf03836ff624cba4fde997f6c6b3
-      internalID: -1806354962
+      spriteID: 0135fd176776f2f45a10608cbb105bc5
+      internalID: -1855281138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_73
+      name: tile_version_6.0 SIN SUELO_71
       rect:
         serializedVersion: 2
         x: 960
@@ -1733,14 +1689,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aeaea018281b20a448ce4eae542371a9
-      internalID: 519379537
+      spriteID: feb2aab4977caa94db7a88f1a82cec7b
+      internalID: 1011784095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_74
+      name: tile_version_6.0 SIN SUELO_72
       rect:
         serializedVersion: 2
         x: 1056
@@ -1755,14 +1711,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b3fa8c78aa90ac4aa98f6e420211704
-      internalID: -2111001540
+      spriteID: f58639803f10d2341b49a38c0cf4f355
+      internalID: -1806354962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_75
+      name: tile_version_6.0 SIN SUELO_73
       rect:
         serializedVersion: 2
         x: 1152
@@ -1777,14 +1733,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f628084e6d93aa544af43db820746808
-      internalID: -777848877
+      spriteID: 8c6c6ce726d766248a382503052b8e57
+      internalID: 519379537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_76
+      name: tile_version_6.0 SIN SUELO_74
       rect:
         serializedVersion: 2
         x: 1248
@@ -1799,14 +1755,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f4e061c9ec276041826687d30745ac9
-      internalID: 1130287927
+      spriteID: 407079ab3717e724eae6da8a37a73fff
+      internalID: -2111001540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_77
+      name: tile_version_6.0 SIN SUELO_75
       rect:
         serializedVersion: 2
         x: 1344
@@ -1821,14 +1777,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed55c20779e3aa345ab443a2332ff636
-      internalID: 1058374507
+      spriteID: c02bda49c5053cd47b3d41c735d3685d
+      internalID: -777848877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_78
+      name: tile_version_6.0 SIN SUELO_76
       rect:
         serializedVersion: 2
         x: 1440
@@ -1843,14 +1799,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b755004423ffd9499741d18c4232efa
-      internalID: -222691680
+      spriteID: c23a3374f685d1b459c68b73414e609a
+      internalID: 1130287927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_79
+      name: tile_version_6.0 SIN SUELO_77
       rect:
         serializedVersion: 2
         x: 1632
@@ -1865,14 +1821,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c890f2954b8c7b747894599e1153edca
-      internalID: 1133298514
+      spriteID: b073e7181942fb44db832a3c4153315f
+      internalID: 1058374507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_80
+      name: tile_version_6.0 SIN SUELO_78
       rect:
         serializedVersion: 2
         x: 1728
@@ -1887,14 +1843,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a88610e312867984b8aea6a59a6f7191
-      internalID: -387091211
+      spriteID: df0601cc8ef7f11499199b5e9317f4b0
+      internalID: -222691680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_81
+      name: tile_version_6.0 SIN SUELO_79
       rect:
         serializedVersion: 2
         x: 1824
@@ -1909,7 +1865,51 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56c6ff0b6a0fa0144ba7f87267a4bb06
+      spriteID: e72c737315349fe46b4ec0a421fe4b8b
+      internalID: 1133298514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_version_6.0 SIN SUELO_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 96
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 646645bb81e08ba4f8a03328f4b5b4f9
+      internalID: -387091211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_version_6.0 SIN SUELO_81
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 96
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6666e4c153969024ebb08cb8fe4e28ed
       internalID: 217022037
       vertices: []
       indices: 
@@ -1919,7 +1919,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_82
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1344
         y: 448
         width: 96
         height: 112
@@ -1931,7 +1931,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5238d9ea92478fa4986b6f3c21329551
+      spriteID: 6342399acb2ced54c937313b39527fb5
       internalID: 1681102655
       vertices: []
       indices: 
@@ -1941,8 +1941,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_83
       rect:
         serializedVersion: 2
-        x: 192
-        y: 448
+        x: 0
+        y: 336
         width: 96
         height: 112
       alignment: 0
@@ -1953,7 +1953,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a76ba629b827ad64c939a6b03d29259b
+      spriteID: 3916fcc56464606479e1bfdbf431f264
       internalID: -221828746
       vertices: []
       indices: 
@@ -1963,8 +1963,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_84
       rect:
         serializedVersion: 2
-        x: 384
-        y: 448
+        x: 96
+        y: 336
         width: 96
         height: 112
       alignment: 0
@@ -1975,7 +1975,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb1b413d525962b41b2c8db458c92295
+      spriteID: ab8c99894a0b0e54b858c08181a75db6
       internalID: -230263855
       vertices: []
       indices: 
@@ -1985,8 +1985,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_85
       rect:
         serializedVersion: 2
-        x: 1344
-        y: 448
+        x: 192
+        y: 336
         width: 96
         height: 112
       alignment: 0
@@ -1997,7 +1997,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3155716374fbc4149a98c895301693f7
+      spriteID: 631c64d14f9cbc9469afe5cd9fbd30d0
       internalID: -1395423354
       vertices: []
       indices: 
@@ -2007,7 +2007,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_86
       rect:
         serializedVersion: 2
-        x: 0
+        x: 864
         y: 336
         width: 96
         height: 112
@@ -2019,7 +2019,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 746d1ee890841cd4f93cb4d39fc095a1
+      spriteID: 2e9cd19b1708e7c4aa23d11e70c65a89
       internalID: 963894664
       vertices: []
       indices: 
@@ -2029,7 +2029,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_87
       rect:
         serializedVersion: 2
-        x: 96
+        x: 960
         y: 336
         width: 96
         height: 112
@@ -2041,7 +2041,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e09bbee18c8f4e40a26fae6e41f1372
+      spriteID: 0e12b30079d5e7f4293083f949c927d9
       internalID: -1896379558
       vertices: []
       indices: 
@@ -2051,7 +2051,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_88
       rect:
         serializedVersion: 2
-        x: 192
+        x: 1056
         y: 336
         width: 96
         height: 112
@@ -2063,7 +2063,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe461ae3f3909b24c88a33f43ff72862
+      spriteID: 307d5bb77f5affa4a831708fa5faf19f
       internalID: -666403053
       vertices: []
       indices: 
@@ -2073,8 +2073,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_89
       rect:
         serializedVersion: 2
-        x: 864
-        y: 336
+        x: 96
+        y: 224
         width: 96
         height: 112
       alignment: 0
@@ -2085,7 +2085,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bf51bd33ce9c074fa78e442876005c2
+      spriteID: 5680232594029fa46a461fa300304553
       internalID: 1827310809
       vertices: []
       indices: 
@@ -2095,8 +2095,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_90
       rect:
         serializedVersion: 2
-        x: 960
-        y: 336
+        x: 576
+        y: 224
         width: 96
         height: 112
       alignment: 0
@@ -2107,7 +2107,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e614155a9528f7540af4d16a38da9ca1
+      spriteID: d4c1382ed3681dc459cae487eaba17a3
       internalID: 383285316
       vertices: []
       indices: 
@@ -2117,8 +2117,8 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_91
       rect:
         serializedVersion: 2
-        x: 1056
-        y: 336
+        x: 672
+        y: 224
         width: 96
         height: 112
       alignment: 0
@@ -2129,7 +2129,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1147160b1e507ea4a8d3225f3b5ce28a
+      spriteID: f693ab7193a9236429e09b8c93306dbd
       internalID: 1326750205
       vertices: []
       indices: 
@@ -2139,7 +2139,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_92
       rect:
         serializedVersion: 2
-        x: 96
+        x: 768
         y: 224
         width: 96
         height: 112
@@ -2151,7 +2151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cad0bbf7873344b4197f371457b25e07
+      spriteID: f97070fc3a358c149bad5f6f13e33065
       internalID: 816627668
       vertices: []
       indices: 
@@ -2161,7 +2161,7 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_93
       rect:
         serializedVersion: 2
-        x: 576
+        x: 864
         y: 224
         width: 96
         height: 112
@@ -2173,7 +2173,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bfd1c5889cea894eace57f113787187
+      spriteID: 89c28ed9bd303e24e9df89df90528ec1
       internalID: 392293816
       vertices: []
       indices: 
@@ -2183,72 +2183,6 @@ TextureImporter:
       name: tile_version_6.0 SIN SUELO_94
       rect:
         serializedVersion: 2
-        x: 672
-        y: 224
-        width: 96
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1a73382e12d3c847be45e93cfadfb38
-      internalID: -811405344
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_95
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 224
-        width: 96
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 691c6ebfae43b144bbbf46f9da9962fe
-      internalID: -1460204546
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_96
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 224
-        width: 96
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d6b79879855e5154aa95aeea37e240c0
-      internalID: -1304730056
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_97
-      rect:
-        serializedVersion: 2
         x: 1056
         y: 224
         width: 96
@@ -2261,14 +2195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f74c9e88eb20c8d47a748e006cc98bb7
-      internalID: 953190832
+      spriteID: d10d23f55c5b17a45a33afa654999f7a
+      internalID: -811405344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_98
+      name: tile_version_6.0 SIN SUELO_95
       rect:
         serializedVersion: 2
         x: 1152
@@ -2283,14 +2217,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52d2a0e6116b1234588791058326399f
-      internalID: -1478228727
+      spriteID: cf255ea4aad1b744189d2333d780d1c4
+      internalID: -1460204546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_99
+      name: tile_version_6.0 SIN SUELO_96
       rect:
         serializedVersion: 2
         x: 1248
@@ -2305,14 +2239,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 306cbe21e4cb3db49b6cc40d05a7559d
-      internalID: -2066290516
+      spriteID: 552522e04db0b2949bec60e049dcc933
+      internalID: -1304730056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_100
+      name: tile_version_6.0 SIN SUELO_97
       rect:
         serializedVersion: 2
         x: 1344
@@ -2327,14 +2261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d3fa0dcee18ef041b3adf1cf9b43785
-      internalID: 909925295
+      spriteID: 3269236193fc91046b20382df346cb16
+      internalID: 953190832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_101
+      name: tile_version_6.0 SIN SUELO_98
       rect:
         serializedVersion: 2
         x: 0
@@ -2349,14 +2283,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 876c7805f8f16cb41b2e7e3715ca115a
-      internalID: 1013454211
+      spriteID: a8e83165091facf4b9607017c825ada5
+      internalID: -1478228727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_102
+      name: tile_version_6.0 SIN SUELO_99
       rect:
         serializedVersion: 2
         x: 96
@@ -2371,14 +2305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db52861fc9dbefd4db11ac631c253dfc
-      internalID: -363241459
+      spriteID: 66d9edaefabf5ff40b496edbec01da49
+      internalID: -2066290516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_103
+      name: tile_version_6.0 SIN SUELO_100
       rect:
         serializedVersion: 2
         x: 192
@@ -2393,14 +2327,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f5d3c7fd276975498cbeeb7ef7bd353
-      internalID: 723403892
+      spriteID: 5913bcb88de7a8648aca92321314b5ed
+      internalID: 909925295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_104
+      name: tile_version_6.0 SIN SUELO_101
       rect:
         serializedVersion: 2
         x: 576
@@ -2415,14 +2349,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 395b01ccec2140a419182c2d40eb4a10
-      internalID: -1345860768
+      spriteID: 23b016d6baa52e844b014dd9d19d6a28
+      internalID: 1013454211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_105
+      name: tile_version_6.0 SIN SUELO_102
       rect:
         serializedVersion: 2
         x: 672
@@ -2437,14 +2371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b401573ed61f83469e40bddcb297c32
-      internalID: 378881313
+      spriteID: 4acad247c3fa6194791c0c7f60101fe4
+      internalID: -363241459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_106
+      name: tile_version_6.0 SIN SUELO_103
       rect:
         serializedVersion: 2
         x: 768
@@ -2459,14 +2393,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7be5561ef40e3dd4783621a0220fe42c
-      internalID: -1203457739
+      spriteID: 3eda1c3d627cbe24f98e6e4c7ad54192
+      internalID: 723403892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_107
+      name: tile_version_6.0 SIN SUELO_104
       rect:
         serializedVersion: 2
         x: 864
@@ -2481,14 +2415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 576b39928f2b03046a6c505597691ffe
-      internalID: 1966969934
+      spriteID: 9ca830869cd27db4385ffc17792f64ff
+      internalID: -1345860768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_108
+      name: tile_version_6.0 SIN SUELO_105
       rect:
         serializedVersion: 2
         x: 1056
@@ -2503,14 +2437,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 370d804b561ebc04fb8fe50f8c93d304
-      internalID: -962037767
+      spriteID: 5e9f418610363144aa020b2e338499f6
+      internalID: 378881313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_109
+      name: tile_version_6.0 SIN SUELO_106
       rect:
         serializedVersion: 2
         x: 1152
@@ -2525,14 +2459,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aee97d84299c5874eabbf15b0bf522de
-      internalID: -2116445130
+      spriteID: 5f92322affa66cf45b46723d78e225ef
+      internalID: -1203457739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_110
+      name: tile_version_6.0 SIN SUELO_107
       rect:
         serializedVersion: 2
         x: 1248
@@ -2547,14 +2481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97d92b48df8cc03449035086c79d601f
-      internalID: -1654237056
+      spriteID: 79e56523134d5d24ea75805d7c177d3e
+      internalID: 1966969934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_111
+      name: tile_version_6.0 SIN SUELO_108
       rect:
         serializedVersion: 2
         x: 1344
@@ -2569,14 +2503,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29df752e604d1064185dec1c6cb5f4b6
-      internalID: -631947105
+      spriteID: f179660a33441f840b19a3d78e013be3
+      internalID: -962037767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_112
+      name: tile_version_6.0 SIN SUELO_109
       rect:
         serializedVersion: 2
         x: 0
@@ -2591,14 +2525,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20de8bce515a02044a46efa02cb95de7
-      internalID: 1765676537
+      spriteID: eaecafb8a00e40e45b79c0ecce47261b
+      internalID: -2116445130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_113
+      name: tile_version_6.0 SIN SUELO_110
       rect:
         serializedVersion: 2
         x: 96
@@ -2613,14 +2547,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d3c3e61b590b954f9e2cd19dcc60cfa
-      internalID: 794671185
+      spriteID: 015468a10248e7948a7e969eb558e949
+      internalID: -1654237056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_114
+      name: tile_version_6.0 SIN SUELO_111
       rect:
         serializedVersion: 2
         x: 192
@@ -2635,14 +2569,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b76f3cdb7ca28041a5cfd390aeac780
-      internalID: 904898307
+      spriteID: 30b069f49a46ba240a22c28a1d95f45c
+      internalID: -631947105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_115
+      name: tile_version_6.0 SIN SUELO_112
       rect:
         serializedVersion: 2
         x: 864
@@ -2657,14 +2591,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 777827de298639e4cbe647625ce69dda
-      internalID: 1703945312
+      spriteID: 31f668dd5e370f147be24d6e60f6baeb
+      internalID: 1765676537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_116
+      name: tile_version_6.0 SIN SUELO_113
       rect:
         serializedVersion: 2
         x: 960
@@ -2679,14 +2613,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 722cb487dc50005499a757056d5998b8
-      internalID: 34202669
+      spriteID: b56b7bcb1e0fad247a59cb37451122f4
+      internalID: 794671185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_version_6.0 SIN SUELO_117
+      name: tile_version_6.0 SIN SUELO_114
       rect:
         serializedVersion: 2
         x: 1056
@@ -2701,8 +2635,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ceb0ef7bd699b446adf90ac164c5887
-      internalID: -1132938735
+      spriteID: ec610c100302f3e49a895ae615b1e7ae
+      internalID: 904898307
       vertices: []
       indices: 
       edges: []
@@ -2744,9 +2678,6 @@ TextureImporter:
       tile_version_6.0 SIN SUELO_112: 1765676537
       tile_version_6.0 SIN SUELO_113: 794671185
       tile_version_6.0 SIN SUELO_114: 904898307
-      tile_version_6.0 SIN SUELO_115: 1703945312
-      tile_version_6.0 SIN SUELO_116: 34202669
-      tile_version_6.0 SIN SUELO_117: -1132938735
       tile_version_6.0 SIN SUELO_12: 2030559597
       tile_version_6.0 SIN SUELO_13: 173703564
       tile_version_6.0 SIN SUELO_14: 164914162
