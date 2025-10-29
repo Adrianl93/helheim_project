@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Mainmenu.cs" />
     <Compile Include="Assets\Scripts\Triggers\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\PickUps\AttackBoost.cs" />
+    <Compile Include="Assets\Scripts\Triggers\MagicDoor.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerHealthUI.cs" />
   </ItemGroup>
   <ItemGroup>
