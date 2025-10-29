@@ -131,10 +131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (16)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 240.7
@@ -175,8 +171,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -197,10 +192,6 @@ PrefabInstance:
     - target: {fileID: 1684512745301986786, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_Name
       value: Tomb Open (17)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -242,8 +233,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -411,10 +401,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 250.6
@@ -455,8 +441,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6054,10 +6039,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (12)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 240.6
@@ -6098,8 +6079,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6903,10 +6883,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 198.99
@@ -6947,8 +6923,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7173,10 +7148,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 210
@@ -7217,8 +7188,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7302,10 +7272,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 222.1
@@ -7346,8 +7312,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8194,10 +8159,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 241.4
@@ -8238,8 +8199,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14601,10 +14561,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (15)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 225.3
@@ -14645,8 +14601,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14743,10 +14698,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 251.2
@@ -14787,8 +14738,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -15653,10 +15603,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 167.64996
@@ -15697,8 +15643,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -16181,10 +16126,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (11)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 167.3
@@ -16225,8 +16166,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -16472,10 +16412,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 247.6
@@ -16516,8 +16452,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -17794,10 +17729,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 198.85
@@ -17838,8 +17769,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -18103,10 +18033,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (13)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 234.9
@@ -18147,8 +18073,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -28046,10 +27971,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 167.3
@@ -28090,8 +28011,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -28300,10 +28220,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open (14)
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 215.3
@@ -28344,8 +28260,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -28966,10 +28881,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomb Open
       objectReference: {fileID: 0}
-    - target: {fileID: 1878893281642728705, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2549758383261165306, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 198.99998
@@ -29010,8 +28921,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2920221789973526818, guid: 125849b0e98b2da4c82962e172b3f30f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -29027,10 +28937,6 @@ PrefabInstance:
     - target: {fileID: 1149642879693361646, guid: 2c6a8ec5780f9fa499f6270076afc1f5, type: 3}
       propertyPath: m_Name
       value: Tomb Closed
-      objectReference: {fileID: 0}
-    - target: {fileID: 2231579426692233978, guid: 2c6a8ec5780f9fa499f6270076afc1f5, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5766275536732133709, guid: 2c6a8ec5780f9fa499f6270076afc1f5, type: 3}
       propertyPath: m_LocalPosition.x
