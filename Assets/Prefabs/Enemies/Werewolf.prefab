@@ -247,17 +247,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.008026242, y: -0.004339218}
+  m_Offset: {x: -0.008026242, y: -0.16641235}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 5.5333333}
+    pivot: {x: 0.43336666, y: 0.5309083}
+    oldSize: {x: 2.9333334, y: 5.5333333}
     newSize: {x: 1.5, y: 1.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.201742, y: 2.728794}
+  m_Size: {x: 2.201742, y: 5.581238}
   m_EdgeRadius: 0
 --- !u!114 &938217993555073592
 MonoBehaviour:
@@ -274,9 +274,11 @@ MonoBehaviour:
   enemyType: 0
   health: 50
   armor: 2
-  meleeDamage: 10
+  meleeDamage: 12
   rangedDamage: 0
   speed: 11
+  rewardScore: 200
+  knockbackForce: 50
   detectionRadius: 15
   meleeRadius: 3.5
   meleeCooldown: 1.5
@@ -287,25 +289,31 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   projectileSpeed: 10
   burstMultiplier: 2
-  rewardScore: 200
-  knockbackForce: 50
+  rangedBurstInterval: 15
+  burstProjectileCount: 8
+  burstPauseDuration: 1
+  meleeHitboxPrefab: {fileID: 8345104391409692722, guid: 61635601529876146b32bedaeed294a5, type: 3}
+  meleeHitboxDuration: 0.1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  meleeDistance: 0.8
+  meleeOffsetY: 0.5
+  meleeOffsetDiagonal: 0.2
   enragedDuration: 5
   meleeAttackSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
   meleeSoundVolume: 1
   deathSound: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
   deathSoundVolume: 1
-  minManaReward: 3
-  maxManaReward: 6
-  rangedBurstInterval: 15
-  burstProjectileCount: 8
-  burstPauseDuration: 1
-  animator: {fileID: 5736825264741776231}
+  minManaReward: 6
+  maxManaReward: 8
   damagePopupPrefab: {fileID: 4748611389434153029, guid: 52c42afc98ef69543aefdacac0d05a33, type: 3}
   manaPopupPrefab: {fileID: 5912721023921850787, guid: ba5bf45ac2318de4bbc0d73ca2914e66, type: 3}
   healthBarPrefab: {fileID: 5791407845845436287, guid: 1a5b6fcedc36a8f43bf4e3d1780b276b, type: 3}
-  healthBarOffset: {x: 0, y: 1.2, z: 0}
+  healthBarOffset: {x: 0, y: 3, z: 0}
   damagePopupOffset: {x: 1, y: 1.5, z: 0}
   manaPopupOffset: {x: 1.2, y: 0.5, z: 0}
+  animator: {fileID: 5736825264741776231}
 --- !u!195 &2549328079066092930
 NavMeshAgent:
   m_ObjectHideFlags: 0

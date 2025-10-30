@@ -78,7 +78,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8628513785700298376, guid: 2865e041bf16bd04488ddf1a990ea9b4, type: 3}
       propertyPath: rangedDamage
-      value: 10
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628513785700298376, guid: 2865e041bf16bd04488ddf1a990ea9b4, type: 3}
+      propertyPath: maxManaReward
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628513785700298376, guid: 2865e041bf16bd04488ddf1a990ea9b4, type: 3}
+      propertyPath: minManaReward
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8628513785700298376, guid: 2865e041bf16bd04488ddf1a990ea9b4, type: 3}
       propertyPath: detectionRadius

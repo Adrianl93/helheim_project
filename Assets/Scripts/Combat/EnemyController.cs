@@ -7,68 +7,72 @@ public class EnemyController : MonoBehaviour
 {
     public enum EnemyType { Melee, Ranged, Boss }
 
+    [Header("Tipo y stats base")]
     [SerializeField] private EnemyType enemyType = EnemyType.Melee;
     private Transform player;
-
     [SerializeField] private int health = 50;
     private int maxHealth;
     [SerializeField] private int armor = 2;
     [SerializeField] private int meleeDamage = 10;
     [SerializeField] private int rangedDamage = 8;
     [SerializeField] private float speed = 2f;
+    [SerializeField] private int rewardScore = 1000;
+    [SerializeField] private float knockbackForce;
 
+    [Header("Detección y rangos")]
     [SerializeField] private float detectionRadius = 5f;
     [SerializeField] private float meleeRadius = 1.5f;
     [SerializeField] private float meleeCooldown = 1.5f;
     [SerializeField] private float rangedCooldown = 2f;
     [SerializeField] private float rangedAttackRange = 8f;
     [SerializeField] private float minRangedDistance = 4f;
+
+    [Header("Proyectiles y ataque a distancia")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private float burstMultiplier = 2f;
-    [SerializeField] private int rewardScore = 1000;
-    [SerializeField] private float knockbackForce;
+    [SerializeField] private float rangedBurstInterval = 8f;
+    [SerializeField] private int burstProjectileCount = 6;
+    [SerializeField] private float burstPauseDuration = 8f;
 
-   [SerializeField] private float enragedDuration = 5f;
+    [Header("Ataque cuerpo a cuerpo")]
+    [SerializeField] private GameObject meleeHitboxPrefab;
+    [SerializeField] private float meleeHitboxDuration = 0.3f;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private float meleeDistance = 0.8f;
+    [SerializeField] private float meleeOffsetY = 0.5f;
+    [SerializeField] private float meleeOffsetDiagonal = 0.2f;
+
+    [Header("Estados y temporizadores")]
+    [SerializeField] private float enragedDuration = 5f;
     private bool isDead = false;
-
-    private NavMeshAgent agent;
-    private Vector2 movement;
     private float lastMeleeAttackTime = -1f;
     private float lastRangedAttackTime = 0f;
-
     private float originalDetectionRadius;
     private float enragedTimer = 0f;
+    private float rangedBurstTimer = 0f;
+    private bool playerDetected = false;
+    private bool hasTriggeredEnragement = false;
+    private bool isBursting = false;
+    private Coroutine enragementCheckRoutine;
+    private Coroutine burstRoutine;
 
-    public int Armor => armor;
-    public int CurrentHealth => health;
+    [Header("Referencias")]
+    private NavMeshAgent agent;
+    private Vector2 movement;
     private EnemyType currentAttackMode;
+    private Vector2 lastMoveDir = Vector2.down;
 
+    [Header("Audio")]
     [SerializeField] private AudioClip meleeAttackSound;
     [SerializeField] private float meleeSoundVolume = 1f;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private float deathSoundVolume = 1f;
 
+    [Header("Recompensas")]
     [SerializeField] private int minManaReward = 3;
     [SerializeField] private int maxManaReward = 5;
-
-
-    [SerializeField] private float rangedBurstInterval = 8f;
-    [SerializeField] private int burstProjectileCount = 6; 
-    private float rangedBurstTimer = 0f;
-    private bool playerDetected = false;
-
-    private bool hasTriggeredEnragement = false;
-    private bool isBursting = false;
-    [SerializeField] private float burstPauseDuration = 8f;
-
-    private Coroutine enragementCheckRoutine;
-    private Coroutine burstRoutine; // tiempo entre rafagas (burst)
-
-    [Header("Animaciones")]
-    [SerializeField] private Animator animator;
-    private Vector2 lastMoveDir = Vector2.down;
 
     [Header("UI de vida de enemigos")]
     [SerializeField] private GameObject damagePopupPrefab;
@@ -81,6 +85,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Vector3 damagePopupOffset = new Vector3(0f, 1.5f, 0f);
     [SerializeField] private Vector3 manaPopupOffset = new Vector3(0f, 2f, 0f);
 
+    [Header("Animaciones")]
+    [SerializeField] private Animator animator;
+
+    [Header("Propiedades públicas")]
+    public int Armor => armor;
+    public int CurrentHealth => health;
     void Start()
     {
         // Crear la barra de vida
@@ -104,6 +114,7 @@ public class EnemyController : MonoBehaviour
                 else
                 {
                     healthBar.SetTarget(transform);
+                    healthBar.SetOffset(healthBarOffset);
                 }
 
                 // Asignamos cámara principal al Canvas del prefab
@@ -373,20 +384,15 @@ public class EnemyController : MonoBehaviour
     private void TryMeleeAttack()
     {
         if (player == null) return;
+        if (Time.time < lastMeleeAttackTime + meleeCooldown) return;
 
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        if (playerHealth != null && Time.time >= lastMeleeAttackTime + meleeCooldown)
-        {
-            lastMeleeAttackTime = Time.time;
+        lastMeleeAttackTime = Time.time;
 
-            if (animator != null)
-                animator.SetTrigger("AttackMelee");
+        if (animator != null)
+            animator.SetTrigger("AttackMelee");
 
-            playerHealth.TakeDamage(meleeDamage);
-
-            if (meleeAttackSound != null)
-                AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position, meleeSoundVolume);
-        }
+        // Iniciamos el ataque tras un pequeño retraso, sincronizado con la animación
+        StartCoroutine(PerformMeleeAttackDelayed(0.3f)); // ajusta según tu anim
     }
 
     private void TryRangedAttack()
@@ -630,6 +636,80 @@ public class EnemyController : MonoBehaviour
             Destroy(healthBarInstance);
 
         Destroy(gameObject);
+    }
+
+
+    private IEnumerator PerformMeleeAttackDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (player == null || meleeHitboxPrefab == null) yield break;
+
+        // normalizamos la dirección hacia el jugador para evitar puntos intermedios
+        Vector2 rawDir = (player.position - transform.position).normalized;
+
+        // array de direcciones cardinales y diagonales
+        Vector2[] directions = new Vector2[]
+        {
+        new Vector2(0, 1),   // N
+        new Vector2(1, 1),   // NE
+        new Vector2(1, 0),   // E
+        new Vector2(1, -1),  // SE
+        new Vector2(0, -1),  // S
+        new Vector2(-1, -1), // SW
+        new Vector2(-1, 0),  // W
+        new Vector2(-1, 1)   // NW
+        };
+
+        Vector2 dirToPlayer = directions[0];
+        float maxDot = -1f;
+
+        // Buscamos la dirección más cercana según el ángulo
+        foreach (var dir in directions)
+        {
+            float dot = Vector2.Dot(rawDir, dir.normalized);
+            if (dot > maxDot)
+            {
+                maxDot = dot;
+                dirToPlayer = dir.normalized;
+            }
+        }
+
+        lastMoveDir = dirToPlayer;
+
+        float xOffset = dirToPlayer.x * meleeDistance;
+        float yOffset = dirToPlayer.y * meleeDistance;
+
+        // offset vertical
+        if (Mathf.Abs(dirToPlayer.y) > 0.1f && Mathf.Abs(dirToPlayer.x) < 0.1f)
+            yOffset += dirToPlayer.y * meleeOffsetY;
+
+        // offset diagonal
+        else if (Mathf.Abs(dirToPlayer.x) > 0.1f && Mathf.Abs(dirToPlayer.y) > 0.1f)
+        {
+            xOffset += dirToPlayer.x * meleeOffsetDiagonal;
+            yOffset += dirToPlayer.y * meleeOffsetDiagonal;
+        }
+
+        Vector3 spawnPos = transform.position + new Vector3(xOffset, yOffset, 0f);
+
+        // se crea el hitbox
+        GameObject hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity, transform);
+        hitbox.transform.right = dirToPlayer;
+
+        AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
+        if (hitboxScript != null)
+        {
+            hitboxScript.Initialize(meleeDamage, playerLayer, transform.position);
+        }
+
+        if (meleeAttackSound != null)
+            AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position, meleeSoundVolume);
+
+        // destrucción automática tras duración
+        Destroy(hitbox, meleeHitboxDuration);
+
+        Debug.Log($"[EnemyController] {name} realizó un ataque melee hacia {dirToPlayer}");
     }
 
 

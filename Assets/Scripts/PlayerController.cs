@@ -1,47 +1,45 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.AI; 
+using UnityEngine.AI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    [Header("Movimiento")]
     [SerializeField] private float speed = 5f;
     [SerializeField] private Animator animator;
-
-   
     private NavMeshAgent agent;
-
     private PlayerInput playerInput;
     private Vector2 input;
     private Vector2 lastMoveDir = Vector2.right;
 
+    [Header("Ataque Melee")]
     [SerializeField] private GameObject meleeHitboxPrefab;
     [SerializeField] private float meleeDistance = 0.8f;
     [SerializeField] private int meleeAttackDamage = 15;
     [SerializeField] private float meleeAttackCooldown = 1f;
     [SerializeField] private float meleeOffsetY = 0.5f;
     [SerializeField] private float meleeOffsetDiagonal = 0.2f;
+    [SerializeField] private float meleeHitboxDuration = 0.2f; // <- duración configurable del hitbox
+    private float lastMeleeAttackTime = 0f;
 
+    [Header("Ataque a Distancia")]
     [SerializeField] private int rangedAttackDamage = 10;
     [SerializeField] private float rangedAttackCooldown = 1.5f;
     [SerializeField] private float projectileSpeed = 10f;
-
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
-
-    private float lastMeleeAttackTime = 0f;
     private float lastRangedAttackTime = 0f;
+    private bool rangedUnlocked = false;
 
-  
+    [Header("Mana y Recursos")]
     [SerializeField] private int coins = 0;
     [SerializeField] private int maxMana = 50;
     [SerializeField] private int currentMana = 25;
     [SerializeField] private int rangedManaCost = 5;
 
-    private bool rangedUnlocked = false;
-
+    [Header("Stats (Lectura)")]
     public int Coins => coins;
     public int CurrentMana => currentMana;
     public int MaxMana => maxMana;
@@ -50,7 +48,6 @@ public class PlayerController : MonoBehaviour
     public float MeleeAttackRadius => meleeDistance;
     public bool RangedUnlocked => rangedUnlocked;
 
- 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -87,7 +84,6 @@ public class PlayerController : MonoBehaviour
 
         if (input != Vector2.zero)
         {
-            
             lastMoveDir = input;
             animator.SetFloat("MoveX", input.x);
             animator.SetFloat("MoveY", input.y);
@@ -109,60 +105,97 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(MeleeAnimationRoutine());
         }
 
-     
         if (rangedUnlocked && playerInput.actions["Ranged"].triggered && Time.time >= lastRangedAttackTime + rangedAttackCooldown)
         {
             lastRangedAttackTime = Time.time;
             StartCoroutine(RangedAnimationRoutine());
         }
 
- 
         if (playerInput.actions["Interact"].triggered)
         {
             Interact();
         }
     }
 
-
     private void MeleeAttack()
     {
         if (animator != null)
             animator.SetTrigger("Attack");
 
-        // se calcula un offset segun la direccion del ataque
-        Vector2 normalizedDir = lastMoveDir.normalized;
-        float xOffset = normalizedDir.x * meleeDistance;
-        float yOffset = normalizedDir.y * meleeDistance;
+        // obtenemos direccion del mouse
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 attackDir = (mouseWorldPos - transform.position).normalized;
 
-        //  ataque vertical 
-        if (Mathf.Abs(normalizedDir.y) > 0.1f && Mathf.Abs(normalizedDir.x) < 0.1f)
+        // normalizamos la direccion del ataque para evitar puntos intermedios ( solo 8 direcciones)
+        Vector2[] directions = new Vector2[]
         {
-            // sumamos un offset extra en Y para no superponerse al player
-            yOffset += normalizedDir.y * meleeOffsetY;
+        Vector2.up,                        // Norte
+        new Vector2(1, 1).normalized,      // Noreste
+        Vector2.right,                     // Este
+        new Vector2(1, -1).normalized,     // Sudeste
+        Vector2.down,                      // Sur
+        new Vector2(-1, -1).normalized,    // Suroeste
+        Vector2.left,                      // Oeste
+        new Vector2(-1, 1).normalized      // Noroeste
+        };
+
+        // Elegimos la dirección más cercana (de las 8)
+        float maxDot = -Mathf.Infinity;
+        Vector2 snappedDir = Vector2.zero;
+
+        foreach (Vector2 dir in directions)
+        {
+            float dot = Vector2.Dot(attackDir, dir);
+            if (dot > maxDot)
+            {
+                maxDot = dot;
+                snappedDir = dir;
+            }
         }
 
-        // ataque diagonal (mueve tanto en X como en Y)
-        else if (Mathf.Abs(normalizedDir.x) > 0.1f && Mathf.Abs(normalizedDir.y) > 0.1f)
-        {
-            // sumamos un pequeño offset en ambas direcciones
-            xOffset += normalizedDir.x * meleeOffsetDiagonal;
-            yOffset += normalizedDir.y * meleeOffsetDiagonal;
-        }
+        attackDir = snappedDir;
 
-        // Instanciamos el hitbox
-        Vector3 spawnPos = transform.position + new Vector3(xOffset, yOffset, 0f);
+        // aplicamos un offset especifico segun cada una de las 8 direcciones
+        Vector3 offset = Vector3.zero;
+
+        if (attackDir == Vector2.up)
+            offset = new Vector3(0f, meleeDistance + meleeOffsetY, 0f);
+        else if (attackDir == Vector2.down)
+            offset = new Vector3(0f, -meleeDistance - meleeOffsetY, 0f);
+        else if (attackDir == Vector2.left)
+            offset = new Vector3(-meleeDistance - meleeOffsetDiagonal, 0f, 0f);
+        else if (attackDir == Vector2.right)
+            offset = new Vector3(meleeDistance + meleeOffsetDiagonal, 0f, 0f);
+        else if (attackDir == new Vector2(1, 1).normalized)
+            offset = new Vector3(meleeDistance + meleeOffsetDiagonal, meleeDistance + meleeOffsetDiagonal, 0f);
+        else if (attackDir == new Vector2(-1, 1).normalized)
+            offset = new Vector3(-meleeDistance - meleeOffsetDiagonal, meleeDistance + meleeOffsetDiagonal, 0f);
+        else if (attackDir == new Vector2(1, -1).normalized)
+            offset = new Vector3(meleeDistance + meleeOffsetDiagonal, -meleeDistance - meleeOffsetDiagonal, 0f);
+        else if (attackDir == new Vector2(-1, -1).normalized)
+            offset = new Vector3(-meleeDistance - meleeOffsetDiagonal, -meleeDistance - meleeOffsetDiagonal, 0f);
+
+        // creamos el hitbox
+        Vector3 spawnPos = transform.position + offset;
         GameObject hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity, transform);
 
-        hitbox.transform.right = lastMoveDir;
+        hitbox.transform.right = attackDir;
 
+        // la animacion se modifica segun el lugar al que disparamos
+        animator.SetFloat("MoveX", attackDir.x);
+        animator.SetFloat("MoveY", attackDir.y);
+
+       
         AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
         if (hitboxScript != null)
         {
-            
             hitboxScript.Initialize(meleeAttackDamage, enemyLayer, transform.position);
         }
 
-        Debug.Log($"Player realizó un ataque melee hacia {lastMoveDir}");
+        // destruimos el hitbox despues del delay
+        Destroy(hitbox, meleeHitboxDuration);
+
+        Debug.Log($"Ataque melee en dirección {attackDir}");
     }
 
 
@@ -199,14 +232,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player lanzó un proyectil hacia " + direction + " (ranged). Mana restante: " + currentMana);
     }
 
-
-
     private void Interact()
     {
         Debug.Log("Jugador intentó interactuar");
     }
 
-  
     public int AddAttack(int amount)
     {
         meleeAttackDamage += amount;
@@ -267,7 +297,6 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-
 
     private IEnumerator MeleeAnimationRoutine()
     {

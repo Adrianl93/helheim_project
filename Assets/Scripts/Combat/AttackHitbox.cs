@@ -3,25 +3,40 @@ using UnityEngine;
 public class AttackHitbox : MonoBehaviour
 {
     private int damage;
-    private float lifetime = 0.2f;
-    private LayerMask enemyLayer;
+    private LayerMask targetLayer;
     private Vector2 attackOrigin;
+    private GameObject owner;
 
-    public void Initialize(int dmg, LayerMask targetLayer, Vector2 origin)
+    public void Initialize(int damage, LayerMask targetLayer, Vector2 attackOrigin, GameObject owner = null)
     {
-        damage = dmg;
-        enemyLayer = targetLayer;
-        attackOrigin = origin;
-        Destroy(gameObject, lifetime);
+        this.damage = damage;
+        this.targetLayer = targetLayer;
+        this.attackOrigin = attackOrigin;
+        this.owner = owner;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (((1 << other.gameObject.layer) & enemyLayer) != 0)
+        
+        if (owner != null && collision.gameObject == owner) return;
+        if (((1 << collision.gameObject.layer) & targetLayer) == 0) return;
+
+        
+        EnemyController enemy = collision.GetComponent<EnemyController>();
+        if (enemy != null)
         {
-            var enemy = other.GetComponent<EnemyController>();
-            if (enemy != null)
-                enemy.TakeDamage(damage, attackOrigin);
+            enemy.TakeDamage(damage, attackOrigin);
+            Destroy(gameObject);
+            return;
+        }
+
+        
+        PlayerHealth player = collision.GetComponent<PlayerHealth>();
+        if (player != null)
+        {
+            player.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
         }
     }
 }

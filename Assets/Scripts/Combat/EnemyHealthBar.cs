@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class EnemyHealthBar : MonoBehaviour
 {
     [SerializeField] private Image fillImage;
-    [SerializeField] private Transform target; //sigue al enemigo
-    [SerializeField] private Vector3 offset = new Vector3(0, 2f, 0); //ajuste de posicion x,y,z
+    [SerializeField] private Transform target;
+    [SerializeField] private Vector3 offset = new Vector3(0, 2f, 0);
 
     private Camera mainCamera;
 
@@ -20,16 +20,18 @@ public class EnemyHealthBar : MonoBehaviour
     {
         if (target == null) return;
 
-        
         transform.position = target.position + offset;
-
-       
         transform.rotation = Quaternion.identity;
     }
 
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
+    }
+
+    public void SetOffset(Vector3 newOffset)
+    {
+        offset = newOffset;
     }
 
     public void UpdateHealth(float current, float max)

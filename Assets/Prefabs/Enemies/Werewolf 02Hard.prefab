@@ -22,11 +22,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: meleeDamage
-      value: 14
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: maxManaReward
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: minManaReward
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: detectionRadius
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
+      propertyPath: healthBarOffset.y
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 5299848985272100037, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: m_LocalPosition.x

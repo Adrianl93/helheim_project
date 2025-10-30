@@ -308,8 +308,10 @@ MonoBehaviour:
   health: 50
   armor: 2
   meleeDamage: 0
-  rangedDamage: 6
+  rangedDamage: 8
   speed: 10
+  rewardScore: 100
+  knockbackForce: 0
   detectionRadius: 15
   meleeRadius: 0
   meleeCooldown: 1.5
@@ -318,10 +320,19 @@ MonoBehaviour:
   minRangedDistance: 5
   projectilePrefab: {fileID: 4042022002272296592, guid: e47dcb59366664741a4471f34fd63be7, type: 3}
   firePoint: {fileID: 1967074461058098233}
-  projectileSpeed: 75
+  projectileSpeed: 60
   burstMultiplier: 2
-  rewardScore: 100
-  knockbackForce: 20
+  rangedBurstInterval: 15
+  burstProjectileCount: 8
+  burstPauseDuration: 1
+  meleeHitboxPrefab: {fileID: 0}
+  meleeHitboxDuration: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeDistance: 0.8
+  meleeOffsetY: 0.5
+  meleeOffsetDiagonal: 0.2
   enragedDuration: 5
   meleeAttackSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
   meleeSoundVolume: 1
@@ -329,16 +340,13 @@ MonoBehaviour:
   deathSoundVolume: 1
   minManaReward: 4
   maxManaReward: 7
-  rangedBurstInterval: 15
-  burstProjectileCount: 8
-  burstPauseDuration: 1
-  animator: {fileID: 8132161840245388206}
   damagePopupPrefab: {fileID: 729577960662426316, guid: 7ef00887a3e293c48bf7f13fec1c6f2c, type: 3}
   manaPopupPrefab: {fileID: 5912721023921850787, guid: ba5bf45ac2318de4bbc0d73ca2914e66, type: 3}
   healthBarPrefab: {fileID: 5791407845845436287, guid: 1a5b6fcedc36a8f43bf4e3d1780b276b, type: 3}
-  healthBarOffset: {x: 0, y: 1.2, z: 0}
+  healthBarOffset: {x: 0, y: 2.5, z: 0}
   damagePopupOffset: {x: 1, y: 1.5, z: 0}
   manaPopupOffset: {x: 1.2, y: 0.5, z: 0}
+  animator: {fileID: 8132161840245388206}
 --- !u!111 &2547765559180086470
 Animation:
   m_ObjectHideFlags: 0
