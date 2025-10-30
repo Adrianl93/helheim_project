@@ -3,85 +3,97 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-
-
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Configuración de Spawneo")]
-    [SerializeField] private List<GameObject> enemyPrefabs; // Lista de prefabs de enemigos
-    [SerializeField] private Transform spawnPoint; // Punto desde donde se spawnean
-    [SerializeField] private float spawnRate = 2f; // Tiempo entre cada spawn
-    [SerializeField] private float spawnDuration = 10f; // Duración total del spawneo
-    [SerializeField] private Vector3 spawnOffset = Vector3.zero; // Offset desde el spawnPoint
+    [SerializeField] private List<GameObject> enemyPrefabs;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float spawnRate = 2f;
+    [SerializeField] private float spawnDuration = 10f;
+    [SerializeField] private Vector3 spawnOffset = Vector3.zero;
 
-    [Header("Animation")]
-    [SerializeField] private Animator tombAnimator; // Animator de la tumba
-    [SerializeField] private float openAnimationDuration = 2f; // Tiempo de la animación
+    [Header("Animación")]
+    [SerializeField] private Animator tombAnimator;
+    [SerializeField] private float openAnimationDuration = 2f;
 
+    [Header("Identificadores")]
+    [SerializeField] private int spawnerID = 0;
+    [SerializeField] private int spawnGroupID = 0;
+    [SerializeField] private float spawnDelayPerID = 1.5f;
+
+    [Header("Tiempo Personalizado")]
+    [SerializeField] private bool useIndividualSpawnDuration = false;
+    [SerializeField] private float individualSpawnDuration = 8f;
 
     private Coroutine spawnRoutine;
 
-    // Evento que se invocará al finalizar el spawneo (para desbloquear una puerta)
+    public static event Action<int> OnSpawnerGroupTriggered;
     public static event Action OnSpawningFinished;
 
     private void Awake()
     {
-        // Suscribimos temprano para evitar perder el evento si el trigger se activa rápido
-        Debug.Log("[EnemySpawner] (Awake) Suscribiendo a OnSpawnerTriggered...");
-        SpawnerTrigger.OnSpawnerTriggered += StartSpawning;
-    }
-
-    private void OnEnable()
-    {
-        Debug.Log("[EnemySpawner] (OnEnable) Componente activo.");
+       
+        Debug.Log($"[EnemySpawner #{spawnerID}] Awake() - Registrando grupo {spawnGroupID}");
+        OnSpawnerGroupTriggered += HandleGroupTriggered;
+   
     }
 
     private void OnDisable()
     {
-        Debug.Log("[EnemySpawner] (OnDisable) Desuscribiendo evento.");
-        SpawnerTrigger.OnSpawnerTriggered -= StartSpawning;
+        Debug.Log($"[EnemySpawner #{spawnerID}] Desuscribiendo evento de grupo...");
+        OnSpawnerGroupTriggered -= HandleGroupTriggered;
     }
 
-    private void StartSpawning()
+    private void HandleGroupTriggered(int groupID)
     {
-        Debug.Log("[EnemySpawner] Evento recibido: comenzando animación del sarcófago.");
+        if (groupID != spawnGroupID) return;
+
+        Debug.Log($"[EnemySpawner #{spawnerID}] Activado por grupo {groupID}.");
 
         if (spawnRoutine == null)
-            spawnRoutine = StartCoroutine(SpawnEnemiesWithAnimation());
+            spawnRoutine = StartCoroutine(StartWithDelay());
+    }
+
+    private IEnumerator StartWithDelay()
+    {
+        float delay = spawnerID * spawnDelayPerID;
+        if (delay > 0)
+        {
+            Debug.Log($"[EnemySpawner #{spawnerID}] Esperando {delay:F1}s antes de iniciar spawneo.");
+            yield return new WaitForSeconds(delay);
+        }
+
+        yield return StartCoroutine(SpawnEnemiesWithAnimation());
     }
 
     private IEnumerator SpawnEnemies()
     {
         float elapsed = 0f;
-        Debug.Log("[EnemySpawner] Iniciando rutina de spawneo.");
+        float duration = useIndividualSpawnDuration ? individualSpawnDuration : spawnDuration;
+        Debug.Log($"[EnemySpawner #{spawnerID}] Iniciando spawneo durante {duration}s.");
 
-        while (elapsed < spawnDuration)
+        while (elapsed < duration)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(spawnRate);
             elapsed += spawnRate;
         }
 
-        Debug.Log("[EnemySpawner] Spawneo finalizado. Invocando OnSpawningFinished...");
-        OnSpawningFinished?.Invoke(); // FUTURO: se puede usar para abrir una puerta
-
+        Debug.Log($"[EnemySpawner #{spawnerID}] Spawneo finalizado.");
         spawnRoutine = null;
+
+        // Notificamos cuando todos los spawners del grupo terminen
+        OnSpawningFinished?.Invoke();
     }
 
     private IEnumerator SpawnEnemiesWithAnimation()
     {
-        // Activamos trigger para abrir el sarcófago
         if (tombAnimator != null)
         {
             tombAnimator.SetTrigger("Open");
-            Debug.Log("[EnemySpawner] Trigger 'Open' activado en Animator.");
-
-            // Esperamos la duración de la animación
             yield return new WaitForSeconds(openAnimationDuration);
-            Debug.Log("[EnemySpawner] Animación finalizada. Comenzando spawneo.");
         }
 
-        // Ahora sí empezamos el spawn
         yield return StartCoroutine(SpawnEnemies());
     }
 
@@ -89,36 +101,23 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyPrefabs.Count == 0 || spawnPoint == null)
         {
-            Debug.LogWarning("[EnemySpawner] Falta asignar prefabs o spawnPoint.");
+            Debug.LogWarning($"[EnemySpawner #{spawnerID}] Falta prefab o spawnPoint.");
             return;
         }
 
-        // Selección aleatoria de prefab
         int randomIndex = UnityEngine.Random.Range(0, enemyPrefabs.Count);
         GameObject enemyPrefab = enemyPrefabs[randomIndex];
 
-        // Calculamos la posición final con offset
         Vector3 spawnPosition = spawnPoint.position + spawnOffset;
-
-        // Aseguramos que Z = 0 para 2D (visible en cámara ortográfica)
         spawnPosition.z = 0f;
 
-        // Instanciamos el enemigo
-        GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        Debug.Log($"[EnemySpawner #{spawnerID}] Enemigo instanciado.");
+    }
 
-        // Debug para confirmar que el enemigo se creó
-        Debug.Log($"[EnemySpawner] Spawned enemigo #{randomIndex} ({enemy.name}) en posición {spawnPosition}");
-
-        // Opcional: aseguramos que el sprite sea visible
-        SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();
-        if (sr == null)
-        {
-            Debug.LogWarning($"[EnemySpawner] El prefab '{enemyPrefab.name}' no tiene SpriteRenderer.");
-        }
-        else
-        {
-            sr.sortingLayerName = "Default"; 
-            sr.sortingOrder = 0;
-        }
+    public static void TriggerSpawnerGroup(int groupID)
+    {
+        Debug.Log($"[EnemySpawner] Evento global: activando grupo {groupID}...");
+        OnSpawnerGroupTriggered?.Invoke(groupID);
     }
 }

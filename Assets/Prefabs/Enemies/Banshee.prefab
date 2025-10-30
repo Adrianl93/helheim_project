@@ -78,7 +78,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5443816857556984033, guid: 290a1c2303cc13645aaa413a5e6e45a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   meleeDamage: 0
   rangedDamage: 6
   speed: 10
-  detectionRadius: 11
+  detectionRadius: 15
   meleeRadius: 0
   meleeCooldown: 1.5
   rangedCooldown: 2
@@ -318,7 +318,7 @@ MonoBehaviour:
   minRangedDistance: 5
   projectilePrefab: {fileID: 4042022002272296592, guid: e47dcb59366664741a4471f34fd63be7, type: 3}
   firePoint: {fileID: 1967074461058098233}
-  projectileSpeed: 90
+  projectileSpeed: 75
   burstMultiplier: 2
   rewardScore: 100
   knockbackForce: 20
