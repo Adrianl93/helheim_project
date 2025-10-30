@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyType: 2
   health: 200
-  armor: 8
+  armor: 12
   meleeDamage: 17
   rangedDamage: 14
   speed: 9
