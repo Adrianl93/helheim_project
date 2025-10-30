@@ -1,0 +1,327 @@
+fileFormatVersion: 2
+guid: 335e2d7717603f245b18966b81627a46
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6690706960991373475
+    second: werewolf_run_right_01_0
+  - first:
+      213: -5549510859179414681
+    second: werewolf_run_right_01_1
+  - first:
+      213: 1414854972358301833
+    second: werewolf_run_right_01_2
+  - first:
+      213: 9204905902103523628
+    second: werewolf_run_right_01_3
+  - first:
+      213: -2456894081049132012
+    second: werewolf_run_right_01_4
+  - first:
+      213: -2896066038191382396
+    second: werewolf_run_right_01_5
+  - first:
+      213: 3289148536420568320
+    second: werewolf_run_right_01_6
+  - first:
+      213: -8637623433652324803
+    second: werewolf_run_right_01_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 15
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: werewolf_run_right_01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 51
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5335165, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5730e5c775d523a0800000000000000
+      internalID: -6690706960991373475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_run_right_01_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 51
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5335165, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76b2071b64d2cf2b0800000000000000
+      internalID: -5549510859179414681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_run_right_01_2
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 51
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5335165, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9889c14e91392a310800000000000000
+      internalID: 1414854972358301833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_run_right_01_3
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 51
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5335165, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c21f6c5f5256ebf70800000000000000
+      internalID: 9204905902103523628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_run_right_01_4
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 0
+        width: 51
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5335165, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4148e48b9db57edd0800000000000000
+      internalID: -2456894081049132012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_run_right_01_5
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 0
+        width: 51
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5335165, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 480a783484b1fc7d0800000000000000
+      internalID: -2896066038191382396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_run_right_01_6
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 0
+        width: 51
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5335165, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d08deca2765ad20800000000000000
+      internalID: 3289148536420568320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_run_right_01_7
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 0
+        width: 51
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5335165, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d36309d404ff02880800000000000000
+      internalID: -8637623433652324803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6360159805694484e88ff65f4cd2ab87
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":51.0,"y":78.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.533516526222229,"y":0.5000001192092896},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      werewolf_run_right_01_0: -6690706960991373475
+      werewolf_run_right_01_1: -5549510859179414681
+      werewolf_run_right_01_2: 1414854972358301833
+      werewolf_run_right_01_3: 9204905902103523628
+      werewolf_run_right_01_4: -2456894081049132012
+      werewolf_run_right_01_5: -2896066038191382396
+      werewolf_run_right_01_6: 3289148536420568320
+      werewolf_run_right_01_7: -8637623433652324803
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
