@@ -288,28 +288,74 @@ public class EnemyController : MonoBehaviour
 
     private void MoveAwayFromPlayer()
     {
-        //se aleja del player para tratar de evitar ser atacado, manteniendo una distancia minima
+        // se aleja del player para tratar de evitar ser atacado, manteniendo una distancia minima
         if (agent == null || player == null) return;
 
         Vector2 dir = (transform.position - player.position).normalized;
         Vector2 basePos = transform.position;
+        float desiredDistance = 2.5f; // distancia a la que intentará reposicionarse
+
+        Vector3 bestPosition = transform.position;
+        bool foundValid = false;
 
         // Probar varios ángulos alternativos si el camino directo no es navegable
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 8; i++)
         {
-            float angle = i * 30f - 60f; // prueba otras direcciones en un rango de -60 a +60 grados
+            float angle = i * 45f; // pruebo en todas las direcciones cardinales
             Vector2 rotatedDir = Quaternion.Euler(0, 0, angle) * dir;
-            Vector2 testPos = basePos + rotatedDir * 2f;
+            Vector2 testPos = basePos + rotatedDir * desiredDistance;
 
+            // Verificamos si el punto está dentro del NavMesh
             if (NavMesh.SamplePosition(testPos, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
             {
-                agent.SetDestination(hit.position);
-                return;
+                bestPosition = hit.position;
+                foundValid = true;
+                break;
             }
         }
 
-        agent.ResetPath();
+        if (foundValid)
+        {
+            // Si el agente está fuera del NavMesh, lo “recolocamos” antes de moverlo
+            if (!agent.isOnNavMesh)
+            {
+                if (NavMesh.SamplePosition(transform.position, out NavMeshHit fixHit, 1f, NavMesh.AllAreas))
+                {
+                    agent.Warp(fixHit.position);
+                }
+            }
+
+            // Asignamos destino dentro del NavMesh
+            agent.SetDestination(bestPosition);
+        }
+        else
+        {
+            // No hay posición válida, reseteamos movimiento
+            agent.ResetPath();
+        }
+
+        // Prevención extra: si el agente se sale del NavMesh, lo recoloca en el siguiente frame
+        if (!agent.isOnNavMesh)
+        {
+            StartCoroutine(RepositionOnNavMesh());
+        }
     }
+
+    private IEnumerator RepositionOnNavMesh()
+    {
+        // esperamos un frame para evitar warps dobles en el mismo update
+        yield return null;
+
+        if (agent != null && !agent.isOnNavMesh)
+        {
+            if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 1f, NavMesh.AllAreas))
+            {
+                agent.Warp(hit.position);
+                Debug.Log($"[EnemyController] {name} recolocado en NavMesh tras detección de salida.");
+            }
+        }
+    }
+
 
 
 

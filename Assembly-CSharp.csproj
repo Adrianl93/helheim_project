@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\UI\PopupUI.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\CustomCursor.cs" />
     <Compile Include="Assets\Scripts\PlayerState.cs" />
     <Compile Include="Assets\Scripts\Mainmenu.cs" />
     <Compile Include="Assets\Scripts\Triggers\EnemySpawner.cs" />
