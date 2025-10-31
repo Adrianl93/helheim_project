@@ -15,10 +15,10 @@ public class GameManager : MonoBehaviour
     private bool timeoutTriggered = false;
 
 
-    [Header("Audio")]
-    [SerializeField] private AudioClip ambientMusic;
-    [Range(0f, 1f)][SerializeField] private float musicVolume = 0.5f;
-    private AudioSource audioSource;
+    //[Header("Audio")]
+    //[SerializeField] private AudioClip ambientMusic;
+    //[Range(0f, 1f)][SerializeField] private float musicVolume = 0.5f;
+    //private AudioSource audioSource;
 
     [Header("Player")]
     [SerializeField] private GameObject player;
@@ -54,14 +54,14 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
           
-            audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.clip = ambientMusic;
-            audioSource.loop = true;
-            audioSource.playOnAwake = false;
-            audioSource.volume = musicVolume;
+            //audioSource = gameObject.AddComponent<AudioSource>();
+            //audioSource.clip = ambientMusic;
+            //audioSource.loop = true;
+            //audioSource.playOnAwake = false;
+            //audioSource.volume = musicVolume;
 
-            if (ambientMusic != null)
-                audioSource.Play();
+            //if (ambientMusic != null)
+            //    audioSource.Play();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -265,15 +265,15 @@ public class GameManager : MonoBehaviour
     }
 
 
-    #region Audio
-    public void SetMusicVolume(float volume)
-    {
-        musicVolume = Mathf.Clamp01(volume);
-        if (audioSource != null)
-            audioSource.volume = musicVolume;
-    }
+    //#region Audio
+    //public void SetMusicVolume(float volume)
+    //{
+    //    musicVolume = Mathf.Clamp01(volume);
+    //    if (audioSource != null)
+    //        audioSource.volume = musicVolume;
+    //}
 
-    public void IncreaseVolume(float increment = 0.05f) => SetMusicVolume(musicVolume + increment);
-    public void DecreaseVolume(float decrement = 0.05f) => SetMusicVolume(musicVolume - decrement);
-    #endregion
+    //public void IncreaseVolume(float increment = 0.05f) => SetMusicVolume(musicVolume + increment);
+    //public void DecreaseVolume(float decrement = 0.05f) => SetMusicVolume(musicVolume - decrement);
+    //#endregion
 }
