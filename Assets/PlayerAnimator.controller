@@ -114,7 +114,7 @@ AnimatorStateMachine:
     m_Position: {x: 220, y: -150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2225166786376463139}
-    m_Position: {x: 200, y: -70, z: 0}
+    m_Position: {x: 100, y: -20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8069936119883101330}
     m_Position: {x: 220, y: -270, z: 0}
@@ -168,6 +168,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: IsAttackingRanged
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2225166786376463139}
@@ -481,6 +484,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: IsDead
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -591,6 +600,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: IsAttackingMelee
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6869775037675251994}

@@ -311,7 +311,7 @@ MonoBehaviour:
   speed: 10
   rewardScore: 100
   knockbackForce: 0
-  detectionRadius: 15
+  detectionRadius: 11
   meleeRadius: 0
   meleeCooldown: 1.5
   rangedCooldown: 2
