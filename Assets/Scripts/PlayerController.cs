@@ -273,8 +273,8 @@ public class PlayerController : MonoBehaviour
 
     public void AddMana(int amount)
     {
-        currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
-        Debug.Log($"Mana aumentado en {amount}. Mana actual: {currentMana}/{maxMana}");
+        currentMana = Mathf.Min(currentMana + amount, maxMana);
+        Debug.Log($"Mana actual: {currentMana}");
     }
 
     public void SetRangedUnlocked(bool value)

@@ -406,7 +406,7 @@ public class EnemyController : MonoBehaviour
             animator.SetTrigger("AttackRanged");
 
         // Esperamos que termine la animación antes de instanciar el proyectil
-        StartCoroutine(DelayedRangedAttack(0.8f)); // duración del clip (0.613s)
+        StartCoroutine(DelayedRangedAttack(0.8f)); // duración del clip (0.6s)
     }
 
     private IEnumerator DelayedRangedAttack(float delay)
@@ -625,18 +625,37 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(DeathSequence());
     }
 
-
     private IEnumerator DeathSequence()
     {
-        yield return new WaitForSeconds(1.2f); 
+        yield return new WaitForSeconds(1.2f);
         GameManager.Instance.AddScore(rewardScore);
         DropItemManager.Instance.DropItem(transform.position);
+
+        //Mana que ganara el player
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            //se asigna un valor aleatorio de mana entre el minimo y maximo definido
+            int manaReward = Random.Range(minManaReward, maxManaReward + 1);
+            playerController.AddMana(manaReward);
+
+            // Pop-up de mana ganado
+            if (manaPopupPrefab != null)
+            {
+                Vector3 spawnPos = transform.position + manaPopupOffset;
+                GameObject popup = Instantiate(manaPopupPrefab, spawnPos, Quaternion.identity);
+                var popupScript = popup.GetComponentInChildren<PopupUI>();
+                if (popupScript != null)
+                    popupScript.Setup("+" + manaReward);
+            }
+        }
 
         if (healthBarInstance != null)
             Destroy(healthBarInstance);
 
         Destroy(gameObject);
     }
+
 
 
     private IEnumerator PerformMeleeAttackDelayed(float delay)

@@ -93,8 +93,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        
+
         StartCoroutine(HandleDeath());
+        Debug.Log($"[Muerte] Último checkpoint antes de morir: {GameManager.Instance.LastCheckpointPos}");
+
     }
 
     public void Heal(int amount)

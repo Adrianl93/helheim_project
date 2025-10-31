@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // Necesario para detectar el cambio de escena
 
 public class DropItemManager : MonoBehaviour
 {
@@ -20,14 +21,46 @@ public class DropItemManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    private void OnEnable()
+    {
+        // Escuchar cuando se cargue una nueva escena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void Start()
     {
+        // No asignamos referencias aquí directamente
+        // Se hará automáticamente cuando se cargue Scene1
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Solo ejecutar si la escena cargada es "Scene1"
+        if (scene.name == "Scene1")
+        {
+            StartCoroutine(AssignPlayerWithDelay());
+        }
+    }
+
+    private System.Collections.IEnumerator AssignPlayerWithDelay()
+    {
+        // Esperar 2 frames antes de asignar (para evitar errores al respawnear y y mover al player)
+        yield return null;
+        yield return null;
+
         AssignPlayerReferences();
     }
 
     private void Update()
     {
-        // Si en algún momento el Player se pierde (ej: al reiniciar escena),
+
+        if (SceneManager.GetActiveScene().name != "Scene1") return;
+        // Si en algún momento el Player se pierde
         // volvemos a asignarlo automáticamente.
         if (playerHealth == null || playerController == null)
         {
@@ -37,7 +70,10 @@ public class DropItemManager : MonoBehaviour
 
     private void AssignPlayerReferences()
     {
-        if (GameManager.Instance != null && GameManager.Instance.Player != null)
+        if (GameManager.Instance == null)
+            return;
+
+        if (GameManager.Instance.Player != null)
         {
             playerHealth = GameManager.Instance.Player.GetComponent<PlayerHealth>();
             playerController = GameManager.Instance.Player.GetComponent<PlayerController>();
@@ -51,11 +87,8 @@ public class DropItemManager : MonoBehaviour
                 Debug.Log("[DropItemManager] Player asignado correctamente.");
             }
         }
-        else
-        {
-            Debug.LogWarning("[DropItemManager] No se encontró GameManager o Player.");
-        }
     }
+
 
     public void DropItem(Vector3 position)
     {
@@ -96,16 +129,15 @@ public class DropItemManager : MonoBehaviour
             chosenPool = easyItems;
             poolName = "Easy";
         }
-        else if (armor <= 11 && meleeAttack <= 25)
+        else if (armor <= 11 || meleeAttack <= 25)
         {
             chosenPool = mediumItems;
             poolName = "Medium";
         }
-        else if ((armor < 11 && meleeAttack < 25) && coins >= 200 )
+        else if ((armor < 11 || meleeAttack < 25) && coins >= 150)
         {
             chosenPool = hardItems;
             poolName = "Hard";
-           
         }
         else
         {

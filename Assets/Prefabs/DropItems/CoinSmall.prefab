@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1726476305267014330, guid: 11bcc285917936543bb45611784ba0be, type: 3}
       propertyPath: m_Name
-      value: CoinSmall 1
+      value: CoinSmall
       objectReference: {fileID: 0}
     - target: {fileID: 1968555772505384462, guid: 11bcc285917936543bb45611784ba0be, type: 3}
       propertyPath: coinValue
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4040852744398970629, guid: 11bcc285917936543bb45611784ba0be, type: 3}
       propertyPath: m_LocalPosition.x
