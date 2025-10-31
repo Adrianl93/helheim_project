@@ -458,6 +458,7 @@ GameObject:
   - component: {fileID: 1021354609}
   - component: {fileID: 1021354608}
   - component: {fileID: 1021354607}
+  - component: {fileID: 1021354610}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -526,6 +527,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1021354610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021354606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb807c2e5825ab4082d7e07511ed47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnsureSingleEventSystem
 --- !u!1 &1160464973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,8 +1501,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1925496287}
   - component: {fileID: 1925496286}
-  - component: {fileID: 1925496285}
   - component: {fileID: 1925496288}
+  - component: {fileID: 1925496290}
+  - component: {fileID: 1925496289}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1497,14 +1511,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1925496285
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925496284}
-  m_Enabled: 1
 --- !u!20 &1925496286
 Camera:
   m_ObjectHideFlags: 0
@@ -1615,6 +1621,26 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1925496289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925496284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af72f68904bc7846975776e96c660bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioListenerCleaner
+--- !u!81 &1925496290
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925496284}
+  m_Enabled: 1
 --- !u!1 &1929151318
 GameObject:
   m_ObjectHideFlags: 0

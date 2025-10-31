@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,10 +16,7 @@ public class GameManager : MonoBehaviour
     private bool timeoutTriggered = false;
 
 
-    [Header("Audio")]
-    [SerializeField] private AudioClip ambientMusic;
-    [Range(0f, 1f)][SerializeField] private float musicVolume = 0.5f;
-    private AudioSource audioSource;
+
 
     [Header("Player")]
     [SerializeField] private GameObject player;
@@ -30,6 +28,7 @@ public class GameManager : MonoBehaviour
     private GameObject[] checkpoints;
 
     private Vector3 lastCheckpointPos;
+    public Vector3 LastCheckpointPos => lastCheckpointPos;
     private PlayerState lastCheckpointState;
     private bool firstLoad = true;
 
@@ -53,15 +52,6 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-          
-            audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.clip = ambientMusic;
-            audioSource.loop = true;
-            audioSource.playOnAwake = false;
-            audioSource.volume = musicVolume;
-
-            if (ambientMusic != null)
-                audioSource.Play();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -115,7 +105,15 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        StartCoroutine(DelayedPositionPlayer());
+    }
+
+    private IEnumerator DelayedPositionPlayer()
+    {
+        yield return null; 
+        yield return null; 
         PositionPlayerImmediately();
+        Debug.Log("[GameManager] Player reposicionado tras esperar 1 frame");
     }
 
     public static event Action OnRangedUnlocked;
@@ -128,6 +126,8 @@ public class GameManager : MonoBehaviour
 
     private void PositionPlayerImmediately()
     {
+        Debug.Log($"[PositionPlayerImmediately] lastCheckpointPos = {lastCheckpointPos}");
+
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
@@ -147,10 +147,74 @@ public class GameManager : MonoBehaviour
 
         checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
 
-        if (lastCheckpointPos == Vector3.zero && startPoint != null)
+        if ((lastCheckpointPos == Vector3.zero || float.IsNaN(lastCheckpointPos.x)) && startPoint != null)
+        {
             lastCheckpointPos = startPoint.transform.position;
+            Debug.Log("[GameManager] Usando StartPoint por no haber checkpoint previo.");
+        }
+        else
+        {
+            Debug.Log($"[GameManager] Usando último checkpoint: {lastCheckpointPos}");
+        }
 
-        player.transform.position = lastCheckpointPos;
+        // desactivar física y collider antes de mover
+        var rb = player.GetComponent<Rigidbody2D>();
+        var col = player.GetComponent<Collider2D>();
+        bool rbState = true;
+        bool colState = true;
+
+        if (rb != null)
+        {
+            rbState = rb.simulated;
+            rb.simulated = false;
+        }
+
+        if (col != null)
+        {
+            colState = col.enabled;
+            col.enabled = false;
+        }
+
+        // Validar que la posición esté sobre el NavMesh (NavMesh Plus 2D compatible)
+        if (UnityEngine.AI.NavMesh.SamplePosition(lastCheckpointPos, out var hit, 1f, UnityEngine.AI.NavMesh.AllAreas))
+        {
+            lastCheckpointPos = hit.position;
+            Debug.Log("[NavMeshPlus] Posición válida sobre el NavMesh.");
+        }
+        else
+        {
+            Debug.LogWarning("[NavMeshPlus] No se encontró NavMesh cerca del checkpoint. Se usa posición original.");
+        }
+
+        // Intentar mover al jugador usando NavMeshAgent (NavMesh Plus usa este componente en 2D)
+        var agent = player.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (agent != null && agent.enabled)
+        {
+            bool warped = agent.Warp(lastCheckpointPos);
+            if (warped)
+            {
+                Debug.Log("[NavMeshPlus] Player reposicionado correctamente con NavMeshAgent.Warp().");
+            }
+            else
+            {
+                Debug.LogWarning("[NavMeshPlus] Warp falló, usando Transform.position como respaldo.");
+                player.transform.position = lastCheckpointPos;
+            }
+        }
+        else
+        {
+            player.transform.position = lastCheckpointPos;
+            Debug.Log("[NavMeshPlus] Player reposicionado directamente (sin NavMeshAgent activo).");
+        }
+
+        Debug.Log($"[Reposicionado FINAL] Player a {player.transform.position}");
+        Debug.Log($"[DEBUG] Pos antes del NavMeshAgent: {player.transform.position}");
+        // yield return null; // (no puede usarse aquí, si querés usarlo poné esto en una Coroutine)
+        Debug.Log($"[DEBUG] Pos después del frame (NavMeshAgent): {player.transform.position}");
+
+        // Reactivamos fisica y collider
+        if (rb != null) rb.simulated = rbState;
+        if (col != null) col.enabled = colState;
 
         if (lastCheckpointState != null)
         {
@@ -182,6 +246,8 @@ public class GameManager : MonoBehaviour
             firstLoad = false;
         }
     }
+
+
 
     private void Update()
     {
@@ -265,15 +331,15 @@ public class GameManager : MonoBehaviour
     }
 
 
-    #region Audio
-    public void SetMusicVolume(float volume)
-    {
-        musicVolume = Mathf.Clamp01(volume);
-        if (audioSource != null)
-            audioSource.volume = musicVolume;
-    }
+    //#region Audio
+    //public void SetMusicVolume(float volume)
+    //{
+    //    musicVolume = Mathf.Clamp01(volume);
+    //    if (audioSource != null)
+    //        audioSource.volume = musicVolume;
+    //}
 
-    public void IncreaseVolume(float increment = 0.05f) => SetMusicVolume(musicVolume + increment);
-    public void DecreaseVolume(float decrement = 0.05f) => SetMusicVolume(musicVolume - decrement);
-    #endregion
+    //public void IncreaseVolume(float increment = 0.05f) => SetMusicVolume(musicVolume + increment);
+    //public void DecreaseVolume(float decrement = 0.05f) => SetMusicVolume(musicVolume - decrement);
+    //#endregion
 }

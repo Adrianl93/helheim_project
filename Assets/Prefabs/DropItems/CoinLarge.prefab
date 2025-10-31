@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33344e62cf240e04086cdf38b19616b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinPickup
-  coinValue: 3
+  coinValue: 30
   pickupSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
   volume: 1
   coinPopup: {fileID: 7052252385166491443, guid: 63b1282667ae0024294bc998ddc9a129, type: 3}

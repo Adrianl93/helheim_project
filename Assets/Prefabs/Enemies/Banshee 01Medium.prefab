@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1637143195596928289, guid: d56e959f42b2c1d429a662a1883791a8, type: 3}
       propertyPath: detectionRadius
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1637143195596928289, guid: d56e959f42b2c1d429a662a1883791a8, type: 3}
       propertyPath: rangedAttackRange
