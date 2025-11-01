@@ -97101,11 +97101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6799900583805747764, guid: e6780a52fd7c91d48b78460540f4586b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 203.6
+      value: 203.09
       objectReference: {fileID: 0}
     - target: {fileID: 6799900583805747764, guid: e6780a52fd7c91d48b78460540f4586b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 36
+      value: 37.14
       objectReference: {fileID: 0}
     - target: {fileID: 6799900583805747764, guid: e6780a52fd7c91d48b78460540f4586b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -109019,7 +109019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1002076693331550739, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: armor
-      value: 50
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1002076693331550739, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: maxHealth
