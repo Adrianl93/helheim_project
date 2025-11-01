@@ -7,6 +7,7 @@ TagManager:
   - Checkpoint
   - StartPoint
   - PauseUI
+  - Enemy
   layers:
   - Default
   - TransparentFX

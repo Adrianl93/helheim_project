@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CustomCursor : MonoBehaviour
 {
@@ -7,18 +8,31 @@ public class CustomCursor : MonoBehaviour
     [SerializeField] private Texture2D cursorSwordClick;
     [SerializeField] private Texture2D cursorMagic;
 
-    [Header("Configuración")]
-    [SerializeField] private Vector2 hotspot = Vector2.zero; // hotspot ( punto donde hace clic)
+    [Header("Configuración general")]
+    [SerializeField] private Vector2 hotspot = Vector2.zero; // hotspot configurable (Punto de clic del mouse)
     [SerializeField] private CursorMode cursorMode = CursorMode.Auto;
-    [SerializeField, Tooltip("Tiempo que dura el cambio de cursor al hacer clic (en segundos)")]
-    private float clickDuration = 0.15f;
+
+    [Header("Duraciones")]
+    [SerializeField, Tooltip("Duración del efecto de clic de espada (en segundos)")]
+    private float swordClickDuration = 0.35f;
+
+    [SerializeField, Tooltip("Duración del efecto de magia (en segundos)")]
+    private float magicClickDuration = 0.45f;
+
+    [Header("Brillo para el cursor de magia")]
+    [SerializeField, Range(0f, 1f), Tooltip("Intensidad máxima del brillo en magia (1 = blanco total)")]
+    private float magicGlowIntensity = 0.5f;
+
+    [SerializeField, Tooltip("Duración del efecto de brillo (en segundos)")]
+    private float magicGlowDuration = 0.15f;
 
     private static CustomCursor instance;
     private Coroutine resetCoroutine;
+    private Coroutine glowCoroutine;
 
     private void Awake()
     {
-        // Singleton para evitar duplicados entre escenas
+        // Singleton para evitar duplicados y dont destroy on load para que se mantenga en todas las escenas
         if (instance == null)
         {
             instance = this;
@@ -37,37 +51,38 @@ public class CustomCursor : MonoBehaviour
 
     private void Update()
     {
-        // Click izquierdo para animacion de espada atacando
+        // Con click izquierdo ataque melee (espada)
         if (Input.GetMouseButtonDown(0))
         {
             SetCursor(cursorSwordClick);
-            StartResetTimer(cursorSword);
+            StartResetTimer(cursorSword, swordClickDuration);
         }
 
-        // Click derecho para animacion de magia
+        // Con click derecho ataque magico (bola magica)
         if (Input.GetMouseButtonDown(1))
         {
             SetCursor(cursorMagic);
-            StartResetTimer(cursorSword);
+            StartResetTimer(cursorSword, magicClickDuration);
+            StartMagicGlowEffect();
         }
     }
 
-   //resetea el mouse al base luego de un delay
-    private void StartResetTimer(Texture2D baseCursor)
+    // Control de temporizador para volver al cursor base
+    private void StartResetTimer(Texture2D baseCursor, float duration)
     {
         if (resetCoroutine != null)
             StopCoroutine(resetCoroutine);
 
-        resetCoroutine = StartCoroutine(ResetCursorAfterDelay(baseCursor));
+        resetCoroutine = StartCoroutine(ResetCursorAfterDelay(baseCursor, duration));
     }
 
-    private System.Collections.IEnumerator ResetCursorAfterDelay(Texture2D baseCursor)
+    private IEnumerator ResetCursorAfterDelay(Texture2D baseCursor, float duration)
     {
-        yield return new WaitForSeconds(clickDuration);
+        yield return new WaitForSeconds(duration);
         SetCursor(baseCursor);
     }
 
-    // en caso de no existir textura se usa el cursor por defecto de unity
+    // En caso de textura faltante usa el cursor por defecto
     private void SetCursor(Texture2D cursorTexture)
     {
         if (cursorTexture != null)
@@ -76,9 +91,48 @@ public class CustomCursor : MonoBehaviour
         }
         else
         {
-            // fallback al cursor por defecto de Unity
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             Debug.LogWarning("[CustomCursor] Cursor faltante, usando cursor por defecto.");
         }
+    }
+
+    // brillo temporal con click derecho (magia)
+    private void StartMagicGlowEffect()
+    {
+        if (glowCoroutine != null)
+            StopCoroutine(glowCoroutine);
+
+        glowCoroutine = StartCoroutine(MagicGlowCoroutine());
+    }
+
+    private IEnumerator MagicGlowCoroutine()
+    {
+        // Guardamos color original para luego alterarlo temporalmente con fade in y fade out
+        Camera cam = Camera.main;
+        if (cam == null)
+            yield break;
+
+        Color originalColor = cam.backgroundColor;
+        Color glowColor = Color.Lerp(originalColor, Color.white, magicGlowIntensity);
+
+        // Fade in al cambiar de cursor
+        float t = 0.6f;
+        while (t < magicGlowDuration)
+        {
+            t += Time.deltaTime;
+            cam.backgroundColor = Color.Lerp(originalColor, glowColor, t / magicGlowDuration);
+            yield return null;
+        }
+
+        // fade out antes de volver al color original
+        t = 0.6f;
+        while (t < magicGlowDuration)
+        {
+            t += Time.deltaTime;
+            cam.backgroundColor = Color.Lerp(glowColor, originalColor, t / magicGlowDuration);
+            yield return null;
+        }
+
+        cam.backgroundColor = originalColor;
     }
 }

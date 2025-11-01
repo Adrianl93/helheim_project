@@ -823,7 +823,10 @@ MonoBehaviour:
   cursorMagic: {fileID: 2800000, guid: 9969c625f0784ec4898e436f6bb85f46, type: 3}
   hotspot: {x: 0, y: 0}
   cursorMode: 0
-  clickDuration: 0.15
+  swordClickDuration: 0.35
+  magicClickDuration: 0.45
+  magicGlowIntensity: 0.5
+  magicGlowDuration: 0.15
 --- !u!4 &1948472553
 Transform:
   m_ObjectHideFlags: 0
