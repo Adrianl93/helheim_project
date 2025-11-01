@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\Instructions.cs" />
     <Compile Include="Assets\Scripts\SceneTrigger.cs" />
     <Compile Include="Assets\Scripts\Triggers\RangedUnlockTrigger.cs" />
+    <Compile Include="Assets\Scripts\CheatManager.cs" />
     <Compile Include="Assets\Scripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\PickUps\CoinPickUp.cs" />

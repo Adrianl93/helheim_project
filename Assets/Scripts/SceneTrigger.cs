@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneTrigger : MonoBehaviour
 {
-    public string sceneName; // Nombre exacto de la escena
+    public string sceneName; 
 
     private void OnTriggerEnter2D(Collider2D other)
     {

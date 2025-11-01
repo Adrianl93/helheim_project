@@ -1,0 +1,95 @@
+{
+    "version": 1,
+    "name": "CheatControls",
+    "maps": [
+        {
+            "name": "Cheats",
+            "id": "ee6f1c51-6c4c-453d-b455-0aa8b6685f06",
+            "actions": [
+                {
+                    "name": "CheatDamage",
+                    "type": "Button",
+                    "id": "d94a45cb-bcf1-4c25-9d95-b150226cd8a8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheatArmor",
+                    "type": "Button",
+                    "id": "dd5cdb10-e092-4c2d-b2ca-cf4b9e5889e2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheatSpeed",
+                    "type": "Button",
+                    "id": "c0641966-f5c8-40bc-be2b-fb64fc8d0317",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheatDisableTriggers",
+                    "type": "Button",
+                    "id": "19fb796e-2a99-4d90-bbff-4794935af31a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c0718de3-6f9f-43d2-be7c-f1bd2a625f59",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheatDamage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2f7c78d-195f-4d01-ba73-0eeebd581af7",
+                    "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheatArmor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db112e3c-621d-4bca-9c1d-1f64f3c395c9",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheatSpeed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53dfadd6-d96f-4719-9d50-46c49e983741",
+                    "path": "<Keyboard>/f4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheatDisableTriggers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

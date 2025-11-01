@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float meleeAttackCooldown = 1f;
     [SerializeField] private float meleeOffsetY = 0.5f;
     [SerializeField] private float meleeOffsetDiagonal = 0.2f;
-    [SerializeField] private float meleeHitboxDuration = 0.2f; // <- duración configurable del hitbox
+    [SerializeField] private float meleeHitboxDuration = 0.2f; 
     private float lastMeleeAttackTime = 0f;
 
     [Header("Ataque a Distancia")]
