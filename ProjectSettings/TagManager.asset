@@ -8,6 +8,7 @@ TagManager:
   - StartPoint
   - PauseUI
   - Enemy
+  - winner
   layers:
   - Default
   - TransparentFX

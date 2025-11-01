@@ -83,9 +83,11 @@
     <Compile Include="Assets\Scripts\PauseManager.cs" />
     <Compile Include="Assets\Scripts\PickUps\HealthPotion.cs" />
     <Compile Include="Assets\Scripts\MinimapArrow.cs" />
+    <Compile Include="Assets\Scripts\ExitGame.cs" />
     <Compile Include="Assets\Scripts\AudioListenerCleaner.cs" />
     <Compile Include="Assets\Scripts\EnsureSingleEventSystem.cs" />
     <Compile Include="Assets\Scripts\Instructions.cs" />
+    <Compile Include="Assets\Scripts\SceneTrigger.cs" />
     <Compile Include="Assets\Scripts\Triggers\RangedUnlockTrigger.cs" />
     <Compile Include="Assets\Scripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />
