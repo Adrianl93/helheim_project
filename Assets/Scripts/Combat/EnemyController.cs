@@ -532,7 +532,7 @@ public class EnemyController : MonoBehaviour
 
 
 
-    public void TakeDamage(int incomingDamage, Vector2 attackOrigin)
+    public void TakeDamage(int incomingDamage, Vector2? attackOrigin = null)
     {
         if (isDead) return; //si esta muerto no se aplica daño
         int finalDamage = Mathf.Max(incomingDamage - armor, 0);
@@ -542,11 +542,10 @@ public class EnemyController : MonoBehaviour
         if (animator != null && health > 0)
             animator.SetTrigger("TakeDamage");
 
-
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
+        if (rb != null && attackOrigin.HasValue)
         {
-            Vector2 knockbackDir = ((Vector2)transform.position - attackOrigin).normalized;
+            Vector2 knockbackDir = ((Vector2)transform.position - attackOrigin.Value).normalized;
 
             // iniciamos una corrutina para manejar el knockback sin romper el navmesh
             StartCoroutine(ApplyKnockback(rb, knockbackDir));
@@ -581,6 +580,7 @@ public class EnemyController : MonoBehaviour
         // Activa el estado de enraged al recibir daño
         TriggerEnragement();
     }
+
 
 
     // knockback (retroceso) al recibir daño

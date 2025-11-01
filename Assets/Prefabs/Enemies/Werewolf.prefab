@@ -312,7 +312,7 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 5791407845845436287, guid: 1a5b6fcedc36a8f43bf4e3d1780b276b, type: 3}
   healthBarOffset: {x: 0, y: 3, z: 0}
   damagePopupOffset: {x: 1, y: 1.5, z: 0}
-  manaPopupOffset: {x: 1.2, y: 0.5, z: 0}
+  manaPopupOffset: {x: 1.2, y: 1, z: 0}
   animator: {fileID: 5736825264741776231}
 --- !u!195 &2549328079066092930
 NavMeshAgent:
