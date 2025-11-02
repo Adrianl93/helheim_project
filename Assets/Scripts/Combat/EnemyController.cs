@@ -4,7 +4,6 @@ using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
-
 {
     public enum EnemyType { Melee, Ranged, Boss }
 
