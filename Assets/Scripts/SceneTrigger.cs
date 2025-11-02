@@ -1,18 +1,24 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneTrigger : MonoBehaviour
 {
-    public string sceneName; 
+    public string sceneName;
+    public EnemyController boss; // ← Arrastra aquí al boss desde el Inspector
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Algo entr� al trigger: " + other.name);
-
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Es el jugador, cargando escena: " + sceneName);
-            SceneManager.LoadScene(sceneName);
+            if (boss == null || boss.IsDead)
+            {
+                Debug.Log("El jefe ha muerto o fue destruido, cargando escena...");
+                SceneManager.LoadScene(sceneName);
+            }
+            else
+            {
+                Debug.Log("El jefe aún vive, no puedes salir.");
+            }
         }
     }
 }

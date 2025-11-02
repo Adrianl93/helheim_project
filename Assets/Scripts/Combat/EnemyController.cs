@@ -793,4 +793,5 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, minRangedDistance);
     }
+    public bool IsDead => isDead;
 }
