@@ -75,9 +75,7 @@
     <Compile Include="Assets\Scripts\Combat\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Combat\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\PickUps\DropItemManager.cs" />
-    <Compile Include="Assets\Scripts\Sounds\IBossState.cs" />
     <Compile Include="Assets\Scripts\UI\Message.cs" />
-    <Compile Include="Assets\Scripts\Triggers\BossAudioTrigger.cs" />
     <Compile Include="Assets\Scripts\PickUps\BasicPickUp.cs" />
     <Compile Include="Assets\Scripts\PickUps\Chest.cs" />
     <Compile Include="Assets\Scripts\PickUps\ArmorBoost.cs" />
@@ -98,12 +96,12 @@
     <Compile Include="Assets\Scripts\UI\PauseUI.cs" />
     <Compile Include="Assets\Scripts\Combat\SpiralProjectile.cs" />
     <Compile Include="Assets\Scripts\UI\PopupUI.cs" />
-    <Compile Include="Assets\Scripts\Sounds\EnemyState.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\CustomCursor.cs" />
     <Compile Include="Assets\Scripts\PlayerState.cs" />
     <Compile Include="Assets\Scripts\Mainmenu.cs" />
+    <Compile Include="Assets\Scripts\Triggers\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\PickUps\AttackBoost.cs" />
     <Compile Include="Assets\Scripts\Triggers\MagicDoor.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerHealthUI.cs" />

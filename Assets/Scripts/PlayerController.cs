@@ -121,8 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         if (animator != null)
             animator.SetTrigger("Attack");
-        if (meleeAudioSource != null && meleeAttackSound != null)
-            meleeAudioSource.PlayOneShot(meleeAttackSound);
+
         // obtenemos direccion del mouse
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 attackDir = (mouseWorldPos - transform.position).normalized;
@@ -207,8 +206,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log($"No hay suficiente mana para el ataque ranged. Mana actual: {currentMana}/{maxMana}");
             return;
         }
-        if (rangedAudioSource != null && rangedAttackSound != null)
-            rangedAudioSource.PlayOneShot(rangedAttackSound);
+
         // El ataque se apunta con el mouse
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
@@ -321,9 +319,4 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3)lastMoveDir * meleeDistance);
     }
-    [Header("Audio")]
-    [SerializeField] private AudioSource meleeAudioSource;
-    [SerializeField] private AudioSource rangedAudioSource;
-    [SerializeField] private AudioClip meleeAttackSound;
-    [SerializeField] private AudioClip rangedAttackSound;
 }
