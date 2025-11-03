@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\BossAudioTrigger.cs" />
     <Compile Include="Assets\Scripts\Combat\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\PickUps\DropItemManager.cs" />
     <Compile Include="Assets\Scripts\audio mixer.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Assets\Scripts\CustomCursor.cs" />
     <Compile Include="Assets\Scripts\PlayerState.cs" />
     <Compile Include="Assets\Scripts\Mainmenu.cs" />
+    <Compile Include="Assets\Scripts\IBossState.cs" />
     <Compile Include="Assets\Scripts\Triggers\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\PickUps\AttackBoost.cs" />
     <Compile Include="Assets\Scripts\Triggers\MagicDoor.cs" />

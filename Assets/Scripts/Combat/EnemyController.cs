@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class EnemyController : MonoBehaviour
+
+public class EnemyController : MonoBehaviour, IBossState
 {
     public enum EnemyType { Melee, Ranged, Boss }
 
@@ -794,4 +795,5 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, minRangedDistance);
     }
     public bool IsDead => isDead;
+    public bool IsChasing => playerDetected && !isDead;
 }
