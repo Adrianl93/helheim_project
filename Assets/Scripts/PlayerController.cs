@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float meleeAttackCooldown = 1f;
     [SerializeField] private float meleeOffsetY = 0.5f;
     [SerializeField] private float meleeOffsetDiagonal = 0.2f;
-    [SerializeField] private float meleeHitboxDuration = 0.2f; 
+    [SerializeField] private float meleeHitboxDuration = 0.2f;
     private float lastMeleeAttackTime = 0f;
 
     [Header("Ataque a Distancia")]
@@ -39,6 +39,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int currentMana = 25;
     [SerializeField] private int rangedManaCost = 5;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource meleeAudioSource;
+    [SerializeField] private AudioSource rangedAudioSource;
+    [SerializeField] private AudioClip meleeAttackSFX;
+    [SerializeField] private AudioClip rangedAttackSFX;
+
     [Header("Stats (Lectura)")]
     public int Coins => coins;
     public int CurrentMana => currentMana;
@@ -53,11 +59,8 @@ public class PlayerController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         playerInput = GetComponent<PlayerInput>();
 
-        // configuracion del navmesh
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-
-        // le paso la speed del player al agent del navmesh
         agent.speed = speed;
     }
 
@@ -79,7 +82,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //input de botones para controlar al player
         input = playerInput.actions["Move"].ReadValue<Vector2>();
 
         if (input != Vector2.zero)
@@ -89,7 +91,6 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("MoveY", input.y);
             animator.SetBool("IsMoving", true);
 
-            // movimiento con navmesh X Y
             Vector2 moveDir = input.normalized;
             Vector3 move = new Vector3(moveDir.x, moveDir.y, 0f);
             agent.Move(move * speed * Time.deltaTime);
@@ -119,27 +120,30 @@ public class PlayerController : MonoBehaviour
 
     private void MeleeAttack()
     {
+        if (meleeAudioSource != null && meleeAttackSFX != null)
+        {
+            meleeAudioSource.pitch = Random.Range(0.95f, 1.05f);
+            meleeAudioSource.PlayOneShot(meleeAttackSFX);
+        }
+
         if (animator != null)
             animator.SetTrigger("Attack");
 
-        // obtenemos direccion del mouse
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 attackDir = (mouseWorldPos - transform.position).normalized;
 
-        // normalizamos la direccion del ataque para evitar puntos intermedios ( solo 8 direcciones)
         Vector2[] directions = new Vector2[]
         {
-        Vector2.up,                        // Norte
-        new Vector2(1, 1).normalized,      // Noreste
-        Vector2.right,                     // Este
-        new Vector2(1, -1).normalized,     // Sudeste
-        Vector2.down,                      // Sur
-        new Vector2(-1, -1).normalized,    // Suroeste
-        Vector2.left,                      // Oeste
-        new Vector2(-1, 1).normalized      // Noroeste
+            Vector2.up,
+            new Vector2(1, 1).normalized,
+            Vector2.right,
+            new Vector2(1, -1).normalized,
+            Vector2.down,
+            new Vector2(-1, -1).normalized,
+            Vector2.left,
+            new Vector2(-1, 1).normalized
         };
 
-        // Elegimos la dirección más cercana (de las 8)
         float maxDot = -Mathf.Infinity;
         Vector2 snappedDir = Vector2.zero;
 
@@ -155,7 +159,6 @@ public class PlayerController : MonoBehaviour
 
         attackDir = snappedDir;
 
-        // aplicamos un offset especifico segun cada una de las 8 direcciones
         Vector3 offset = Vector3.zero;
 
         if (attackDir == Vector2.up)
@@ -175,24 +178,20 @@ public class PlayerController : MonoBehaviour
         else if (attackDir == new Vector2(-1, -1).normalized)
             offset = new Vector3(-meleeDistance - meleeOffsetDiagonal, -meleeDistance - meleeOffsetDiagonal, 0f);
 
-        // creamos el hitbox
         Vector3 spawnPos = transform.position + offset;
         GameObject hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity, transform);
 
         hitbox.transform.right = attackDir;
 
-        // la animacion se modifica segun el lugar al que disparamos
         animator.SetFloat("MoveX", attackDir.x);
         animator.SetFloat("MoveY", attackDir.y);
 
-       
         AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
         if (hitboxScript != null)
         {
             hitboxScript.Initialize(meleeAttackDamage, enemyLayer, transform.position);
         }
 
-        // destruimos el hitbox despues del delay
         Destroy(hitbox, meleeHitboxDuration);
 
         Debug.Log($"Ataque melee en dirección {attackDir}");
@@ -203,18 +202,20 @@ public class PlayerController : MonoBehaviour
     {
         if (!TryConsumeMana(rangedManaCost))
         {
-            Debug.Log($"No hay suficiente mana para el ataque ranged. Mana actual: {currentMana}/{maxMana}");
+            Debug.Log($"No hay suficiente mana para ranged. Mana: {currentMana}/{maxMana}");
             return;
         }
 
-        // El ataque se apunta con el mouse
+        if (rangedAudioSource != null && rangedAttackSFX != null)
+        {
+            rangedAudioSource.pitch = Random.Range(0.98f, 1.02f);
+            rangedAudioSource.PlayOneShot(rangedAttackSFX);
+        }
+
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
-
-        // Calculamos el ángulo para rotar el proyectil
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        // Instanciamos el proyectil rotado en la dirección del disparo
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0f, 0f, angle - 90f));
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
         if (prb != null)
@@ -225,11 +226,10 @@ public class PlayerController : MonoBehaviour
         {
             projScript.SetDamage(rangedAttackDamage);
             projScript.SetOwner(gameObject);
-            // PASAMOS la posición de origen del ataque (la posición del player)
             projScript.SetAttackOrigin(transform.position);
         }
 
-        Debug.Log("Player lanzó un proyectil hacia " + direction + " (ranged). Mana restante: " + currentMana);
+        Debug.Log("Player lanzó un proyectil hacia " + direction);
     }
 
     private void Interact()
@@ -248,7 +248,7 @@ public class PlayerController : MonoBehaviour
     {
         meleeAttackDamage += amount;
         rangedAttackDamage += amount;
-        Debug.Log($"Player recogió un Attack Boost! Nuevo daño melee: {meleeAttackDamage}, daño ranged: {rangedAttackDamage}");
+        Debug.Log($"Attack Boost! Nuevo daño melee: {meleeAttackDamage}, ranged: {rangedAttackDamage}");
     }
 
     public void SetStats(int melee, int ranged)

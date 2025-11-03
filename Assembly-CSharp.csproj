@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Combat\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Combat\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\PickUps\DropItemManager.cs" />
+    <Compile Include="Assets\Scripts\audio mixer.cs" />
     <Compile Include="Assets\Scripts\UI\Message.cs" />
     <Compile Include="Assets\Scripts\PickUps\BasicPickUp.cs" />
     <Compile Include="Assets\Scripts\PickUps\Chest.cs" />
