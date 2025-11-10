@@ -55,7 +55,8 @@ public class CheatManager : MonoBehaviour
         cheatMap.Enable();
 
         if (gameManager == null)
-            gameManager = FindObjectOfType<GameManager>();
+            gameManager = FindAnyObjectByType<GameManager>();
+
 
         Debug.Log("[CheatManager] Cheats activados (Editor/Dev Build).");
     }

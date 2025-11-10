@@ -11,7 +11,7 @@ public class MagicDoor : MonoBehaviour
 
     [Header("Opciones")]
     [SerializeField] private bool disableColliderOnFadeOutStart = true;
-    [Range(0f, 1f)][SerializeField] private float collisionEnableThreshold = 1.0f;
+   
 
     private SpriteRenderer spriteRenderer;
     private Collider2D doorCollider;

@@ -32,7 +32,6 @@ public class EnemyController : MonoBehaviour, IBossState
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpeed = 10f;
-    [SerializeField] private float burstMultiplier = 2f;
     [SerializeField] private float rangedBurstInterval = 8f;
     [SerializeField] private int burstProjectileCount = 6;
     [SerializeField] private float burstPauseDuration = 8f;
@@ -438,8 +437,8 @@ public class EnemyController : MonoBehaviour, IBossState
         if (animator != null)
             animator.SetTrigger("AttackMelee");
 
-        // Iniciamos el ataque tras un pequeño retraso, sincronizado con la animación
-        StartCoroutine(PerformMeleeAttackDelayed(0.3f)); // ajusta según tu anim
+        // Delay para animacion
+        StartCoroutine(PerformMeleeAttackDelayed(0.3f)); 
     }
 
     private void TryRangedAttack()

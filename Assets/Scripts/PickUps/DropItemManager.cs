@@ -129,12 +129,12 @@ public class DropItemManager : MonoBehaviour
             chosenPool = easyItems;
             poolName = "Easy";
         }
-        else if (armor <= 11 || meleeAttack <= 25)
+        else if (armor >= 11 || meleeAttack >= 22)
         {
             chosenPool = mediumItems;
             poolName = "Medium";
         }
-        else if ((armor < 11 || meleeAttack < 25) && coins >= 150)
+        else if ((armor > 13 || meleeAttack > 25) && coins >= 150)
         {
             chosenPool = hardItems;
             poolName = "Hard";
