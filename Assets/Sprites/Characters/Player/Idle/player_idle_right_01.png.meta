@@ -3,8 +3,17 @@ guid: 94cfb280fed85b641aec482c4abf8e96
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6937936813896882974
-    second: player_idle_right_0
+      213: -1782791287431437598
+    second: player_idle_right_01_0
+  - first:
+      213: -1635611547894655983
+    second: player_idle_right_01_1
+  - first:
+      213: -1673437558738297168
+    second: player_idle_right_01_2
+  - first:
+      213: 2662868750662960206
+    second: player_idle_right_01_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,20 +112,20 @@ TextureImporter:
       name: player_idle_right_01_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
         width: 26
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5033317, y: 0.63436}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: efda5656b6198b14b9fb711ab9b78d27
-      internalID: 2004404241
+      spriteID: 2e2ecfb05c04247e0800000000000000
+      internalID: -1782791287431437598
       vertices: []
       indices: 
       edges: []
@@ -125,20 +134,20 @@ TextureImporter:
       name: player_idle_right_01_1
       rect:
         serializedVersion: 2
-        x: 35
+        x: 26
         y: 0
         width: 26
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5033317, y: 0.63436}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e1375b7301b9b614f9cdb6f2808d545d
-      internalID: 883282821
+      spriteID: 114563986f32d49e0800000000000000
+      internalID: -1635611547894655983
       vertices: []
       indices: 
       edges: []
@@ -147,20 +156,20 @@ TextureImporter:
       name: player_idle_right_01_2
       rect:
         serializedVersion: 2
-        x: 67
+        x: 52
         y: 0
         width: 26
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5033317, y: 0.63436}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b5793890578ba4946840d96e7d9ee404
-      internalID: -2116196285
+      spriteID: 0be5b951861c6c8e0800000000000000
+      internalID: -1673437558738297168
       vertices: []
       indices: 
       edges: []
@@ -169,20 +178,20 @@ TextureImporter:
       name: player_idle_right_01_3
       rect:
         serializedVersion: 2
-        x: 99
+        x: 78
         y: 0
         width: 26
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5033317, y: 0.63436}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3dcf67a5e4295a246a2c0231fc93e279
-      internalID: -203636888
+      spriteID: e4401ce250964f420800000000000000
+      internalID: 2662868750662960206
       vertices: []
       indices: 
       edges: []
@@ -191,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5a7cfe85bfa71c6459d7c80a7a32c642
+    spriteID: d46f0d97dc66f654694c0a7e4a05d9e3
     internalID: 0
     vertices: []
     indices: 
@@ -201,12 +210,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":26.0,"y":64.0},"gridSpriteOffset":{"x":3.0,"y":0.0},"gridSpritePadding":{"x":6.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":26.0,"y":63.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.50333172082901,"y":0.6343600153923035},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      player_idle_right_01_0: 2004404241
-      player_idle_right_01_1: 883282821
-      player_idle_right_01_2: -2116196285
-      player_idle_right_01_3: -203636888
+      player_idle_right_01_0: -1782791287431437598
+      player_idle_right_01_1: -1635611547894655983
+      player_idle_right_01_2: -1673437558738297168
+      player_idle_right_01_3: 2662868750662960206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

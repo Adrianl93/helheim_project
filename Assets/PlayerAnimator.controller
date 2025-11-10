@@ -193,7 +193,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Move
+  m_Name: Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -319,7 +319,7 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Move
+  m_Name: Ranged
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: e963f34f9e477a74e8cb77a576a0747e, type: 2}
@@ -392,7 +392,7 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Move
+  m_Name: Melee
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: d70317ac813bcb341b03ae52c255cec5, type: 2}
@@ -549,7 +549,7 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blend Tree
+  m_Name: Die
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: e042f9abbf9caec43814eeb3e738c456, type: 2}
@@ -673,7 +673,7 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Move
+  m_Name: Run
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 512d53c7747e08b4bb7b95d28ac35040, type: 2}
@@ -792,7 +792,7 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blend Tree
+  m_Name: Idle
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: c7579afc42935b444ad32f0b9b127954, type: 2}
@@ -989,7 +989,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Die
+    m_ConditionEvent: IsDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8069936119883101330}

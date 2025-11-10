@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
     private float lastRangedAttackTime = 0f;
     private bool rangedUnlocked = false;
 
+    [Header("Delays de Ataque")]
+    [SerializeField] private float meleeAttackDelay = 0.2f;  
+    [SerializeField] private float rangedAttackDelay = 0.25f; 
+
+
     [Header("Mana y Recursos")]
     [SerializeField] private int coins = 0;
     [SerializeField] private int maxMana = 50;
@@ -164,7 +169,7 @@ public class PlayerController : MonoBehaviour
         if (attackDir == Vector2.up)
             offset = new Vector3(0f, meleeDistance + meleeOffsetY, 0f);
         else if (attackDir == Vector2.down)
-            offset = new Vector3(0f, -meleeDistance - meleeOffsetY, 0f);
+            offset = new Vector3(0f, -meleeDistance - meleeOffsetY * 1.2f, 0f);
         else if (attackDir == Vector2.left)
             offset = new Vector3(-meleeDistance - meleeOffsetDiagonal, 0f, 0f);
         else if (attackDir == Vector2.right)
@@ -215,8 +220,10 @@ public class PlayerController : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        animator.SetFloat("MoveX", direction.x);
+        animator.SetFloat("MoveY", direction.y);
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0f, 0f, angle));
 
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0f, 0f, angle - 90f));
         Rigidbody2D prb = projectile.GetComponent<Rigidbody2D>();
         if (prb != null)
             prb.linearVelocity = direction * projectileSpeed;
@@ -301,7 +308,12 @@ public class PlayerController : MonoBehaviour
     private IEnumerator MeleeAnimationRoutine()
     {
         animator.SetBool("IsAttackingMelee", true);
+        
+
+        //delay antes de crear el hitbox para sincronizar con la animación
+        yield return new WaitForSeconds(meleeAttackDelay);
         MeleeAttack();
+
         yield return new WaitForSeconds(0.5f);
         animator.SetBool("IsAttackingMelee", false);
     }
@@ -309,7 +321,11 @@ public class PlayerController : MonoBehaviour
     private IEnumerator RangedAnimationRoutine()
     {
         animator.SetBool("IsAttackingRanged", true);
+        
+        //delay antes de instanciar el ataque para sincronizar con la animación
+        yield return new WaitForSeconds(rangedAttackDelay);
         RangedAttack();
+
         yield return new WaitForSeconds(0.5f);
         animator.SetBool("IsAttackingRanged", false);
     }

@@ -1,0 +1,503 @@
+fileFormatVersion: 2
+guid: 328f3c9306847ff4196555423ebd0d7e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5730043344732613411
+    second: werewolf_die_down_01_0
+  - first:
+      213: -4237626736264635077
+    second: werewolf_die_down_01_1
+  - first:
+      213: -327795454769169186
+    second: werewolf_die_down_01_2
+  - first:
+      213: -3805753583613208482
+    second: werewolf_die_down_01_3
+  - first:
+      213: -8141100394378708528
+    second: werewolf_die_down_01_4
+  - first:
+      213: 647568899651968585
+    second: werewolf_die_down_01_5
+  - first:
+      213: -1664715876395916343
+    second: werewolf_die_down_01_6
+  - first:
+      213: -1138511892249195050
+    second: werewolf_die_down_01_7
+  - first:
+      213: 4328416621765175054
+    second: werewolf_die_down_01_8
+  - first:
+      213: -9073769457443044005
+    second: werewolf_die_down_01_9
+  - first:
+      213: -8673273489820983189
+    second: werewolf_die_down_01_10
+  - first:
+      213: -6368903663475751683
+    second: werewolf_die_down_01_11
+  - first:
+      213: 2918774451923906619
+    second: werewolf_die_down_01_12
+  - first:
+      213: 361104591088130389
+    second: werewolf_die_down_01_13
+  - first:
+      213: 8993446052825427729
+    second: werewolf_die_down_01_14
+  - first:
+      213: -3732273924508075504
+    second: werewolf_die_down_01_15
+  - first:
+      213: -990862420273675358
+    second: werewolf_die_down_01_16
+  - first:
+      213: 7279085131463887483
+    second: werewolf_die_down_01_17
+  - first:
+      213: 1369207270457206366
+    second: werewolf_die_down_01_18
+  - first:
+      213: -3185210944663117230
+    second: werewolf_die_down_01_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 15
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: werewolf_die_down_01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32be06e1014358f40800000000000000
+      internalID: 5730043344732613411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3d9f3e6fece035c0800000000000000
+      internalID: -4237626736264635077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_2
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edcfe7745cf637bf0800000000000000
+      internalID: -327795454769169186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_3
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e58901a874f3f2bc0800000000000000
+      internalID: -3805753583613208482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d9b3402350050f80800000000000000
+      internalID: -8141100394378708528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94e9857bb70acf800800000000000000
+      internalID: 647568899651968585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_6
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c3e77ffabdb5e8e0800000000000000
+      internalID: -1664715876395916343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_7
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ddcde157713330f0800000000000000
+      internalID: -1138511892249195050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_8
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e07a53c0cff911c30800000000000000
+      internalID: 4328416621765175054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_9
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b55815bd0ce731280800000000000000
+      internalID: -9073769457443044005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_10
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b606867c6b752a780800000000000000
+      internalID: -8673273489820983189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_11
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df408d9acdb1d97a0800000000000000
+      internalID: -6368903663475751683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_12
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b30f86256e1918820800000000000000
+      internalID: 2918774451923906619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: werewolf_die_down_01_13
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 0
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.50032, y: 0.4145673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 559129e56b6e20500800000000000000
+      internalID: 361104591088130389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9c366a7d477216d42a3bec4dc53d8f29
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":68.0,"y":83.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5003200173377991,"y":0.4145672917366028},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: True
+    nameFileIdTable:
+      werewolf_die_down_01_0: 5730043344732613411
+      werewolf_die_down_01_1: -4237626736264635077
+      werewolf_die_down_01_10: -8673273489820983189
+      werewolf_die_down_01_11: -6368903663475751683
+      werewolf_die_down_01_12: 2918774451923906619
+      werewolf_die_down_01_13: 361104591088130389
+      werewolf_die_down_01_2: -327795454769169186
+      werewolf_die_down_01_3: -3805753583613208482
+      werewolf_die_down_01_4: -8141100394378708528
+      werewolf_die_down_01_5: 647568899651968585
+      werewolf_die_down_01_6: -1664715876395916343
+      werewolf_die_down_01_7: -1138511892249195050
+      werewolf_die_down_01_8: 4328416621765175054
+      werewolf_die_down_01_9: -9073769457443044005
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
