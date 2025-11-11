@@ -186,11 +186,11 @@ MonoBehaviour:
   health: 200
   armor: 12
   meleeDamage: 17
-  rangedDamage: 14
+  rangedDamage: 9
   speed: 9
   rewardScore: 1000
   knockbackForce: 10
-  detectionRadius: 15
+  detectionRadius: 25
   meleeRadius: 5
   meleeCooldown: 1.5
   rangedCooldown: 2
@@ -199,11 +199,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4042022002272296592, guid: 61ed20ce984a1f64da979235084e5abc, type: 3}
   firePoint: {fileID: 5319732507448216370}
   projectileSpeed: 9
-  burstMultiplier: 2
   rangedBurstInterval: 8
   burstProjectileCount: 6
-  burstPauseDuration: 2
-  meleeHitboxPrefab: {fileID: 0}
+  burstPauseDuration: 4
+  meleeHitboxPrefab: {fileID: 8345104391409692722, guid: 61635601529876146b32bedaeed294a5, type: 3}
   meleeHitboxDuration: 0.1
   playerLayer:
     serializedVersion: 2

@@ -149,11 +149,16 @@ MonoBehaviour:
   - {fileID: 5060296631385567516, guid: d56e959f42b2c1d429a662a1883791a8, type: 3}
   - {fileID: 5720880954985142441, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
   spawnPoint: {fileID: 5766275536732133709}
-  spawnRate: 10
+  spawnRate: 13
   spawnDuration: 60
   spawnOffset: {x: -5, y: 0, z: 0}
   tombAnimator: {fileID: 1370519488863483610}
   openAnimationDuration: 1
+  spawnerID: 0
+  spawnGroupID: 0
+  spawnDelayPerID: 1.5
+  useIndividualSpawnDuration: 0
+  individualSpawnDuration: 13
 --- !u!61 &7658687033402968635
 BoxCollider2D:
   m_ObjectHideFlags: 0

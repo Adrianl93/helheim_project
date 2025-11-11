@@ -51,17 +51,15 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-
             SceneManager.sceneLoaded += OnSceneLoaded;
-
-         
             timer = gameDuration;
 
             playerInput = GetComponent<PlayerInput>();
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            // SOLO en editor o build de desarrollo
             if (playerInput != null)
             {
-                
                 rebootAction = playerInput.actions["Reboot"];
                 restartAction = playerInput.actions["Restart"];
                 exitAction = playerInput.actions["Exit"];
@@ -70,6 +68,7 @@ public class GameManager : MonoBehaviour
                 if (restartAction != null) restartAction.performed += OnRestartPerformed;
                 if (exitAction != null) exitAction.performed += OnExitPerformed;
             }
+#endif
         }
         else
         {
@@ -88,6 +87,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
     private void OnRebootPerformed(InputAction.CallbackContext ctx)
     {
         RestartScene();
@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
     {
         ExitGame();
     }
+#endif
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -209,7 +210,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log($"[Reposicionado FINAL] Player a {player.transform.position}");
         Debug.Log($"[DEBUG] Pos antes del NavMeshAgent: {player.transform.position}");
-        // yield return null; // (no puede usarse aquí, si querés usarlo poné esto en una Coroutine)
+ 
         Debug.Log($"[DEBUG] Pos después del frame (NavMeshAgent): {player.transform.position}");
 
         // Reactivamos fisica y collider
@@ -266,6 +267,7 @@ public class GameManager : MonoBehaviour
     }
 
     #region Reinicio
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -282,6 +284,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Scene1");
         Debug.Log("[GameManager] Juego reiniciado desde StartPoint con Score en 0");
     }
+    #endif
     #endregion
 
     public void SaveCheckpoint(GameObject checkpoint)
