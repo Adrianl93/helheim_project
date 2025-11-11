@@ -319,8 +319,7 @@ MonoBehaviour:
   minRangedDistance: 5
   projectilePrefab: {fileID: 4042022002272296592, guid: e47dcb59366664741a4471f34fd63be7, type: 3}
   firePoint: {fileID: 1967074461058098233}
-  projectileSpeed: 60
-  burstMultiplier: 2
+  projectileSpeed: 45
   rangedBurstInterval: 15
   burstProjectileCount: 8
   burstPauseDuration: 1

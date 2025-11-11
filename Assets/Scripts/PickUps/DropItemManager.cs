@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Necesario para detectar el cambio de escena
+using UnityEngine.SceneManagement; 
 
 public class DropItemManager : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class DropItemManager : MonoBehaviour
 
     private void OnEnable()
     {
-        // Escuchar cuando se cargue una nueva escena
+        
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -34,8 +34,7 @@ public class DropItemManager : MonoBehaviour
 
     private void Start()
     {
-        // No asignamos referencias aquí directamente
-        // Se hará automáticamente cuando se cargue Scene1
+        
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -121,31 +120,29 @@ public class DropItemManager : MonoBehaviour
         int meleeAttack = playerController.MeleeDamage;
         int coins = playerController.Coins;
 
-        GameObject[] chosenPool;
-        string poolName;
+        GameObject[] chosenPool = easyItems;
+        string poolName = "Easy";
 
-        if (armor <= 7 && meleeAttack <= 19)
-        {
-            chosenPool = easyItems;
-            poolName = "Easy";
-        }
-        else if (armor >= 11 || meleeAttack >= 22)
-        {
-            chosenPool = mediumItems;
-            poolName = "Medium";
-        }
-        else if ((armor > 13 || meleeAttack > 25) && coins >= 150)
+        if (armor > 20 || meleeAttack > 35)
         {
             chosenPool = hardItems;
             poolName = "Hard";
         }
-        else
+        else if (armor >= 16 || meleeAttack >= 30)
+        {
+            chosenPool = mediumItems;
+            poolName = "Medium";
+        }
+        else if (armor <= 11 && meleeAttack <= 26)
+        {
+            chosenPool = easyItems;
+            poolName = "Easy";
+        }
+        else if (coins >= 150)
         {
             chosenPool = killItems;
             poolName = "Kill";
         }
-
-        if (chosenPool == null || chosenPool.Length == 0) return (null, poolName);
 
         int index = Random.Range(0, chosenPool.Length);
         return (chosenPool[index], poolName);

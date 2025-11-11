@@ -70,13 +70,13 @@
     <Compile Include="Assets\Scripts\UI\TimerUI.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerManaUI.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\AudioMixer.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyController.cs" />
     <Compile Include="Assets\Scripts\BossAudioTrigger.cs" />
     <Compile Include="Assets\Scripts\Combat\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\PickUps\DropItemManager.cs" />
-    <Compile Include="Assets\Scripts\audio mixer.cs" />
     <Compile Include="Assets\Scripts\UI\Message.cs" />
     <Compile Include="Assets\Scripts\PickUps\BasicPickUp.cs" />
     <Compile Include="Assets\Scripts\PickUps\Chest.cs" />

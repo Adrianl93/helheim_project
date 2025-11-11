@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5896549648686232539, guid: 424b2f5960e7de747af9bbc3cd9a9ba1, type: 3}
       propertyPath: m_Name
-      value: HealthPotionMedium 1
+      value: HealthPotionMedium
       objectReference: {fileID: 0}
     - target: {fileID: 8140214087667904574, guid: 424b2f5960e7de747af9bbc3cd9a9ba1, type: 3}
       propertyPath: healAmount
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8652619881262958587, guid: 424b2f5960e7de747af9bbc3cd9a9ba1, type: 3}
       propertyPath: m_LocalPosition.x
