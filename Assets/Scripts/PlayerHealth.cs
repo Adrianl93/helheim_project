@@ -56,7 +56,11 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(HandleDeath());
         }
     }
-
+    public void RestartScene()
+    {
+        // Implementación temporal
+        Debug.Log("RestartScene() aún no implementado");
+    }
     private IEnumerator HandleDeath()
     {
         if (isDead) yield break;
@@ -80,15 +84,17 @@ public class PlayerHealth : MonoBehaviour
         
         yield return new WaitForSeconds(deathDelay);
 
-       
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RestartScene();
         }
-        else
-        {
-            Debug.LogWarning("No se encontró GameManager en la escena.");
-        }
+#else
+    // En builds normales podrías mostrar un menú o recargar de otra forma
+    UnityEngine.SceneManagement.SceneManager.LoadScene(
+        UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+    );
+#endif
     }
 
     private void Die()

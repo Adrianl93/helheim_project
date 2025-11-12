@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu 1.unity
     guid: 65f0d994cbf2a7b4d893c851a9903342
   - enabled: 1
+    path: Assets/Scenes/Historia(Lore).unity
+    guid: e5b4879fe8c19f84fabff68f0122da84
+  - enabled: 1
     path: Assets/Scenes/Scene1.unity
     guid: 9e9f7dda696b9aa49b0ec09b5b8672a1
   - enabled: 1
