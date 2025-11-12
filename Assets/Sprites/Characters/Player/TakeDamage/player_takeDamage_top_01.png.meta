@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ce7ab1167f249ab4d80434a5641eca2c
+guid: 717ab77c7ebc1a14b9d9b9d00d20b607
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9022624932809521528
-    second: player_die_back_0
+      213: 8653063786233422158
+    second: player_takeDamage_top_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_die_back_0
+      name: player_takeDamage_top_01_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 64
+        width: 29
+        height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 879b1bd829dc63d70800000000000000
-      internalID: 9022624932809521528
+      spriteID: e416d3deaabd51870800000000000000
+      internalID: 8653063786233422158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_takeDamage_top_01_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 0
+        width: 29
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 117dcbf9ce5a0cd4eb5cd92d55e173d7
+      internalID: 1512875826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_takeDamage_top_01_2
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 0
+        width: 29
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4808351a495231f47ba6a6689a3993bd
+      internalID: 1485573122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_takeDamage_top_01_3
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 0
+        width: 29
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 827a3e0143bfbe94a92933469a814ebf
+      internalID: -781070025
       vertices: []
       indices: 
       edges: []
@@ -125,7 +191,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 07f70d6cb7240a24c9ffba8edaa7e034
     internalID: 0
     vertices: []
     indices: 
@@ -133,9 +199,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":29.0,"y":63.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      player_die_back_0: 9022624932809521528
+      player_takeDamage_top_01_0: 8653063786233422158
+      player_takeDamage_top_01_1: 1512875826
+      player_takeDamage_top_01_2: 1485573122
+      player_takeDamage_top_01_3: -781070025
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
