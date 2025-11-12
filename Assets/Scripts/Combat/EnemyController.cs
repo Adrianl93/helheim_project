@@ -42,6 +42,7 @@ public class EnemyController : MonoBehaviour, IBossState
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float meleeDistance = 0.8f;
     [SerializeField] private float meleeOffsetY = 0.5f;
+    [SerializeField] private float meleeOffsetX = 0.4f;
     [SerializeField] private float meleeOffsetDiagonal = 0.2f;
 
     [Header("Estados y temporizadores")]
@@ -438,7 +439,7 @@ public class EnemyController : MonoBehaviour, IBossState
             animator.SetTrigger("AttackMelee");
 
         // Delay para animacion
-        StartCoroutine(PerformMeleeAttackDelayed(0.3f)); 
+        StartCoroutine(PerformMeleeAttackDelayed(0.5f)); 
     }
 
     private void TryRangedAttack()
@@ -747,7 +748,9 @@ public class EnemyController : MonoBehaviour, IBossState
 
         // offset vertical
         if (Mathf.Abs(dirToPlayer.y) > 0.1f && Mathf.Abs(dirToPlayer.x) < 0.1f)
+        {
             yOffset += dirToPlayer.y * meleeOffsetY;
+        }
 
         // offset diagonal
         else if (Mathf.Abs(dirToPlayer.x) > 0.1f && Mathf.Abs(dirToPlayer.y) > 0.1f)
@@ -755,6 +758,8 @@ public class EnemyController : MonoBehaviour, IBossState
             xOffset += dirToPlayer.x * meleeOffsetDiagonal;
             yOffset += dirToPlayer.y * meleeOffsetDiagonal;
         }
+        else if (Mathf.Abs(dirToPlayer.x) > 0.1f && Mathf.Abs(dirToPlayer.y) < 0.1f)
+            xOffset += dirToPlayer.x * meleeOffsetX;
 
         Vector3 spawnPos = transform.position + new Vector3(xOffset, yOffset, 0f);
 
