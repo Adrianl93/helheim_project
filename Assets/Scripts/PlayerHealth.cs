@@ -51,6 +51,12 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log($"Player recibió {finalDamage} de daño (HP restante: {currentHealth})");
 
+        if (animator != null)
+        {
+            animator.SetTrigger("TakeDamage");
+        }
+
+
         if (currentHealth <= 0)
         {
             StartCoroutine(HandleDeath());
