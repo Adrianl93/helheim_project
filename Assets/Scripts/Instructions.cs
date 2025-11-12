@@ -1,18 +1,32 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Instructions : MonoBehaviour
 {
-    public float delayBeforeLoading = 5f; // segundos de duraci�n
-    public string nextSceneName = "MainMenu";
+    [Tooltip("Segundos que espera antes de cargar la siguiente escena automáticamente")]
+    public float delayBeforeLoading = 0f;
+
+    [Tooltip("Nombre de la escena a cargar")]
+    public string nextSceneName = "Menu 1";
+
+    [Tooltip("¿Cargar automáticamente después del retraso?")]
+    public bool autoLoad = true;
 
     void Start()
     {
-        Invoke("LoadNextScene", delayBeforeLoading);
+        // Si está activado el autoLoad, programar la carga automática
+        if (autoLoad)
+            Invoke(nameof(LoadNextScene), delayBeforeLoading);
     }
 
-    void LoadNextScene()
+    // Puede ser llamada automáticamente o desde un botón (OnClick)
+    public void LoadNextScene()
     {
-        SceneManager.LoadScene("Menu 1");
+        Debug.Log("Botón presionado — cargando escena: " + nextSceneName);
+        SceneManager.LoadScene(nextSceneName);
+    }
+    public void TestClick()
+    {
+        Debug.Log("El botón está vinculado correctamente ✅");
     }
 }
