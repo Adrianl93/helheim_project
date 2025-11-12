@@ -292,13 +292,14 @@ MonoBehaviour:
   burstProjectileCount: 8
   burstPauseDuration: 1
   meleeHitboxPrefab: {fileID: 8345104391409692722, guid: 61635601529876146b32bedaeed294a5, type: 3}
-  meleeHitboxDuration: 0.1
+  meleeHitboxDuration: 0.9
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   meleeDistance: 0.8
-  meleeOffsetY: 0.5
-  meleeOffsetDiagonal: 0.2
+  meleeOffsetY: 0.8
+  meleeOffsetX: 0.6
+  meleeOffsetDiagonal: 0.7
   enragedDuration: 5
   meleeAttackSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}
   meleeSoundVolume: 1

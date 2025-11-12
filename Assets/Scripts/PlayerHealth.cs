@@ -24,7 +24,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float deathDelay = 4f; 
 
     private bool isDead = false;
+    public bool IsDead => isDead;
 
+
+    private PassiveRegen passiveRegen;
     private void OnEnable()
     {
         GameManager.OnTimeout += Die;
@@ -40,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
+        passiveRegen = GetComponent<PassiveRegen>();
     }
 
     public void TakeDamage(int damage)
@@ -55,7 +59,8 @@ public class PlayerHealth : MonoBehaviour
         {
             animator.SetTrigger("TakeDamage");
         }
-
+        //notifico al passive regen
+        passiveRegen?.NotifyDamageTaken();
 
         if (currentHealth <= 0)
         {
@@ -78,10 +83,13 @@ public class PlayerHealth : MonoBehaviour
         if (playerController != null)
             playerController.enabled = false;
 
-        
+
         if (animator != null)
+        {
             animator.SetTrigger("Die");
             animator.SetBool("IsDead", true);
+        }
+
 
 
         if (deathSound != null)
