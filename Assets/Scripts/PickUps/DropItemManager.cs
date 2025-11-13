@@ -98,7 +98,19 @@ public class DropItemManager : MonoBehaviour
             Vector2 offset = Random.insideUnitCircle * dropOffsetRadius;
             Vector3 spawnPos = position + new Vector3(offset.x, offset.y, 0);
 
-            Instantiate(prefabToDrop, spawnPos, Quaternion.identity);
+           
+            Transform pickupsParent = GameObject.Find("Pickups")?.transform;
+
+            if (pickupsParent != null)
+            {
+                
+                Instantiate(prefabToDrop, spawnPos, Quaternion.identity, pickupsParent);
+            }
+            else
+            {
+                Debug.LogWarning("[DropItemManager] No se encontró el objeto 'Pickups' en la escena. Se instancia sin padre.");
+                Instantiate(prefabToDrop, spawnPos, Quaternion.identity);
+            }
 
             Debug.Log($"Se dropeó el item {prefabToDrop.name} del pool: {poolName}");
         }
@@ -107,6 +119,7 @@ public class DropItemManager : MonoBehaviour
             Debug.LogWarning("[DropItemManager] No hay items configurados en el pool elegido.");
         }
     }
+
 
     private (GameObject, string) GetItemBasedOnStats()
     {
