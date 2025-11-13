@@ -107716,14 +107716,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1414427696}
     m_Modifications:
-    - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
-      propertyPath: meleeAttackDelay
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
-      propertyPath: meleeHitboxDuration
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 5299848985272100037, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: m_LocalPosition.x
       value: 223.6
@@ -109229,7 +109221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8741148515225629542, guid: 7df51794513d37149a293ca98563060c, type: 3}
       propertyPath: orthographic size
-      value: 13.6875
+      value: 12.4375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
