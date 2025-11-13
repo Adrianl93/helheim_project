@@ -523,6 +523,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1414427696}
     m_Modifications:
+    - target: {fileID: 3788991266755022667, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
+      propertyPath: meleeDamage
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 8078564527523557814, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 257.80612
@@ -6205,6 +6209,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1414427696}
     m_Modifications:
+    - target: {fileID: 3788991266755022667, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
+      propertyPath: meleeDamage
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 8078564527523557814, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 192.65408
@@ -7156,6 +7164,10 @@ PrefabInstance:
     - target: {fileID: 3381240108008436779, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194669752925329399, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
+      propertyPath: rangedDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7689878892930634698, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
       propertyPath: m_Name
@@ -8770,6 +8782,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1414427696}
     m_Modifications:
+    - target: {fileID: 3788991266755022667, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
+      propertyPath: meleeDamage
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 5904802590015957981, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
       propertyPath: m_Color.b
       value: 0.45834818
@@ -9198,6 +9214,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4194669752925329399, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
+      propertyPath: rangedDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7689878892930634698, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
       propertyPath: m_Name
       value: Banshee 02Hard
@@ -9329,6 +9349,10 @@ PrefabInstance:
     - target: {fileID: 3381240108008436779, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194669752925329399, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
+      propertyPath: rangedDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7689878892930634698, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
       propertyPath: m_Name
@@ -93091,6 +93115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4194669752925329399, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
+      propertyPath: rangedDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7689878892930634698, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
       propertyPath: m_Name
       value: Banshee 02Hard (2)
@@ -95192,6 +95220,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1414427696}
     m_Modifications:
+    - target: {fileID: 3788991266755022667, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
+      propertyPath: meleeDamage
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 8078564527523557814, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 175.04541
@@ -108340,6 +108372,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4194669752925329399, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
+      propertyPath: rangedDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7689878892930634698, guid: 63b37ba83624bad46bc5a10c064e1959, type: 3}
       propertyPath: m_Name
       value: Banshee 02Hard
@@ -108752,6 +108788,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1414427696}
     m_Modifications:
+    - target: {fileID: 3788991266755022667, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
+      propertyPath: meleeDamage
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 8078564527523557814, guid: d0436507bef0ab841ac60bf232f834aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 242.83876
