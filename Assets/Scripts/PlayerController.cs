@@ -98,7 +98,14 @@ public class PlayerController : MonoBehaviour
 
             Vector2 moveDir = input.normalized;
             Vector3 move = new Vector3(moveDir.x, moveDir.y, 0f);
-            agent.Move(move * speed * Time.deltaTime);
+            Vector3 proposedPosition = transform.position + move * speed * Time.deltaTime;
+
+            // verificamos que la posicion este en el navmesh
+            if (NavMesh.SamplePosition(proposedPosition, out NavMeshHit hit, 0.1f, NavMesh.AllAreas))
+            {
+                // solo se mueve si la posicion es valida
+                agent.Move(hit.position - transform.position);
+            }
         }
         else
         {

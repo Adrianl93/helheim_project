@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3668826106751761506}
   - component: {fileID: 7799628203368610212}
   - component: {fileID: 6737947099066808149}
+  - component: {fileID: 1794870792041640205}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -71,7 +72,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 14.40625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -151,6 +152,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af72f68904bc7846975776e96c660bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioListenerCleaner
+--- !u!114 &1794870792041640205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973089661622327677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.PixelPerfectCamera
+  m_ComponentVersion: 1
+  m_AssetsPPU: 16
+  m_RefResolutionX: 640
+  m_RefResolutionY: 360
+  m_CropFrame: 0
+  m_GridSnapping: 0
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &979697348333027513
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +454,7 @@ GameObject:
   - component: {fileID: 4538056452343453512}
   - component: {fileID: 4387020073243359538}
   - component: {fileID: 1002076693331550739}
+  - component: {fileID: 3803163899123021761}
   - component: {fileID: 22984591871699640}
   - component: {fileID: 4853097881663755374}
   - component: {fileID: 998276754634188866}
@@ -578,7 +604,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.02739358, y: -0.016267776}
+  m_Offset: {x: 0.02739358, y: -0.3571682}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5033317, y: 0.63436}
@@ -588,7 +614,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.4068494, y: 4.1893425}
+  m_Size: {x: 1.4068494, y: 4.8711433}
   m_EdgeRadius: 0
 --- !u!114 &4387020073243359538
 MonoBehaviour:
@@ -602,9 +628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da21e72e3bd500240b3efeddabeee5de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovements
-  speed: 15
+  speed: 13
   animator: {fileID: 4853097881663755374}
-  meleeHitboxPrefab: {fileID: 8345104391409692722, guid: 61635601529876146b32bedaeed294a5, type: 3}
+  meleeHitboxPrefab: {fileID: 1608025712911113536, guid: 869f113836d2fd842b94aeb4a6391618, type: 3}
   meleeDistance: 0.8
   meleeAttackDamage: 15
   meleeAttackCooldown: 0.7
@@ -646,7 +672,23 @@ MonoBehaviour:
   currentHealth: 0
   deathSound: {fileID: 8300000, guid: 1b0e533c41366bf419a8fd582413f207, type: 3}
   deathSoundVolume: 1
-  deathDelay: 4
+  deathDelay: 1.5
+--- !u!114 &3803163899123021761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5737316558322232835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c81aaffb94d6042b0a0d8f188c0447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PassiveRegen
+  playerHealth: {fileID: 0}
+  regenDelay: 5
+  regenRate: 2.5
+  regenTick: 1
 --- !u!114 &22984591871699640
 MonoBehaviour:
   m_ObjectHideFlags: 0

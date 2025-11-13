@@ -97,6 +97,16 @@ public class SpiralProjectile : MonoBehaviour
             StartCoroutine(PopAndFade());
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject == owner) return;
+
+
+        Destroy(gameObject);
+    }
+
+
+
     // Coroutine para fadeout cuando se acabe el lifetime
     private System.Collections.IEnumerator FadeOutAndDestroy(float delay)
     {
