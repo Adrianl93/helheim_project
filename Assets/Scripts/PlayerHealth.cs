@@ -58,7 +58,7 @@ public class PlayerHealth : MonoBehaviour
         int finalDamage = ignoreArmor ? damage : Mathf.Max(damage - armor, 0);
         currentHealth -= finalDamage;
 
-        Debug.Log($"Player recibiÛ {finalDamage} de daÒo (HP restante: {currentHealth})");
+        Debug.Log($"Player recibi√≥ {finalDamage} de da√±o (HP restante: {currentHealth})");
 
         if (animator != null)
         {
@@ -72,13 +72,17 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(HandleDeath());
         }
     }
-
+    public void RestartScene()
+    {
+        // Implementaci√≥n temporal
+        Debug.Log("RestartScene() a√∫n no implementado");
+    }
     private IEnumerator HandleDeath()
     {
         if (isDead) yield break;
         isDead = true;
 
-        Debug.Log("El jugador muriÛ.");
+        Debug.Log("El jugador muri√≥.");
 
 
         if (playerController != null)
@@ -99,22 +103,24 @@ public class PlayerHealth : MonoBehaviour
 
         yield return new WaitForSeconds(deathDelay);
 
-
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RestartScene();
         }
-        else
-        {
-            Debug.LogWarning("No se encontrÛ GameManager en la escena.");
-        }
+#else
+    // En builds normales podr√≠as mostrar un men√∫ o recargar de otra forma
+    UnityEngine.SceneManagement.SceneManager.LoadScene(
+        UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+    );
+#endif
     }
 
     private void Die()
     {
 
         StartCoroutine(HandleDeath());
-        Debug.Log($"[Muerte] ⁄ltimo checkpoint antes de morir: {GameManager.Instance.LastCheckpointPos}");
+        Debug.Log($"[Muerte] √öltimo checkpoint antes de morir: {GameManager.Instance.LastCheckpointPos}");
 
     }
 
@@ -123,7 +129,7 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
 
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-        Debug.Log($"Player se curÛ {amount}. HP actual: {currentHealth}");
+        Debug.Log($"Player se cur√≥ {amount}. HP actual: {currentHealth}");
     }
 
     public int AddArmor(int amount)

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Instructions : MonoBehaviour
+public class History : MonoBehaviour
 {
     [Tooltip("Segundos que espera antes de cargar la siguiente escena automáticamente")]
     public float delayBeforeLoading = 0f;
