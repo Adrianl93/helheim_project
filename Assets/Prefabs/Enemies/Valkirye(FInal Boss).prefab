@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1372335161102834277, guid: 5061a9399d86b3b49bbd01da6f97830a, type: 3}
+  m_Sprite: {fileID: 1491829750891449085, guid: 03677c3c3f1c64b498977cf9ed5fadee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,8 +161,8 @@ BoxCollider2D:
   m_Offset: {x: 0.001604557, y: -0.0006079674}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
+    pivot: {x: 0.4458604, y: 0.6293125}
+    oldSize: {x: 3.5333333, y: 6.6}
     newSize: {x: 1.5, y: 1.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -199,6 +199,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4042022002272296592, guid: 61ed20ce984a1f64da979235084e5abc, type: 3}
   firePoint: {fileID: 5319732507448216370}
   projectileSpeed: 9
+  rangedAttackDelay: 0.5
   rangedBurstInterval: 8
   burstProjectileCount: 6
   burstPauseDuration: 4
@@ -207,6 +208,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  meleeAttackDelay: 0.5
   meleeDistance: 0.8
   meleeOffsetY: 0.5
   meleeOffsetX: 0.4
@@ -221,7 +223,7 @@ MonoBehaviour:
   damagePopupPrefab: {fileID: 4748611389434153029, guid: 52c42afc98ef69543aefdacac0d05a33, type: 3}
   manaPopupPrefab: {fileID: 5912721023921850787, guid: ba5bf45ac2318de4bbc0d73ca2914e66, type: 3}
   healthBarPrefab: {fileID: 5791407845845436287, guid: 1a5b6fcedc36a8f43bf4e3d1780b276b, type: 3}
-  healthBarOffset: {x: 0, y: 2, z: 0}
+  healthBarOffset: {x: 0, y: 2.5, z: 0}
   damagePopupOffset: {x: 1, y: 1.5, z: 0}
   manaPopupOffset: {x: 1.2, y: 1, z: 0}
   animator: {fileID: 228271090258802604}

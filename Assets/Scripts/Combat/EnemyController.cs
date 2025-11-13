@@ -486,8 +486,7 @@ public class EnemyController : MonoBehaviour, IBossState
     private IEnumerator FireRangedBurstAndPause()
     {
         isBursting = true;
-        if (animator != null)
-            animator.SetTrigger("AttackBurst");
+        
 
         yield return new WaitForSeconds(rangedAttackDelay);
 
@@ -496,6 +495,11 @@ public class EnemyController : MonoBehaviour, IBossState
 
         for (int i = 0; i < burstCount; i++)
         {
+            if (animator != null)
+                animator.SetTrigger("AttackBurst");
+
+            // Espera el delay propio de la animación
+            yield return new WaitForSeconds(rangedAttackDelay);
             FireRangedBurst();
             yield return new WaitForSeconds(delayBetweenBursts);
         }
