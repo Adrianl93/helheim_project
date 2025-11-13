@@ -72,6 +72,7 @@ public class PauseManager : MonoBehaviour
 
     public void TogglePause()
     {
+        Debug.Log($"[PauseManager] TogglePause presionado. isPaused = {isPaused}");
         // Soltar el foco de la UI antes de cambiar el estado
         EventSystem.current?.SetSelectedGameObject(null);
 
