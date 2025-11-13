@@ -185,8 +185,8 @@ MonoBehaviour:
   enemyType: 2
   health: 200
   armor: 12
-  meleeDamage: 17
-  rangedDamage: 9
+  meleeDamage: 25
+  rangedDamage: 5
   speed: 9
   rewardScore: 1000
   knockbackForce: 10
@@ -206,9 +206,10 @@ MonoBehaviour:
   meleeHitboxDuration: 0.1
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   meleeDistance: 0.8
   meleeOffsetY: 0.5
+  meleeOffsetX: 0.4
   meleeOffsetDiagonal: 0.2
   enragedDuration: 8
   meleeAttackSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}

@@ -1,10 +1,10 @@
 using UnityEngine;
-using System.Collections; 
+using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    
+
     [SerializeField] private int maxHealth = 150;
     public int MaxHealth => maxHealth;
 
@@ -14,14 +14,14 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     public int CurrentHealth => currentHealth;
 
-    
+
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private float deathSoundVolume = 1f;
     private Animator animator;
     private PlayerController playerController;
 
-    
-    [SerializeField] private float deathDelay = 4f; 
+
+    [SerializeField] private float deathDelay = 4f;
 
     private bool isDead = false;
     public bool IsDead => isDead;
@@ -48,12 +48,17 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        TakeDamage(damage, false); // por defecto NO ignora armadura
+    }
+
+    public void TakeDamage(int damage, bool ignoreArmor)
+    {
         if (isDead) return;
 
-        int finalDamage = Mathf.Max(damage - armor, 0);
+        int finalDamage = ignoreArmor ? damage : Mathf.Max(damage - armor, 0);
         currentHealth -= finalDamage;
 
-        Debug.Log($"Player recibió {finalDamage} de daño (HP restante: {currentHealth})");
+        Debug.Log($"Player recibiÃ³ {finalDamage} de daÃ±o (HP restante: {currentHealth})");
 
         if (animator != null)
         {
@@ -69,17 +74,17 @@ public class PlayerHealth : MonoBehaviour
     }
     public void RestartScene()
     {
-        // Implementación temporal
-        Debug.Log("RestartScene() aún no implementado");
+        // ImplementaciÃ³n temporal
+        Debug.Log("RestartScene() aÃºn no implementado");
     }
     private IEnumerator HandleDeath()
     {
         if (isDead) yield break;
         isDead = true;
 
-        Debug.Log("El jugador murió.");
+        Debug.Log("El jugador muriÃ³.");
 
-        
+
         if (playerController != null)
             playerController.enabled = false;
 
@@ -95,7 +100,7 @@ public class PlayerHealth : MonoBehaviour
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 
-        
+
         yield return new WaitForSeconds(deathDelay);
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
@@ -104,7 +109,7 @@ public class PlayerHealth : MonoBehaviour
             GameManager.Instance.RestartScene();
         }
 #else
-    // En builds normales podrías mostrar un menú o recargar de otra forma
+    // En builds normales podrÃ­as mostrar un menÃº o recargar de otra forma
     UnityEngine.SceneManagement.SceneManager.LoadScene(
         UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
     );
@@ -115,7 +120,7 @@ public class PlayerHealth : MonoBehaviour
     {
 
         StartCoroutine(HandleDeath());
-        Debug.Log($"[Muerte] Último checkpoint antes de morir: {GameManager.Instance.LastCheckpointPos}");
+        Debug.Log($"[Muerte] Ãšltimo checkpoint antes de morir: {GameManager.Instance.LastCheckpointPos}");
 
     }
 
@@ -124,7 +129,7 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
 
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-        Debug.Log($"Player se curó {amount}. HP actual: {currentHealth}");
+        Debug.Log($"Player se curÃ³ {amount}. HP actual: {currentHealth}");
     }
 
     public int AddArmor(int amount)

@@ -131,8 +131,7 @@ public class PlayerController : MonoBehaviour
             meleeAudioSource.PlayOneShot(meleeAttackSFX);
         }
 
-        if (animator != null)
-            animator.SetTrigger("Attack");
+        
 
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 attackDir = (mouseWorldPos - transform.position).normalized;
@@ -307,7 +306,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator MeleeAnimationRoutine()
     {
-        animator.SetBool("IsAttackingMelee", true);
+        animator.SetTrigger("AttackingMelee");
         
 
         //delay antes de crear el hitbox para sincronizar con la animación
@@ -315,19 +314,19 @@ public class PlayerController : MonoBehaviour
         MeleeAttack();
 
         yield return new WaitForSeconds(0.5f);
-        animator.SetBool("IsAttackingMelee", false);
+      
     }
 
     private IEnumerator RangedAnimationRoutine()
     {
-        animator.SetBool("IsAttackingRanged", true);
+        animator.SetTrigger("AttackingRanged");
         
         //delay antes de instanciar el ataque para sincronizar con la animación
         yield return new WaitForSeconds(rangedAttackDelay);
         RangedAttack();
 
         yield return new WaitForSeconds(0.5f);
-        animator.SetBool("IsAttackingRanged", false);
+        
     }
 
     private void OnDrawGizmosSelected()

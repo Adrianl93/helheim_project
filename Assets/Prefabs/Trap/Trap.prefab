@@ -120,7 +120,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.63, y: 2.73, z: 0}
-  m_LocalScale: {x: 7.026628, y: 7.681317, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4774978808944316594}
@@ -218,7 +218,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03234288, y: 0.0059182644}
+  m_Offset: {x: 0.0043429285, y: -0.0040845275}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -228,7 +228,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1681983, y: 1.2958887}
+  m_Size: {x: 1.0081863, y: 0.9958724}
   m_EdgeRadius: 0
 --- !u!114 &2918689720170375977
 MonoBehaviour:
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918e0f1cac03b1340b22a83a72f7fa66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
-  damagePerSecond: 10
+  damagePerSecond: 5
   enemyDamageMultiplier: 0.5
   selfDestruct: 0
   destroyDelay: 5
