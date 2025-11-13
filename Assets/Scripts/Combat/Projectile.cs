@@ -49,12 +49,15 @@ public class Projectile : MonoBehaviour
 
     private bool OwnerIsPlayer() => owner != null && owner.GetComponent<PlayerController>() != null;
 
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == owner) return;
 
         // Evitamos daño al lanzador y a aliados
         bool sameLayer = owner != null && collision.gameObject.layer == owner.layer;
+        bool hitSomething = false;
 
         if (OwnerIsPlayer())
         {
@@ -62,7 +65,10 @@ public class Projectile : MonoBehaviour
             {
                 EnemyController enemy = collision.GetComponent<EnemyController>();
                 if (enemy != null)
+                {
                     enemy.TakeDamage(damage, attackOrigin);
+                    hitSomething = true;
+                }
             }
         }
         else
@@ -71,21 +77,41 @@ public class Projectile : MonoBehaviour
             {
                 PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
+                {
                     playerHealth.TakeDamage(damage);
+                    hitSomething = true;
+                }
             }
         }
 
-        // Destruir el proyectil con pop y fade al impactar
+        // Si el objeto no es un trigger 
         if (!collision.isTrigger)
         {
             PlaySFX(impactSFX);
-            // Cancelamos solo el fade por lifetime de este proyectil
-            if (lifetimeCoroutine != null)
-                StopCoroutine(lifetimeCoroutine);
 
-            StartCoroutine(PopAndFadeOnImpact());
+            // Si fue un enemigo o jugador
+            if (hitSomething)
+            {
+                if (lifetimeCoroutine != null)
+                    StopCoroutine(lifetimeCoroutine);
+                StartCoroutine(PopAndFadeOnImpact());
+            }
+            else
+            {
+                // Si fue pared se autodestruye
+                Destroy(gameObject);
+            }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject == owner) return;
+
+
+        Destroy(gameObject);
+    }
+
 
     private void PlaySFX(AudioClip clip)
     {

@@ -486,12 +486,20 @@ public class EnemyController : MonoBehaviour, IBossState
     private IEnumerator FireRangedBurstAndPause()
     {
         isBursting = true;
+        
+
+        yield return new WaitForSeconds(rangedAttackDelay);
 
         int burstCount = 3;     //cantidad de rafagas       
         float delayBetweenBursts = 1f; //tiempo entre rafagas de ataques
 
         for (int i = 0; i < burstCount; i++)
         {
+            if (animator != null)
+                animator.SetTrigger("AttackBurst");
+
+            // Espera el delay propio de la animación
+            yield return new WaitForSeconds(rangedAttackDelay);
             FireRangedBurst();
             yield return new WaitForSeconds(delayBetweenBursts);
         }
