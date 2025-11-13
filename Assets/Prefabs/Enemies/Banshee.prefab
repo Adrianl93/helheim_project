@@ -319,7 +319,8 @@ MonoBehaviour:
   minRangedDistance: 5
   projectilePrefab: {fileID: 4042022002272296592, guid: e47dcb59366664741a4471f34fd63be7, type: 3}
   firePoint: {fileID: 1967074461058098233}
-  projectileSpeed: 45
+  projectileSpeed: 35
+  rangedAttackDelay: 0.5
   rangedBurstInterval: 15
   burstProjectileCount: 8
   burstPauseDuration: 1
@@ -328,8 +329,10 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
+  meleeAttackDelay: 0.5
   meleeDistance: 0.8
   meleeOffsetY: 0.5
+  meleeOffsetX: 0.4
   meleeOffsetDiagonal: 0.2
   enragedDuration: 5
   meleeAttackSound: {fileID: 8300000, guid: d0957a9e48bb8d847b42805b12d3608b, type: 3}

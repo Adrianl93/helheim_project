@@ -281,7 +281,7 @@ MonoBehaviour:
   knockbackForce: 50
   detectionRadius: 11
   meleeRadius: 3.5
-  meleeCooldown: 1.7
+  meleeCooldown: 2
   rangedCooldown: 2
   rangedAttackRange: 0
   minRangedDistance: 0

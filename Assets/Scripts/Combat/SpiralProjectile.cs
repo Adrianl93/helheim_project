@@ -78,7 +78,7 @@ public class SpiralProjectile : MonoBehaviour
         PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
-            playerHealth.TakeDamage(damage);
+            playerHealth.TakeDamage(damage, true);
             StartCoroutine(PopAndFade());
             return;
         }

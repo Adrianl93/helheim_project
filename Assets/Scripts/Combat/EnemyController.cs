@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour, IBossState
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] private float rangedAttackDelay = 0.5f;
     [SerializeField] private float rangedBurstInterval = 8f;
     [SerializeField] private int burstProjectileCount = 6;
     [SerializeField] private float burstPauseDuration = 8f;
@@ -40,6 +41,7 @@ public class EnemyController : MonoBehaviour, IBossState
     [SerializeField] private GameObject meleeHitboxPrefab;
     [SerializeField] private float meleeHitboxDuration = 0.3f;
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private float meleeAttackDelay = 0.5f;
     [SerializeField] private float meleeDistance = 0.8f;
     [SerializeField] private float meleeOffsetY = 0.5f;
     [SerializeField] private float meleeOffsetX = 0.4f;
@@ -439,7 +441,7 @@ public class EnemyController : MonoBehaviour, IBossState
             animator.SetTrigger("AttackMelee");
 
         // Delay para animacion
-        StartCoroutine(PerformMeleeAttackDelayed(0.5f)); 
+        StartCoroutine(PerformMeleeAttackDelayed(meleeAttackDelay)); 
     }
 
     private void TryRangedAttack()
@@ -453,7 +455,7 @@ public class EnemyController : MonoBehaviour, IBossState
             animator.SetTrigger("AttackRanged");
 
         // Esperamos que termine la animación antes de instanciar el proyectil
-        StartCoroutine(DelayedRangedAttack(0.8f)); // duración del clip (0.6s)
+        StartCoroutine(DelayedRangedAttack(rangedAttackDelay)); // duración del clip (0.6s)
     }
 
     private IEnumerator DelayedRangedAttack(float delay)

@@ -13,14 +13,13 @@ public class PassiveRegen : MonoBehaviour
 
     private float lastDamageTime;
     private bool isRegenerating = false;
+    private Coroutine regenCoroutine; // referencia a la corrutina activa
 
     private void Start()
     {
         if (playerHealth == null)
             playerHealth = GetComponent<PlayerHealth>();
     }
-
-
 
     private void Update()
     {
@@ -31,7 +30,11 @@ public class PassiveRegen : MonoBehaviour
         {
             if (isRegenerating)
             {
-                StopCoroutine(nameof(RegenCoroutine));
+                if (regenCoroutine != null)
+                {
+                    StopCoroutine(regenCoroutine);
+                    regenCoroutine = null;
+                }
                 isRegenerating = false;
             }
             return;
@@ -40,7 +43,7 @@ public class PassiveRegen : MonoBehaviour
         //al pasar el delay, iniciar la curacion 
         if (!isRegenerating && playerHealth.CurrentHealth < playerHealth.MaxHealth)
         {
-            StartCoroutine(RegenCoroutine());
+            regenCoroutine = StartCoroutine(RegenCoroutine());
         }
     }
 
@@ -49,6 +52,7 @@ public class PassiveRegen : MonoBehaviour
         //actualizamos el tiempo desde el ultimo daño
         lastDamageTime = Time.time;
     }
+
     //corrutina para el delay entre curaciones
     private IEnumerator RegenCoroutine()
     {
@@ -58,8 +62,17 @@ public class PassiveRegen : MonoBehaviour
         {
             playerHealth.Heal(Mathf.RoundToInt(regenRate * regenTick));
             yield return new WaitForSeconds(regenTick);
+
+            // detener si se recibe daño durante la regeneración
+            if (Time.time - lastDamageTime < regenDelay)
+            {
+                isRegenerating = false;
+                regenCoroutine = null;
+                yield break;
+            }
         }
 
         isRegenerating = false;
+        regenCoroutine = null;
     }
 }

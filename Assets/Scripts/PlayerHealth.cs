@@ -1,10 +1,10 @@
 using UnityEngine;
-using System.Collections; 
+using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    
+
     [SerializeField] private int maxHealth = 150;
     public int MaxHealth => maxHealth;
 
@@ -14,14 +14,14 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     public int CurrentHealth => currentHealth;
 
-    
+
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private float deathSoundVolume = 1f;
     private Animator animator;
     private PlayerController playerController;
 
-    
-    [SerializeField] private float deathDelay = 4f; 
+
+    [SerializeField] private float deathDelay = 4f;
 
     private bool isDead = false;
     public bool IsDead => isDead;
@@ -48,9 +48,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        TakeDamage(damage, false); // por defecto NO ignora armadura
+    }
+
+    public void TakeDamage(int damage, bool ignoreArmor)
+    {
         if (isDead) return;
 
-        int finalDamage = Mathf.Max(damage - armor, 0);
+        int finalDamage = ignoreArmor ? damage : Mathf.Max(damage - armor, 0);
         currentHealth -= finalDamage;
 
         Debug.Log($"Player recibió {finalDamage} de daño (HP restante: {currentHealth})");
@@ -75,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log("El jugador murió.");
 
-        
+
         if (playerController != null)
             playerController.enabled = false;
 
@@ -91,10 +96,10 @@ public class PlayerHealth : MonoBehaviour
         if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
 
-        
+
         yield return new WaitForSeconds(deathDelay);
 
-       
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RestartScene();

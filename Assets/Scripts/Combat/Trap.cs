@@ -84,7 +84,7 @@ public class Trap : MonoBehaviour
         //se aplica daño por segundo en el player
         while (true)
         {
-            playerHealth.TakeDamage(damagePerSecond);
+            playerHealth.TakeDamage(damagePerSecond, true);
             yield return new WaitForSeconds(1f);
         }
     }
