@@ -78,15 +78,14 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
-      
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (rebootAction != null) rebootAction.performed -= OnRebootPerformed;
         if (restartAction != null) restartAction.performed -= OnRestartPerformed;
         if (exitAction != null) exitAction.performed -= OnExitPerformed;
+#endif
 
-        
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
     private void OnRebootPerformed(InputAction.CallbackContext ctx)
     {
