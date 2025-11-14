@@ -65,7 +65,8 @@ public class PlayerHealth : MonoBehaviour
             animator.SetTrigger("TakeDamage");
         }
         //notifico al passive regen
-        passiveRegen?.NotifyDamageTaken();
+        passiveRegen.NotifyDamageTaken();
+
 
         if (currentHealth <= 0)
         {
@@ -109,7 +110,7 @@ public class PlayerHealth : MonoBehaviour
             GameManager.Instance.RestartScene();
         }
 #else
-    // En builds normales podrías mostrar un menú o recargar de otra forma
+    
     UnityEngine.SceneManagement.SceneManager.LoadScene(
         UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
     );
