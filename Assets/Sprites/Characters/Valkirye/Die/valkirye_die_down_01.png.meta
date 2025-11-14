@@ -1,0 +1,815 @@
+fileFormatVersion: 2
+guid: 366318d758b5c7849a05b7818c223bea
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -191946661069222773
+    second: valkirye_die_down_01_0
+  - first:
+      213: -2435434426982588488
+    second: valkirye_die_down_01_1
+  - first:
+      213: -8744282413287049799
+    second: valkirye_die_down_01_2
+  - first:
+      213: -455090664716472326
+    second: valkirye_die_down_01_3
+  - first:
+      213: -6184922583829201626
+    second: valkirye_die_down_01_4
+  - first:
+      213: 7793531374246509700
+    second: valkirye_die_down_01_5
+  - first:
+      213: 7827032263169505774
+    second: valkirye_die_down_01_6
+  - first:
+      213: -7631977508334214060
+    second: valkirye_die_down_01_7
+  - first:
+      213: -2008873159284842712
+    second: valkirye_die_down_01_8
+  - first:
+      213: -6880809394642063796
+    second: valkirye_die_down_01_9
+  - first:
+      213: 1535283947735738049
+    second: valkirye_die_down_01_10
+  - first:
+      213: 3775770749867621261
+    second: valkirye_die_down_01_11
+  - first:
+      213: 8095829884671593375
+    second: valkirye_die_down_01_12
+  - first:
+      213: 8907989313581817857
+    second: valkirye_die_down_01_13
+  - first:
+      213: -4382143090579231632
+    second: valkirye_die_down_01_14
+  - first:
+      213: -8888115695491459848
+    second: valkirye_die_down_01_15
+  - first:
+      213: -1615286483133517587
+    second: valkirye_die_down_01_16
+  - first:
+      213: 6478140490003475419
+    second: valkirye_die_down_01_17
+  - first:
+      213: 2428987689304403821
+    second: valkirye_die_down_01_18
+  - first:
+      213: 8574390933847160544
+    second: valkirye_die_down_01_19
+  - first:
+      213: -5472679489061745887
+    second: valkirye_die_down_01_20
+  - first:
+      213: 296045238881973854
+    second: valkirye_die_down_01_21
+  - first:
+      213: 5608930132878181860
+    second: valkirye_die_down_01_22
+  - first:
+      213: -6660722527222245448
+    second: valkirye_die_down_01_23
+  - first:
+      213: -7345511571785700716
+    second: valkirye_die_down_01_24
+  - first:
+      213: -2188059029736345548
+    second: valkirye_die_down_01_25
+  - first:
+      213: 4488765679923785064
+    second: valkirye_die_down_01_26
+  - first:
+      213: 5609043550711334539
+    second: valkirye_die_down_01_27
+  - first:
+      213: 4556581473933685037
+    second: valkirye_die_down_01_28
+  - first:
+      213: -4043764777404258288
+    second: valkirye_die_down_01_29
+  - first:
+      213: -4424862239798255088
+    second: valkirye_die_down_01_30
+  - first:
+      213: 3010464124751612986
+    second: valkirye_die_down_01_31
+  - first:
+      213: 6455369592708391259
+    second: valkirye_die_down_01_32
+  - first:
+      213: -3711056897222437442
+    second: valkirye_die_down_01_33
+  - first:
+      213: 5472976804111070786
+    second: valkirye_die_down_01_34
+  - first:
+      213: 3612208586330237471
+    second: valkirye_die_down_01_35
+  - first:
+      213: 4313424326500216988
+    second: valkirye_die_down_01_36
+  - first:
+      213: -1808385451357351243
+    second: valkirye_die_down_01_37
+  - first:
+      213: -2406922114117997634
+    second: valkirye_die_down_01_38
+  - first:
+      213: 7632017652516226816
+    second: valkirye_die_down_01_39
+  - first:
+      213: 166233453512510678
+    second: valkirye_die_down_01_40
+  - first:
+      213: -5271525538682349600
+    second: valkirye_die_down_01_41
+  - first:
+      213: 4639463163347022981
+    second: valkirye_die_down_01_42
+  - first:
+      213: -9137290055791162276
+    second: valkirye_die_down_01_43
+  - first:
+      213: 8054519553270910725
+    second: valkirye_die_down_01_44
+  - first:
+      213: 3214862082386892758
+    second: valkirye_die_down_01_45
+  - first:
+      213: -5240026799075754642
+    second: valkirye_die_down_01_46
+  - first:
+      213: 6416195766979821517
+    second: valkirye_die_down_01_47
+  - first:
+      213: 7649464394075815872
+    second: valkirye_die_down_01_48
+  - first:
+      213: -3552448279140123097
+    second: valkirye_die_down_01_49
+  - first:
+      213: 4855581191860998884
+    second: valkirye_die_down_01_50
+  - first:
+      213: 1215834842449983389
+    second: valkirye_die_down_01_51
+  - first:
+      213: 8976070368960016658
+    second: valkirye_die_down_01_52
+  - first:
+      213: -5450891238877184266
+    second: valkirye_die_down_01_53
+  - first:
+      213: -1104944366045898789
+    second: valkirye_die_down_01_54
+  - first:
+      213: 1792363666735786273
+    second: valkirye_die_down_01_55
+  - first:
+      213: 453404782366060841
+    second: valkirye_die_down_01_56
+  - first:
+      213: -4651777477508724693
+    second: valkirye_die_down_01_57
+  - first:
+      213: -5042676769606490157
+    second: valkirye_die_down_01_58
+  - first:
+      213: -637207484084950223
+    second: valkirye_die_down_01_59
+  - first:
+      213: 2975874691094496998
+    second: valkirye_die_down_01_60
+  - first:
+      213: 953282985654621202
+    second: valkirye_die_down_01_61
+  - first:
+      213: -1389051729565961090
+    second: valkirye_die_down_01_62
+  - first:
+      213: -3185823519241421501
+    second: valkirye_die_down_01_63
+  - first:
+      213: 6375833341241496931
+    second: valkirye_die_down_01_64
+  - first:
+      213: 2613759763852302994
+    second: valkirye_die_down_01_65
+  - first:
+      213: -7573846913921133770
+    second: valkirye_die_down_01_66
+  - first:
+      213: 824288515342628848
+    second: valkirye_die_down_01_67
+  - first:
+      213: 8547994185384905913
+    second: valkirye_die_down_01_68
+  - first:
+      213: 8388535827925403214
+    second: valkirye_die_down_01_69
+  - first:
+      213: 3703005281485129677
+    second: valkirye_die_down_01_70
+  - first:
+      213: 1332771007956635572
+    second: valkirye_die_down_01_71
+  - first:
+      213: 7854969281871811411
+    second: valkirye_die_down_01_72
+  - first:
+      213: 3621947961065502224
+    second: valkirye_die_down_01_73
+  - first:
+      213: 7206749260482991960
+    second: valkirye_die_down_01_74
+  - first:
+      213: -2376096829133232873
+    second: valkirye_die_down_01_75
+  - first:
+      213: -7560192006102938378
+    second: valkirye_die_down_01_76
+  - first:
+      213: -8859814774966817461
+    second: valkirye_die_down_01_77
+  - first:
+      213: -3603404426784747039
+    second: valkirye_die_down_01_78
+  - first:
+      213: -2155844653242104317
+    second: valkirye_die_down_01_79
+  - first:
+      213: 8358220801156587259
+    second: valkirye_die_down_01_80
+  - first:
+      213: 1306532932583571731
+    second: valkirye_die_down_01_81
+  - first:
+      213: 2047250662703651307
+    second: valkirye_die_down_01_82
+  - first:
+      213: -6190131574778037398
+    second: valkirye_die_down_01_83
+  - first:
+      213: 968519233615290281
+    second: valkirye_die_down_01_84
+  - first:
+      213: -2213070956053836836
+    second: valkirye_die_down_01_85
+  - first:
+      213: -6273447745585577911
+    second: valkirye_die_down_01_86
+  - first:
+      213: 8623909173822078607
+    second: valkirye_die_down_01_87
+  - first:
+      213: 864045578419818715
+    second: valkirye_die_down_01_88
+  - first:
+      213: 6622438453566290454
+    second: valkirye_die_down_01_89
+  - first:
+      213: 4005952447315832687
+    second: valkirye_die_down_01_90
+  - first:
+      213: -8156467832139101624
+    second: valkirye_die_down_01_91
+  - first:
+      213: -905181710659070281
+    second: valkirye_die_down_01_92
+  - first:
+      213: -4601927042522379597
+    second: valkirye_die_down_01_93
+  - first:
+      213: -6233870349728925930
+    second: valkirye_die_down_01_94
+  - first:
+      213: -3173746588764427903
+    second: valkirye_die_down_01_95
+  - first:
+      213: 1503199642130514137
+    second: valkirye_die_down_01_96
+  - first:
+      213: -6133551140025001839
+    second: valkirye_die_down_01_97
+  - first:
+      213: 6591923488351895108
+    second: valkirye_die_down_01_98
+  - first:
+      213: -2189816762680319877
+    second: valkirye_die_down_01_99
+  - first:
+      213: 19647785429074575
+    second: valkirye_die_down_01_100
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 15
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: valkirye_die_down_01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8c852b5781165df0800000000000000
+      internalID: -191946661069222773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_1
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bf12f9ca49933ed0800000000000000
+      internalID: -2435434426982588488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_2
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b5745c697116a680800000000000000
+      internalID: -8744282413287049799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_3
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff6afc93713fa9f0800000000000000
+      internalID: -455090664716472326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_4
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62db19bddadba2aa0800000000000000
+      internalID: -6184922583829201626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_5
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48c33d33e7f282c60800000000000000
+      internalID: 7793531374246509700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_6
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee97dbbbf543f9c60800000000000000
+      internalID: 7827032263169505774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_7
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 454e7f164e4c51690800000000000000
+      internalID: -7631977508334214060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_8
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82f920e418c0f14e0800000000000000
+      internalID: -2008873159284842712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_9
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4e6039cf447280a0800000000000000
+      internalID: -6880809394642063796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_10
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c6e52ebd9c6e4510800000000000000
+      internalID: 1535283947735738049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_11
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8b7b2bfd7b366430800000000000000
+      internalID: 3775770749867621261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_12
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9b87d5f26a2a5070800000000000000
+      internalID: 8095829884671593375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_13
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100250b85198f9b70800000000000000
+      internalID: 8907989313581817857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_14
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07ca713a3108f23c0800000000000000
+      internalID: -4382143090579231632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_15
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f458afbdd117a480800000000000000
+      internalID: -8888115695491459848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkirye_die_down_01_16
+      rect:
+        serializedVersion: 2
+        x: 1616
+        y: 0
+        width: 101
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5365782, y: 0.5111443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de0365270895599e0800000000000000
+      internalID: -1615286483133517587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 98e370ea9a275c44680e27379e157958
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":101.0,"y":102.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5365781784057617,"y":0.5111442804336548},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: True
+    nameFileIdTable:
+      valkirye_die_down_01_0: -191946661069222773
+      valkirye_die_down_01_1: -2435434426982588488
+      valkirye_die_down_01_10: 1535283947735738049
+      valkirye_die_down_01_11: 3775770749867621261
+      valkirye_die_down_01_12: 8095829884671593375
+      valkirye_die_down_01_13: 8907989313581817857
+      valkirye_die_down_01_14: -4382143090579231632
+      valkirye_die_down_01_15: -8888115695491459848
+      valkirye_die_down_01_16: -1615286483133517587
+      valkirye_die_down_01_2: -8744282413287049799
+      valkirye_die_down_01_3: -455090664716472326
+      valkirye_die_down_01_4: -6184922583829201626
+      valkirye_die_down_01_5: 7793531374246509700
+      valkirye_die_down_01_6: 7827032263169505774
+      valkirye_die_down_01_7: -7631977508334214060
+      valkirye_die_down_01_8: -2008873159284842712
+      valkirye_die_down_01_9: -6880809394642063796
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
