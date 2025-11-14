@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour, IBossState
     [SerializeField] private float burstPauseDuration = 8f;
 
     [Header("Ataque cuerpo a cuerpo")]
+    // Nota: se conserva el campo meleeHitboxPrefab para compatibilidad, pero ya no se usa.
     [SerializeField] private GameObject meleeHitboxPrefab;
     [SerializeField] private float meleeHitboxDuration = 0.3f;
     [SerializeField] private LayerMask playerLayer;
@@ -715,81 +716,46 @@ public class EnemyController : MonoBehaviour, IBossState
 
 
 
+    // ---- Reemplazado: ataque melee tipo SLASH (cono 60°) ----
     private IEnumerator PerformMeleeAttackDelayed(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        if (player == null || meleeHitboxPrefab == null) yield break;
+        if (player == null) yield break;
 
-        // normalizamos la dirección hacia el jugador para evitar puntos intermedios
-        Vector2 rawDir = (player.position - transform.position).normalized;
+        // Dirección hacia donde está el jugador (y hacia donde "mira" el enemy)
+        Vector2 dir = ((Vector2)player.position - (Vector2)transform.position).normalized;
+        lastMoveDir = dir;
 
-        // array de direcciones cardinales y diagonales
-        Vector2[] directions = new Vector2[]
+        float coneAngle = 60f; // apertura total del cono (opción A)
+        float coneHalf = coneAngle * 0.5f;
+        float coneDistance = meleeRadius; // usamos meleeRadius como alcance del cono
+
+        // Detectamos todos los colliders en el radio y filtramos por ángulo
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, coneDistance, (int)playerLayer);
+
+
+        foreach (var hit in hits)
         {
-        new Vector2(0, 1),   // N
-        new Vector2(1, 1),   // NE
-        new Vector2(1, 0),   // E
-        new Vector2(1, -1),  // SE
-        new Vector2(0, -1),  // S
-        new Vector2(-1, -1), // SW
-        new Vector2(-1, 0),  // W
-        new Vector2(-1, 1)   // NW
-        };
+            if (hit == null) continue;
 
-        Vector2 dirToPlayer = directions[0];
-        float maxDot = -1f;
+            Vector2 toTarget = ((Vector2)hit.transform.position - (Vector2)transform.position).normalized;
+            float angleToTarget = Vector2.Angle(dir, toTarget);
 
-        // Buscamos la dirección más cercana según el ángulo
-        foreach (var dir in directions)
-        {
-            float dot = Vector2.Dot(rawDir, dir.normalized);
-            if (dot > maxDot)
+            if (angleToTarget <= coneHalf)
             {
-                maxDot = dot;
-                dirToPlayer = dir.normalized;
+                PlayerHealth hp = hit.GetComponent<PlayerHealth>();
+                if (hp != null)
+                {
+                    hp.TakeDamage(meleeDamage);
+                }
             }
-        }
-
-        lastMoveDir = dirToPlayer;
-
-        float xOffset = dirToPlayer.x * meleeDistance;
-        float yOffset = dirToPlayer.y * meleeDistance;
-
-        // offset vertical
-        if (Mathf.Abs(dirToPlayer.y) > 0.1f && Mathf.Abs(dirToPlayer.x) < 0.1f)
-        {
-            yOffset += dirToPlayer.y * meleeOffsetY;
-        }
-
-        // offset diagonal
-        else if (Mathf.Abs(dirToPlayer.x) > 0.1f && Mathf.Abs(dirToPlayer.y) > 0.1f)
-        {
-            xOffset += dirToPlayer.x * meleeOffsetDiagonal;
-            yOffset += dirToPlayer.y * meleeOffsetDiagonal;
-        }
-        else if (Mathf.Abs(dirToPlayer.x) > 0.1f && Mathf.Abs(dirToPlayer.y) < 0.1f)
-            xOffset += dirToPlayer.x * meleeOffsetX;
-
-        Vector3 spawnPos = transform.position + new Vector3(xOffset, yOffset, 0f);
-
-        // se crea el hitbox
-        GameObject hitbox = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity, transform);
-        hitbox.transform.right = dirToPlayer;
-
-        AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
-        if (hitboxScript != null)
-        {
-            hitboxScript.Initialize(meleeDamage, playerLayer, transform.position);
         }
 
         if (meleeAttackSound != null)
             AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position, meleeSoundVolume);
 
-        // destrucción automática tras duración
-        Destroy(hitbox, meleeHitboxDuration);
-
-        Debug.Log($"[EnemyController] {name} realizó un ataque melee hacia {dirToPlayer}");
+        Debug.Log($"[EnemyController] {name} realizó un SLASH frontal (cono {coneAngle}°).");
     }
 
 
@@ -807,6 +773,35 @@ public class EnemyController : MonoBehaviour, IBossState
         Gizmos.DrawWireSphere(transform.position, rangedAttackRange);
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, minRangedDistance);
+
+        // Dibujo opcional del cono frontal (solo en editor, si hay player asignado)
+#if UNITY_EDITOR
+        if (player != null)
+        {
+            Gizmos.color = Color.cyan;
+            Vector2 dir = ((Vector2)player.position - (Vector2)transform.position).normalized;
+            float coneAngle = 60f;
+            float coneDistance = meleeRadius;
+
+            Vector3 leftDir = Quaternion.Euler(0, 0, coneAngle / 2f) * (Vector3)dir * coneDistance;
+            Vector3 rightDir = Quaternion.Euler(0, 0, -coneAngle / 2f) * (Vector3)dir * coneDistance;
+
+            Gizmos.DrawLine(transform.position, transform.position + leftDir);
+            Gizmos.DrawLine(transform.position, transform.position + rightDir);
+
+            // Opcional: dibujar varios segmentos para visualizar el borde curvo
+            int segments = 12;
+            Vector3 prev = transform.position + rightDir;
+            for (int i = 1; i <= segments; i++)
+            {
+                float t = i / (float)segments;
+                float a = -coneAngle / 2f + t * coneAngle;
+                Vector3 p = transform.position + (Quaternion.Euler(0, 0, a) * (Vector3)dir * coneDistance);
+                Gizmos.DrawLine(prev, p);
+                prev = p;
+            }
+        }
+#endif
     }
     public bool IsDead => isDead;
     public bool IsChasing => playerDetected && !isDead;
