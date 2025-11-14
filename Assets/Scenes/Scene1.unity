@@ -116415,9 +116415,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheatManager
   gameManager: {fileID: 1910681838}
   triggersContainer: {fileID: 937258578}
-  cheatDamageValue: 50
-  cheatArmorValue: 50
-  cheatSpeedValue: 25
+  bonusDamage: 50
+  bonusArmor: 50
+  bonusSpeed: 25
+  bonusMana: 50
   cheatInputAsset: {fileID: -944628639613478452, guid: 3c77fa88e0c9c874ca71e4a81b71dfa9, type: 3}
   cheatActionMapName: Cheats
 --- !u!4 &2138621553
