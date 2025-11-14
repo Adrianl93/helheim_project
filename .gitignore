@@ -1,3 +1,7 @@
+# ============================
+# Unity 2025 - .gitignore
+# ============================
+
 # --- Unity Generated Folders ---
 [Ll]ibrary/
 [Tt]emp/
@@ -6,15 +10,27 @@
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
+[Bb]urstCache/
 
-# --- UserSettings (evitar conflictos) ---
+# Cache adicional de Unity
+Library/ScriptAssemblies/
+Library/ShaderCache/
+Library/assetDatabase/
+Library/PackageCache/
+Library/ApplicationCache/
+Library/Artifacts/
+
+# --- UserSettings ---
 UserSettings/
 
-# --- Unity Package Manager Cache ---
-Library/PackageCache/
+# --- Unity Package Manager ---
 Packages/packages-lock.json
 
-# --- Mono / Visual Studio / Rider / IDEs ---
+# --- Asset Store / UPM caches ---
+Assets/AssetStoreTools*
+Assets/StreamingAssets/aa/ (Addressables)
+
+# --- IDE / Editor ---
 .vs/
 .vscode/
 .idea/
@@ -26,9 +42,9 @@ Packages/packages-lock.json
 *.user
 *.userprefs
 *.iml
+*.dotSettings
 
 # --- Unity Generated Files ---
-sysinfo.txt
 *.pidb
 *.booproj
 *.svd
@@ -36,30 +52,53 @@ sysinfo.txt
 *.mdb
 *.opendb
 *.VC.db
+*.tscn.cache
 
-# --- Builds (evitar subir ejecutables) ---
+# --- Builds / Ejecutables ---
 *.apk
 *.aab
 *.unitypackage
 *.exe
 *.app
+*.ipa
 *.xcodeproj
 *.xcworkspace
 *.xcuserdata
-*.ipa
+*.xcconfig
+*.dSYM/
 
-# --- Sistema Operativo ---
+# WebGL
+Build/*
+Builds/*
+*/Build/*
+*/Builds/*
+
+# --- Sistemas Operativos ---
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # --- Rider Logs ---
 .idea/
 *.iml
 
-# --- Cache / Temp de Unity ---
-Library/ScriptAssemblies/
-Library/ShaderCache/
-Library/assetDatabase/
+# --- Otros caches ---
+*.orig
+*.tmp
+*.lock
 
-# --- Evitar conflictos de TMP ---
+# --- TextMeshPro (solo archivos conflictivos) ---
+# Estos assets cambian automáticamente y generan conflictos si se suben
 Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+
+# --- Addressables ---
+Assets/AddressableAssetsData/*/*.bin*
+Assets/AddressableAssetsData/*/*.hash
+Assets/AddressableAssetsData/*/*.json.meta
+
+# --- Shader Variants ---
+Assets/**/ShaderCache/
+Library/ShaderCache/
+
+# --- UnityHub Logs ---
+UnityHub/

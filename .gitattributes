@@ -1,0 +1,84 @@
+# ===========================
+# Unity 2025 - .gitattributes
+# ===========================
+
+# ---------------------------
+# Line endings (cross-platform)
+# ---------------------------
+* text eol=lf
+
+# Scripts keep diff/merge support
+*.cs     text diff=csharp
+*.shader text
+*.compute text
+*.cginc  text
+*.hlsl   text
+
+# ---------------------------
+# Unity assets treated as binary (NO MERGE)
+# ---------------------------
+*.unity      binary
+*.prefab     binary
+*.asset      binary
+*.controller binary
+*.anim       binary
+*.playable   binary
+*.mat        binary
+*.mask       binary
+*.overrideController binary
+
+# Visual assets
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.tga   binary
+*.psd   binary
+*.tif   binary
+*.tiff  binary
+
+# Models
+*.fbx   binary
+*.obj   binary
+*.blend binary
+*.dae   binary
+
+# Audio
+*.wav   binary
+*.mp3   binary
+*.ogg   binary
+
+# Videos
+*.mp4   binary
+*.mov   binary
+*.avi   binary
+
+# ---------------------------
+# Unity metadata files
+# These are plain text but shouldn't be auto-merged.
+# They change often and generate corruption if merged.
+# ---------------------------
+*.meta merge=binary
+
+# ---------------------------
+# Special Unity files that MUST be binary
+# ---------------------------
+ProjectSettings/*.asset binary
+ProjectSettings/ProjectVersion.txt text
+ProjectSettings/EditorBuildSettings.asset binary
+
+# ---------------------------
+# Prevent Unity YAML merges for files that break easily
+# ---------------------------
+*.scene merge=binary
+*.timeline merge=binary
+
+# ---------------------------
+# FORCE Git to treat YAML files as text (except Unity assets)
+# ---------------------------
+*.yml  text
+*.yaml text
+
+# ---------------------------
+# Prevent CRLF issues in Windows
+# ---------------------------
+*.bat text eol=crlf
