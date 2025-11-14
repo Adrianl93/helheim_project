@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "CheatControls",
+    "name": "CheatInputControls",
     "maps": [
         {
             "name": "Cheats",
@@ -37,6 +37,24 @@
                     "name": "CheatDisableTriggers",
                     "type": "Button",
                     "id": "19fb796e-2a99-4d90-bbff-4794935af31a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheatRanged",
+                    "type": "Button",
+                    "id": "1910b25f-a823-42f4-bfdb-413cc5556b3a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheatMana",
+                    "type": "Button",
+                    "id": "7ef12816-cf13-4d18-bba9-4a13c95a8ec0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -85,6 +103,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "CheatDisableTriggers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "098db087-28c0-4174-8b0f-7e2cca8f40cc",
+                    "path": "<Keyboard>/f6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheatMana",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "657d715d-27f2-4620-b56e-26e24b7764ea",
+                    "path": "<Keyboard>/f5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheatRanged",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
