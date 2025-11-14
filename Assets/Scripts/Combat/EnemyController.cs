@@ -441,7 +441,7 @@ public class EnemyController : MonoBehaviour, IBossState
             animator.SetTrigger("AttackMelee");
 
         // Delay para animacion
-        StartCoroutine(PerformMeleeAttackDelayed(meleeAttackDelay)); 
+        StartCoroutine(PerformMeleeAttackDelayed(meleeAttackDelay));
     }
 
     private void TryRangedAttack()
@@ -486,7 +486,7 @@ public class EnemyController : MonoBehaviour, IBossState
     private IEnumerator FireRangedBurstAndPause()
     {
         isBursting = true;
-        
+
 
         yield return new WaitForSeconds(rangedAttackDelay);
 
