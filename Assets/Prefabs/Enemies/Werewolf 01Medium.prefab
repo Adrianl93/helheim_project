@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: meleeDamage
-      value: 16
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 938217993555073592, guid: 047bca0c9974ef5418537f3e041abb92, type: 3}
       propertyPath: maxManaReward

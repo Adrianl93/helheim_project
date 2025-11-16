@@ -95,6 +95,9 @@ public class EnemyController : MonoBehaviour, IBossState
     [Header("Propiedades públicas")]
     public int Armor => armor;
     public int CurrentHealth => health;
+
+
+
     void Start()
     {
         // Crear la barra de vida

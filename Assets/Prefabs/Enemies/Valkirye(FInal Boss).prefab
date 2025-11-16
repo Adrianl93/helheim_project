@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyType: 2
-  health: 200
+  health: 250
   armor: 12
   meleeDamage: 25
   rangedDamage: 5
