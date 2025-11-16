@@ -428,17 +428,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bienvenido a la tierra de los vivos mi campeon.....
-
-    La oscuridad
-    a logrado corromper a una Valkiria un ente con dominio sobre las almas y al corremperla
-    a logrado que exparsa muerte y debilite la barrera de la realidad trayendo terribles
-    bestias.....
-
-    Es tu deber sagrado como mi campeon purificar las amenzas y
-    devolver el balance...
-
-    FREYA'
+  m_text: "Bienvenido a la tierra de los vivos, mi campe\xF3n\u2026\nLa oscuridad
+    ha logrado corromper a una Valquiria, un ente con dominio sobre las almas, y
+    al corromperla ha conseguido que esparza muerte y debilite la barrera de la realidad,
+    trayendo terribles bestias.\nEs tu deber sagrado, como mi campe\xF3n, purificar
+    estas amenazas y devolver el equilibrio.\nFREYA"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a1cf5b625fd8994bb6b5995c7d6d05d, type: 2}
   m_sharedMaterial: {fileID: -9006132606749469081, guid: 2a1cf5b625fd8994bb6b5995c7d6d05d, type: 2}
@@ -465,7 +459,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.55
+  m_fontSize: 31.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
