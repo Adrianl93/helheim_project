@@ -95,9 +95,6 @@ public class EnemyController : MonoBehaviour, IBossState
     [Header("Propiedades públicas")]
     public int Armor => armor;
     public int CurrentHealth => health;
-
-
-
     void Start()
     {
         // Crear la barra de vida
@@ -719,18 +716,18 @@ public class EnemyController : MonoBehaviour, IBossState
 
 
 
-    // ---- Reemplazado: ataque melee tipo SLASH (cono 60°) ----
+    // ataque melee tipo SLASH (cono 60°) 
     private IEnumerator PerformMeleeAttackDelayed(float delay)
     {
         yield return new WaitForSeconds(delay);
 
         if (player == null) yield break;
 
-        // Dirección hacia donde está el jugador (y hacia donde "mira" el enemy)
+        // Dirección hacia donde está el jugador 
         Vector2 dir = ((Vector2)player.position - (Vector2)transform.position).normalized;
         lastMoveDir = dir;
 
-        float coneAngle = 60f; // apertura total del cono (opción A)
+        float coneAngle = 60f; // apertura total del cono 
         float coneHalf = coneAngle * 0.5f;
         float coneDistance = meleeRadius; // usamos meleeRadius como alcance del cono
 
@@ -777,7 +774,7 @@ public class EnemyController : MonoBehaviour, IBossState
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, minRangedDistance);
 
-        // Dibujo opcional del cono frontal (solo en editor, si hay player asignado)
+      
 #if UNITY_EDITOR
         if (player != null)
         {
@@ -792,7 +789,7 @@ public class EnemyController : MonoBehaviour, IBossState
             Gizmos.DrawLine(transform.position, transform.position + leftDir);
             Gizmos.DrawLine(transform.position, transform.position + rightDir);
 
-            // Opcional: dibujar varios segmentos para visualizar el borde curvo
+           
             int segments = 12;
             Vector3 prev = transform.position + rightDir;
             for (int i = 1; i <= segments; i++)
