@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8628513785700298376, guid: 2865e041bf16bd04488ddf1a990ea9b4, type: 3}
       propertyPath: rangedDamage
-      value: 14
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8628513785700298376, guid: 2865e041bf16bd04488ddf1a990ea9b4, type: 3}
       propertyPath: maxManaReward
