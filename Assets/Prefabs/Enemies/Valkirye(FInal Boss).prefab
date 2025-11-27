@@ -199,7 +199,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4042022002272296592, guid: 61ed20ce984a1f64da979235084e5abc, type: 3}
   firePoint: {fileID: 5319732507448216370}
   projectileSpeed: 9
-  rangedAttackDelay: 0.5
+  rangedAttackDelay: 0.7
   rangedBurstInterval: 8
   burstProjectileCount: 6
   burstPauseDuration: 4
