@@ -9850,10 +9850,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Valkirye(FInal Boss)
       objectReference: {fileID: 0}
-    - target: {fileID: 4665190981654623793, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
-      propertyPath: rangedAttackDelay
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 6336704046382752915, guid: 74a26d61e3c8513428fb9f0e94628397, type: 3}
       propertyPath: m_LocalPosition.x
       value: 260.2
